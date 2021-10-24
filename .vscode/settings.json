@@ -1,0 +1,8 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [80, 120],
+    "editor.fontFamily": "'Fira Code', monospace",
+    "editor.fontLigatures": true,
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Dracula"
+}

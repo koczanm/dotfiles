@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+function sync() {
+    rsync --exclude=".git" \
+          --exclude=".iterm" \
+          --exclude=".neovim" \
+          --exclude=".vscode" \
+          --exclude=".DS_Store" \
+          --exclude="install.sh" \
+          --exclude="LICENSE" \
+          --exclude="README" \
+          -avh --no-perms "${HOME}/.dotfiles/" "${HOME}"
+    source ~/.bash_profile
+}
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -f|--force)
+            force=true
+            shift
+            ;;
+        -u|--update)
+            update=true
+            shift
+            ;;
+        *)
+            echo "Unkown parameter passed: ${1}"
+            exit 1
+            ;;
+    esac
+done
+
+if [ "$update" = true ]; then
+    curl -fL https://github.com/koczanm/dotfiles/tarball/main | tar -xzv --strip-components=1 -C "${HOME}/.dotfiles"
+fi
+
+if [ "$force" = true ]; then
+    sync
+else
+    read -p "This may overwrite existing files in your home dir. Are you sure? (y/n) " -n 1;
+    echo "";
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        sync
+    fi
+fi
+
+unset sync

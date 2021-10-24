@@ -1,0 +1,201 @@
+#!/usr/bin/env bash
+
+echo "Starting bootstrapping"
+
+# Check for Homebrew, install if we don't have it
+which -s brew
+if [[ $? != 0 ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Make sure the latest Homebrew is used
+brew update
+
+# Upgrade any already-installed formulae
+brew upgrade
+
+# Save Homebrew's install location
+BREW_PREFIX="$(brew --prefix)"
+
+# Install GNU core utilities (those that come with macOS are outdated)
+# Don’t forget to add `$(brew --prefix coreutils)libexec/gnubin` to `$PATH`
+brew install coreutils
+ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+
+# Install some other useful utilities like `sponge`
+brew install moreutils
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+brew install findutils
+# Install and overwrite other GNU utilities
+brew install grep
+brew install gnu-indent
+brew install gnu-sed
+brew install gnu-tar
+brew install gnu-which
+
+# Install a modern version of Bash
+brew install bash
+brew install bash-completion2
+
+# Swtich to using brew-installed bash as default shell
+if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+    echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
+    chsh -s "${BREW_PREFIX}/bin/bash"
+fi
+
+# Create a dir for local binaries and hide it
+mkdir -p "${HOME}/bin"
+chflags hidden "${HOME}/bin"
+
+
+# Install basic tools
+BASIC_PACKAGES=(
+    gmp
+    htop
+    jq
+    nmap
+    openssh
+    rsync
+    ssh-copy-id
+    tldr
+    tree
+    wget
+)
+echo "Installing basic packages..."
+brew install "${BASIC_PACKAGES[@]}"
+
+
+# Install fonts
+FONT_CASKS=(
+    font-fira-code
+)
+echo "Installing fonts..."
+brew tap homebrew/cask-fonts
+brew install --cask "${FONT_CASKS[@]}"
+
+
+# Install development tools
+DEV_PACKAGES=(
+    automake
+    gdb
+    git
+    git-lfs
+    ipython
+    neovim
+    nodejs
+    pyenv
+    pyenv-virtualenv
+    starship
+    tmux
+    vim
+    yarn
+)
+echo "Installing dev packages..."
+brew install "${DEV_PACKAGES[@]}"
+DEV_CASKS=(
+    iterm2
+    visual-studio-code
+)
+echo "Installing dev apps..."
+brew install --cask "${DEV_CASKS[@]}"
+
+
+# Install devops tools
+DEVOPS_PACKAGES=(
+    awscli
+    azure-cli
+    docker
+    docker-completion
+    docker-compose
+    docker-compose-completion
+    kubernetes-cli
+    kubernetes-helm
+    minikube
+)
+DEVOPS_CASKS=(
+    docker
+    lens
+    session-manager-plugin
+    vagrant
+    virtualbox
+    virtualbox-extension-pack
+)
+
+
+# Install web tools
+WEB_PACKAGES=(
+    httpie
+    node
+)
+echo "Installing web packages..."
+brew install "${WEB_PACKAGES[@]}"
+WEB_CASKS=(
+    google-chrome
+)
+echo "Installing web apps..."
+brew install --cask "${WEB_CASKS[@]}"
+
+
+# Install communication apps
+COMMS_CASKS=(
+    slack
+    zoom
+)
+echo "Installing communication apps..."
+brew install --cask "${COMMS_CASKS[@]}"
+
+
+# Install other apps
+OTHER_CASKS=(
+    alfred
+    amethyst
+    bitwarden
+    spotify
+)
+echo "Installing other apps..."
+brew install --cask "${OTHER_CASKS[@]}"
+
+
+# Intall VSCode extensions
+VSCODE_EXTS=(
+    coenraads.bracket-pair-colorizer
+    dracula-theme.theme-dracula
+    eamodio.gitlens
+    ms-azuretools.vscode-docker
+    ms-python.python
+    ms-python.vscode-pylance
+    redhat.vscode-yaml
+    vscode-icons-team.vscode-icons
+)
+echo "Installing VSCode extensions..."
+for EXT in "${VSCODE_EXTS[@]}"
+do
+    code --install-extension "${ext}"
+done
+mkdir -p "${HOME}/Library/Application\ Support/Code/User/settings.json"
+cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application\ Support/Code/User/settings.json"
+
+
+# Configure neovim
+echo "Configuring neovim..."
+mkdir -p "${HOME}/.config/nvim/"
+cp "${HOME}/.dotfiles/.neovim/init.vim" "${HOME}/.config/nvim/init.vim"
+curl -fLo"${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo "Installing neovim plugins..."
+nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+
+
+# Install iTerm2 profile
+echo "Installing iTerm2 profile..."
+mkdir -p "${HOME}/Library/Application\ Support/iTerm2/DynamicProfiles/"
+cp "${HOME}/.dotfiles/.iterm/Profiles.json" "${HOME}/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json"
+
+
+# Remove outdated version from the cellar
+echo "Cleaning up..."
+brew cleanup
+
+
+echo "Bootstrapping completed"
