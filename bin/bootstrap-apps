@@ -3,16 +3,14 @@
 echo "Starting bootstrapping"
 
 # Check for Homebrew, install if we don't have it
-which -s brew
-if [[ $? != 0 ]]; then
+if command -v brew > /dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    # Make sure the latest Homebrew is used
+    brew update
+    # Upgrade any already-installed formulae
+    brew upgrade
 fi
-
-# Make sure the latest Homebrew is used
-brew update
-
-# Upgrade any already-installed formulae
-brew upgrade
 
 # Save Homebrew's install location
 BREW_PREFIX="$(brew --prefix)"
