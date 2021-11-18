@@ -8,7 +8,7 @@ function sync() {
           --exclude=".DS_Store" \
           --exclude="install.sh" \
           --exclude="LICENSE" \
-          --exclude="README" \
+          --exclude="README.md" \
           -avh --no-perms "${HOME}/.dotfiles/" "${HOME}"
     source ~/.bash_profile
 }
