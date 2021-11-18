@@ -17,10 +17,10 @@ alias dt="cd ~/Desktop"
 alias rp="cd ~/Repos"
 
 # LISTING
-alias ls="ls -hp -G"
-alias ll="ls -hplF -G"
-alias la="ls -hplAF -G"
-alias lsd="ls -hplF -G | grep --color=never '^d'"
+alias ls="ls -hp -G --color=auto"
+alias ll="ls -hplF -G --color=auto"
+alias la="ls -hplAF -G --color=auto"
+alias lsd="ls -hplF -G --color=auto | grep --color=never '^d'"
 
 # FILES
 alias cp="cp -iv"
