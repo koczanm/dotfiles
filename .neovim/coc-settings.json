@@ -1,0 +1,12 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["py", "yaml", "json"],
+
+  "diagnostic.errorSign": "✘",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.hintSign": "➤",
+  "diagnostic.enableHighlightLineNumber": true,
+
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black"
+}
