@@ -47,6 +47,11 @@
     # Show the user email for the current repository.
 	whoami = config user.email
 
+[init]
+
+	# Change the default branch for newly-created repositories.
+	defaultBranch = main
+
 [apply]
 
     # Detect whitespace errors when applying a patch.
