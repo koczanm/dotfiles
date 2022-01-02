@@ -38,6 +38,7 @@ chflags hidden "${HOME}/bin"
 
 # Install basic tools
 BASIC_PACKAGES=(
+    btop
     fd
     fzf
     gmp
