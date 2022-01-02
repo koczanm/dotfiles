@@ -168,12 +168,24 @@ cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application\ Suppo
 # Configure neovim
 echo "Configuring neovim..."
 mkdir -p "${HOME}/.config/nvim/"
-cp "${HOME}/.dotfiles/.neovim/init.vim" "${HOME}/.config/nvim/init.vim"
+cp "${HOME}/.dotfiles/.config/nvim/init.vim" "${HOME}/.config/nvim/init.vim"
 curl -fLo"${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Installing neovim plugins..."
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+
+
+# Install Python packages
+PYTHON_PACKAGES=(
+    bandit
+    black
+    flake8
+    pipenv
+    pynvim
+)
+echo "Installing Python packages..."
+python3 -m pip install --user "${PYTHON_PACKAGES[@]}"
 
 
 # Install iTerm2 profile

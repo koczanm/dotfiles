@@ -2,31 +2,32 @@
 call plug#begin()
 
 " Aesthetics
-Plug 'dracula/vim', { 'as': 'dracula' }                   " Adds Dracula theme
-Plug 'vim-airline/vim-airline'                            " Makes the statusline lean & mean
-Plug 'vim-airline/vim-airline-themes'                     " Colorizes vim-airline with the current colorscheme
-Plug 'ryanoasis/vim-devicons'                             " Adds file type icons
-Plug 'bryanmylee/vim-colorscheme-icons'                   " Colorizes vim-devicons with the current colorscheme
-Plug 'junegunn/rainbow_parentheses.vim'                   " Provides rainbow colors for brackets/parentheses
-Plug 'mhinz/vim-startify'                                 " Provides a fancy start screen
+Plug 'dracula/vim', { 'as': 'dracula' }             " Adds Dracula theme
+Plug 'vim-airline/vim-airline'                      " Makes the statusline lean & mean
+Plug 'vim-airline/vim-airline-themes'               " Colorizes vim-airline with the current colorscheme
+Plug 'ryanoasis/vim-devicons'                       " Adds file type icons
+Plug 'bryanmylee/vim-colorscheme-icons'             " Colorizes vim-devicons with the current colorscheme
+Plug 'junegunn/rainbow_parentheses.vim'             " Provides rainbow colors for brackets/parentheses
+Plug 'mhinz/vim-startify'                           " Provides a fancy start screen
+Plug 'sheerun/vim-polyglot'                         " Adds a collection of language packs
 
 " Functionalities
-Plug 'tpope/vim-fugitive'                                 " Executes git commands
-Plug 'tpope/vim-surround'                                 " Changes/deletes surrondings in pairs
-Plug 'preservim/tagbar'                                   " Displays TagBar (classes, functions, vars list)
-Plug 'preservim/nerdtree'                                 " Displays NERDTree (a sidebar filetree viewer)
-Plug 'Xuyuanp/nerdtree-git-plugin'                        " Shows git status flags in NERDTree
-Plug 'preservim/nerdcommenter'                            " Comments/Uncomments selected lines
-Plug 'mhinz/vim-signify'                                  " Indicates changed lines
-Plug 'jiangmiao/auto-pairs'                               " Inserts/deletes brackets/parentheses/quotes in pairs
-Plug 'junegunn/vim-easy-align'                            " Aligns lines
-Plug 'sheerun/vim-polyglot'                               " Provides a collection of language packs
-Plug 'Yggdroot/indentLine'                                " Displays the indentation levels with thin vertical lines
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }       " Performs fuzzy search
+Plug 'takac/vim-hardtime'                           " Helps to stop repeating the basic movement key
+Plug 'tpope/vim-fugitive'                           " Executes git commands
+Plug 'tpope/vim-surround'                           " Changes/deletes surrondings in pairs
+Plug 'preservim/tagbar'                             " Displays TagBar (classes, functions, vars list)
+Plug 'preservim/nerdtree'                           " Displays NERDTree (a sidebar filetree viewer)
+Plug 'Xuyuanp/nerdtree-git-plugin'                  " Shows git status flags in NERDTree
+Plug 'preservim/nerdcommenter'                      " Comments/Uncomments selected lines
+Plug 'mhinz/vim-signify'                            " Indicates changed lines
+Plug 'jiangmiao/auto-pairs'                         " Inserts/deletes brackets/parentheses/quotes in pairs
+Plug 'junegunn/vim-easy-align'                      " Aligns lines
+Plug 'sheerun/vim-polyglot'                         " Provides a collection of language packs
+Plug 'Yggdroot/indentLine'                          " Displays the indentation levels with thin vertical lines
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Performs fuzzy search
 Plug 'junegunn/fzf.vim'
-Plug 'psliwka/vim-smoothie'                               " Makes scrolling nice and smooth
-Plug 'antoinemadec/FixCursorHold.nvim'                    " Fixes CursorHold performance
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }  " Provides symantic highlighting for Python
+Plug 'psliwka/vim-smoothie'                         " Makes scrolling nice and smooth
+Plug 'antoinemadec/FixCursorHold.nvim'              " Fixes CursorHold performance
 Plug 'heavenshell/vim-pydocstring', 
   \ { 'do': 'make install', 'for': 'python' }
 
@@ -81,15 +82,14 @@ set fillchars+=vert:\
 syntax on
 color dracula
 
-" Set Dracula for the popup menu too
-highlight Pmenu guibg=#363948
-highlight PmenuSbar guibg=#363948
-
 " Enable true color support
 set termguicolors
 
 
 "---------------------------- Plugin configurations ----------------------------
+
+" Remap the ESC key
+inoremap jk <ESC>
 
 " Neovim :Terminal
 tmap <Esc> <C-\><C-n>
@@ -270,7 +270,7 @@ endfunction
 
 "------------------------------- Custom mappings -------------------------------
 
-let mapleader=","
+let mapleader="'"
 
 " Open a new term in horizontal split
 nmap <leader>$s <C-w>s<C-w>j:terminal<CR>:set nonumber<CR><S-a>
