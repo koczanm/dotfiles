@@ -39,8 +39,8 @@ chflags hidden "${HOME}/bin"
 # Install basic tools
 BASIC_PACKAGES=(
     gmp
-    htop
     jq
+    lsd
     nmap
     openssh
     rsync
