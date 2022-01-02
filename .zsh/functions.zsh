@@ -1,13 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
-}
-
-# Change working directory to the top-most Finder window location
-function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
 # Use Git’s colored diff when available
@@ -18,14 +13,6 @@ if [ $? -eq 0 ]; then
 	}
 fi;
 
-# Create a data URL from a file
-function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
-}
 
 # Determine size of a file or total size of a directory
 function fs() {
@@ -80,12 +67,3 @@ fpid () { lsof -t -c "$@" ; }
 
 # List processes owned by the current user
 myps () { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
-
-# Start an HTTP server from a directory, optionally specifying the port
-function server() {
-	local port="${1:-8000}";
-	sleep 1 && open "http://localhost:${port}/" &
-	# set the default Content-Type to `text/plain` instead of `application/octet-stream`
-	# and serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
-}

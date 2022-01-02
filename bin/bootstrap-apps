@@ -31,16 +31,6 @@ brew install gnu-sed
 brew install gnu-tar
 brew install gnu-which
 
-# Install a modern version of Bash
-brew install bash
-brew install bash-completion2
-
-# Swtich to using brew-installed bash as default shell
-if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-    echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
-    chsh -s "${BREW_PREFIX}/bin/bash"
-fi
-
 # Create a dir for local binaries and hide it
 mkdir -p "${HOME}/bin"
 chflags hidden "${HOME}/bin"
@@ -87,6 +77,7 @@ DEV_PACKAGES=(
     tmux
     vim
     yarn
+    zplug
 )
 echo "Installing dev packages..."
 brew install "${DEV_PACKAGES[@]}"
