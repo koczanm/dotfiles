@@ -4,8 +4,9 @@
 mkdir -p "${HOME}/.dotfiles/"
 
 # Download tarball
-curl -fL https://github.com/koczanm/dotfiles/tarball/main | tar -xzv --strip-components=1 -C "${HOME}/.dotfiles"
+curl -fsSL https://github.com/koczanm/dotfiles/tarball/main | tar -xzv --strip-components=1 -C "${HOME}/.dotfiles"
 
 # Run bootstrap scripts
 ${HOME}/.dotfiles/bin/bootstrap-apps
 ${HOME}/.dotfiles/bin/bootstrap-dotfiles
+${HOME}/.dotfiles/bin/bootstrap-macos

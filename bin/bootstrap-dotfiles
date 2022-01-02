@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 function sync() {
-    rsync --exclude=".git" \
-          --exclude=".iterm" \
+    rsync --exclude=".iterm" \
           --exclude=".neovim" \
           --exclude=".vscode" \
           --exclude=".DS_Store" \
@@ -10,7 +9,7 @@ function sync() {
           --exclude="LICENSE" \
           --exclude="README.md" \
           -avh --no-perms "${HOME}/.dotfiles/" "${HOME}"
-    source ~/.bash_profile
+    source ~/.zshrc
 }
 
 while [[ "$#" -gt 0 ]]; do
