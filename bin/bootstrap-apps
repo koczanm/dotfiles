@@ -135,7 +135,12 @@ echo "Installing communication apps..."
 brew install --cask "${COMMS_CASKS[@]}"
 
 
-# Install other apps
+# Install other tools
+OTHER_TOOLS=(
+    spotify-tui
+)
+echo "Installing other packages..."
+brew install "${OTHER_TOOLS[@]}"
 OTHER_CASKS=(
     alfred
     bitwarden
