@@ -14,7 +14,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2> /dev/null &
 # GENERAL UI/UX
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+sudo nvram SystemAudioVolume=%00
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -86,7 +86,7 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "Europe/Warsaw" > /dev/null
+sudo systemsetup -settimezone "Europe/Warsaw" &> /dev/null
 
 
 # ENERGY SAVING
@@ -98,7 +98,7 @@ sudo pmset -a lidwake 1
 sudo pmset -a autorestart 1
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+sudo systemsetup -setrestartfreeze on &> /dev/null
 
 # Sleep the display after 15 minutes
 sudo pmset -a displaysleep 15
@@ -114,13 +114,14 @@ sudo pmset -b sleep 15
 sudo pmset -a standbydelay 86400
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo systemsetup -setcomputersleep Off &> /dev/null
 
 # Hibernation mode
 # 0: Disable hibernation (speeds up entering sleep mode)
 # 3: Copy RAM to disk so the system state can still be restored in case of a
 #    power failure.
 sudo pmset -a hibernatemode 0
+
 
 # SCREEN
 
@@ -221,8 +222,11 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
 defaults write com.apple.finder FXPreferredViewStyle -string "icnv"
 
-# Arrange by Name in all Finder windows by default
-defaults write com.apple.finder "FK_ArrangeBy" -string 'Name'
+# Arrange by kind in all Finder windows by default
+/usr/libexec/PlistBuddy -c "Set :\"FK_StandardViewSettings\":ExtendedListViewSettingsV2:arrangeBy string kind" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :\"FK_DefaultListViewSettingsV2\":arrangeBy string kind" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ExtendedListViewSettingsV2:arrangeBy string kind" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:ListViewSettings:arrangeBy string kind" ~/Library/Preferences/com.apple.finder.plist
 
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
