@@ -38,11 +38,14 @@ chflags hidden "${HOME}/bin"
 
 # Install basic tools
 BASIC_PACKAGES=(
+    fd
+    fzf
     gmp
     jq
     lsd
     nmap
     openssh
+    reattach-to-user-namespace
     rsync
     ssh-copy-id
     tldr
@@ -70,9 +73,6 @@ DEV_PACKAGES=(
     git-lfs
     ipython
     neovim
-    nodejs
-    pyenv
-    pyenv-virtualenv
     starship
     tmux
     vim
@@ -94,21 +94,22 @@ DEVOPS_PACKAGES=(
     awscli
     azure-cli
     docker
-    docker-completion
     docker-compose
-    docker-compose-completion
+    hacker1024/hacker1024/coretemp
     kubernetes-cli
-    kubernetes-helm
     minikube
 )
+echo "Installing devops packages..."
+brew install "${DEVOPS_PACKAGES[@]}"
 DEVOPS_CASKS=(
     docker
-    lens
     session-manager-plugin
     vagrant
     virtualbox
     virtualbox-extension-pack
 )
+echo "Installing devops apps..."
+brew install --cask "${DEVOPS_CASKS[@]}"
 
 
 # Install web tools
@@ -125,7 +126,7 @@ echo "Installing web apps..."
 brew install --cask "${WEB_CASKS[@]}"
 
 
-# Install communication apps
+# Install communication tools
 COMMS_CASKS=(
     slack
     zoom
@@ -137,8 +138,8 @@ brew install --cask "${COMMS_CASKS[@]}"
 # Install other apps
 OTHER_CASKS=(
     alfred
-    amethyst
     bitwarden
+    rectangle
     spotify
 )
 echo "Installing other apps..."
