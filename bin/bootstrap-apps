@@ -138,6 +138,7 @@ brew install --cask "${COMMS_CASKS[@]}"
 
 # Install other tools
 OTHER_TOOLS=(
+    macchina
     spotify-tui
 )
 echo "Installing other packages..."

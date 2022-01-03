@@ -52,3 +52,6 @@ zplug load --verbose
 
 # Set starship as shell prompt
 eval "$(starship init bash)"
+
+# Show system info
+macchina
