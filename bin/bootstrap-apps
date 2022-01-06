@@ -2,8 +2,8 @@
 
 echo "Starting bootstrapping"
 
-# Check for Homebrew, install if we don't have it
-if command -v brew > /dev/null 2>&1; then
+which -s brew
+if [[ $? != 0 ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     # Make sure the latest Homebrew is used
