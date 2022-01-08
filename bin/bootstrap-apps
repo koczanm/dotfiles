@@ -180,8 +180,8 @@ for EXT in "${VSCODE_EXTS[@]}"
 do
     code --install-extension "${ext}"
 done
-mkdir -p "${HOME}/Library/Application\ Support/Code/User/settings.json"
-cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application\ Support/Code/User/settings.json"
+mkdir -p "${HOME}/Library/Application Support/Code/User/settings.json"
+cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
 
 
 # Configure neovim
@@ -197,8 +197,8 @@ nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 # Install iTerm2 profile
 echo "Installing iTerm2 profile..."
-mkdir -p "${HOME}/Library/Application\ Support/iTerm2/DynamicProfiles/"
-cp "${HOME}/.dotfiles/.iterm/Profiles.json" "${HOME}/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json"
+mkdir -p "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/"
+cp "${HOME}/.dotfiles/.iterm/Profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json"
 
 
 # Remove outdated version from the cellar
