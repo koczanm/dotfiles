@@ -71,14 +71,12 @@ DEV_PACKAGES=(
     automake
     gdb
     git
-    git-lfs
     ipython
     neovim
     starship
     tmux
     vim
     yarn
-    zplug
 )
 echo "Installing dev packages..."
 brew install "${DEV_PACKAGES[@]}"
