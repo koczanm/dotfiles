@@ -59,7 +59,7 @@ brew install "${BASIC_PACKAGES[@]}"
 
 # Install fonts
 FONT_CASKS=(
-    font-fira-code
+    font-fira-code-nerd-font
 )
 echo "Installing fonts..."
 brew tap homebrew/cask-fonts
