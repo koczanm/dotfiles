@@ -1,5 +1,8 @@
+# To fix github.com/zplug/zplug/issues/420
+LANG=en_US.UTF-8
+
 ZPLUG_HOME=$(brew --prefix)/opt/zplug
-source "${ZPLUG_HOME}/.zplug/init.zsh"
+source "${ZPLUG_HOME}/init.zsh"
 
 # Load oh-my-zsh plugins
 zplug "lib/clipboard",             from:oh-my-zsh
@@ -19,20 +22,20 @@ zplug "plugins/macos",             from:oh-my-zsh
 zplug "plugins/pipenv",            from:oh-my-zsh
 zplug "plugins/python",            from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
-zplug "plugins/sytemd",            from:oh-my-zsh
+zplug "plugins/systemd",           from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
 
 # Load local plugins
 zplug "${HOME}/.zsh/aliases.zsh",                 from:local
-zplug "${HOME}/.zsh/export.zsh",                  from:local
+zplug "${HOME}/.zsh/exports.zsh",                 from:local
 zplug "${HOME}/.zsh/functions.zsh",               from:local
 zplug "${HOME}/.zsh/zsh-syntax-highlighting.zsh", from:local
 
 # Load zsh-users plugins
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"  defer:2
-zplug "zsh-users/history-substring-search" defer:3
+zplug "zsh-users/zsh-syntax-highlighting",      defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
 # Load other plugins
 zplug "MichaelAquilina/zsh-you-should-use"
@@ -41,7 +44,7 @@ zplug "MichaelAquilina/zsh-you-should-use"
 zplug "dracula/zsh", as:theme
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -49,10 +52,10 @@ if ! zplug check --verbose; then
 fi
 
 # Source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 # Set starship as shell prompt
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
 
 # Show system info
 macchina
