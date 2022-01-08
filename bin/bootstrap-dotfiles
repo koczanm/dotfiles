@@ -9,7 +9,6 @@ function sync() {
           --exclude="LICENSE" \
           --exclude="README.md" \
           -avh --no-perms "${HOME}/.dotfiles/" "${HOME}"
-    source ~/.zshrc
 }
 
 while [[ "$#" -gt 0 ]]; do
