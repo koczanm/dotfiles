@@ -199,6 +199,10 @@ mkdir -p "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/"
 cp "${HOME}/.dotfiles/.iterm/Profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json"
 
 
+# Install Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 # Remove outdated version from the cellar
 echo "Cleaning up..."
 brew cleanup
