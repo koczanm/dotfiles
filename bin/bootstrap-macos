@@ -64,10 +64,10 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+sudo defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -100,18 +100,19 @@ sudo pmset -a autorestart 1
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on &> /dev/null
 
+# Set machine sleep to 1 hour and 30 minutes on battery
+sudo pmset -a sleep 60
+sudo pmset -b sleep 30
+
+# Set disk sleep to 30 minutes and 15 minutes on battery
+sudo pmset -a disksleep 30
+sudo pmset -b disksleep 15
+
 # Sleep the display after 15 minutes
 sudo pmset -a displaysleep 15
 
-# Disable machine sleep while charging
-sudo pmset -c sleep 0
-
-# Set machine sleep to 15 minutes on battery
-sudo pmset -a disksleep 15
-sudo pmset -b sleep 15
-
-# Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 86400
+# Set standby delay to 8 hours (default is 1 hour)
+sudo pmset -a standbydelay 28800
 
 # Never go into computer sleep mode
 sudo systemsetup -setcomputersleep Off &> /dev/null
@@ -205,18 +206,38 @@ defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# Show item info near icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# Set icon view settings on the desktop and in other icon views
+for view in 'Desktop' 'FK_Standard' 'Standard'; do
+    # Item info near icons
+    /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    if [[ $? != 0 ]]; then
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    fi
 
-# Show item info to the right of the icons on the desktop
-/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
+    # Item info to right of icons
+    /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    if [[ $? != 0 ]]; then
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    fi
 
-# Enable snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+    # Snap-to-grid for icons
+    /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    if [[ $? != 0 ]]; then
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    fi
+
+    # Grid spacing for icons
+    /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:gridSpacing 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    if [[ $? != 0 ]]; then
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:gridSpacing 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    fi
+
+    # Icon size
+    /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    if [[ $? != 0 ]]; then
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+    fi
+done
 
 # Use icon view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
