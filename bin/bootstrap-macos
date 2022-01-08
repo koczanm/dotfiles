@@ -211,31 +211,31 @@ for view in 'Desktop' 'FK_Standard' 'Standard'; do
     # Item info near icons
     /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     if [[ $? != 0 ]]; then
-        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:showItemInfo bool true" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     fi
 
     # Item info to right of icons
     /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     if [[ $? != 0 ]]; then
-        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:labelOnBottom bool false" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     fi
 
     # Snap-to-grid for icons
     /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     if [[ $? != 0 ]]; then
-        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:arrangeBy string grid" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     fi
 
     # Grid spacing for icons
     /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:gridSpacing 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     if [[ $? != 0 ]]; then
-        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:gridSpacing 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:gridSpacing real 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     fi
 
     # Icon size
     /usr/libexec/PlistBuddy -c "Set :${view}ViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     if [[ $? != 0 ]]; then
-        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
+        /usr/libexec/PlistBuddy -c "Add :${view}ViewSettings:IconViewSettings:iconSize real 64" ~/Library/Preferences/com.apple.finder.plist 2> /dev/null
     fi
 done
 
