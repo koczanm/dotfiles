@@ -1,3 +1,4 @@
+ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source "${HOME}/.zplug/init.zsh"
 
 # Load oh-my-zsh plugins
