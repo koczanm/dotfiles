@@ -34,5 +34,8 @@ export GPG_TTY=$(tty)
 export FZF_CTRL_T_COMMAND="fd --type f --hidden --exclude .git --exclude .cache"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --exclude .git"
 
+# Automatically start tmux
+export ZSH_TMUX_AUTOSTART=true
+
 # Prevent Homebrew from reporting
 export HOMEBREW_NO_ANALYTICS=1
