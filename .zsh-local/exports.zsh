@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # Save Homebrew's install location
 BREW_PREFIX=$(brew --prefix)
 
@@ -26,7 +24,7 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # Make less the default reader.
-export MANPAGER="less"
+export MANPAGER="most"
 
 # Avoid issues with `gpg` as installed via Homebrew
 # https://stackoverflow.com/a/42265848/96656

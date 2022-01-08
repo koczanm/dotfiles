@@ -6,20 +6,16 @@ fi
 source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 
 # Load oh-my-zsh plugins
-zcomet load ohmyzsh lib/clipboard
-zcomet load ohmyzsh lib/completion
-zcomet load ohmyzsh lib/history
-
-# Lazy-load oh
+zcomet load ohmyzsh lib clipboard.zsh
+zcomet load ohmyzsh lib completion.zsh
+zcomet load ohmyzsh lib history.zsh
 zcomet load ohmyzsh plugins/brew
-zcomet load ohmyzsh plugins/colored-man-pages
 zcomet load ohmyzsh plugins/colorize 
 zcomet load ohmyzsh plugins/common-aliases
 zcomet load ohmyzsh plugins/docker
 zcomet load ohmyzsh plugins/docker-compose
 zcomet load ohmyzsh plugins/fzf
 zcomet load ohmyzsh plugins/git
-zcomet load ohmyzsh plugins/kubectl
 zcomet load ohmyzsh plugins/macos
 zcomet load ohmyzsh plugins/pipenv
 zcomet load ohmyzsh plugins/python
@@ -28,10 +24,7 @@ zcomet load ohmyzsh plugins/systemd
 zcomet load ohmyzsh plugins/tmux
 
 # Load local plugins
-zcomet load ${HOME}/.zsh/aliases.zsh
-zcomet load ${HOME}/.zsh/exports.zsh
-zcomet load ${HOME}/.zsh/functions.zsh
-zcomet load ${HOME}/.zsh/zsh-syntax-highlighting.zsh
+zcomet load ${HOME}/.zsh-local
 
 # Load zsh-users plugins
 zcomet load zsh-users/zsh-completions

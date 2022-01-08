@@ -1,35 +1,33 @@
-#!/usr/bin/env zsh
-
 # Create a new directory and enter it
-function mkd() {
-	mkdir -p "$@" && cd "$_";
+mkd() {
+	mkdir -p "$@" && cd "$_"
 }
 
 # Use Git’s colored diff when available
-hash git &>/dev/null;
+hash git &>/dev/null
 if [ $? -eq 0 ]; then
-	function diff() {
-		git diff --no-index --color-words "$@";
+	diff() {
+		git diff --no-index --color-words "$@"
 	}
-fi;
+fi
 
 
 # Determine size of a file or total size of a directory
-function fs() {
+fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
+		local arg=-sbh
 	else
-		local arg=-sh;
+		local arg=-sh
 	fi
 	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
+		du $arg -- "$@"
 	else
-		du $arg .[^.]* ./*;
-	fi;
+		du $arg .[^.]* ./*
+	fi
 }
 
 # Create a ZIP archive of a folder
-zipf () { zip -r "$1".zip "$1" ; }
+zipf () { zip -r "$1".zip "$1" }
 
 # Extract most know archives with one command
 extract () {
@@ -53,17 +51,14 @@ extract () {
     fi
 }
 
-# Find a file under the current directory
-ff () { find . -name "$@" ; }
-
 # Find a file whose name starts with a given string
-ffs () { find . -name "$@"'*' ; }
+ffs () { find . -type f -name "$@"'*' }
 
 # Find a file whose name ends with a given string
-ffe () { find . -name '*'"$@" ; }
+ffe () { find . -type f -name '*'"$@" }
 
 # Find out the pid of a specified process
-fpid () { lsof -t -c "$@" ; }
+fpid () { lsof -t -c "$@" }
 
 # List processes owned by the current user
-myps () { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
+myps () { ps $@ -u $USER -o pid,%cpu,%mem,start,time,command }

@@ -45,6 +45,7 @@ BASIC_PACKAGES=(
     jq
     lsd
     nmap
+    most
     openssh
     reattach-to-user-namespace
     rsync
@@ -95,8 +96,6 @@ DEVOPS_PACKAGES=(
     docker
     docker-compose
     hacker1024/hacker1024/coretemp
-    kubernetes-cli
-    minikube
 )
 echo "Installing devops packages..."
 brew install "${DEVOPS_PACKAGES[@]}"
