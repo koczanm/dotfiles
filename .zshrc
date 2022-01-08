@@ -1,5 +1,5 @@
 ZPLUG_HOME=$(brew --prefix)/opt/zplug
-source "${HOME}/.zplug/init.zsh"
+source "${ZPLUG_HOME}/.zplug/init.zsh"
 
 # Load oh-my-zsh plugins
 zplug "lib/clipboard",             from:oh-my-zsh
