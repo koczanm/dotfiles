@@ -103,7 +103,6 @@ DEVOPS_PACKAGES=(
 echo "Installing devops packages..."
 brew install "${DEVOPS_PACKAGES[@]}"
 DEVOPS_CASKS=(
-    docker
     session-manager-plugin
     vagrant
     virtualbox
@@ -153,6 +152,18 @@ echo "Installing other apps..."
 brew install --cask "${OTHER_CASKS[@]}"
 
 
+# Install Python packages
+PYTHON_PACKAGES=(
+    bandit
+    black
+    flake8
+    pipenv
+    pynvim
+)
+echo "Installing Python packages..."
+python3 -m pip install "${PYTHON_PACKAGES[@]}"
+
+
 # Intall VSCode extensions
 VSCODE_EXTS=(
     coenraads.bracket-pair-colorizer
@@ -182,18 +193,6 @@ curl -fLo"${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
 
 echo "Installing neovim plugins..."
 nvim --headless +PlugInstall +UpdateRemotePlugins +qall
-
-
-# Install Python packages
-PYTHON_PACKAGES=(
-    bandit
-    black
-    flake8
-    pipenv
-    pynvim
-)
-echo "Installing Python packages..."
-python3 -m pip install --user "${PYTHON_PACKAGES[@]}"
 
 
 # Install iTerm2 profile
