@@ -26,6 +26,18 @@ alias lars="lsd -larS"
 alias ldot="lsd -ld .*"
 alias tree="lsd --tree"
 
+# FILE HANDLING
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias zshrc="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+
+# GREP
+alias grep="grep --color"
+alias sgrep="grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} "
+
 # FILES
 alias cf="echo $(ls -1 | wc -l)"
 alias mkf1="mkfile 1m ./1MB.dat"
@@ -49,4 +61,4 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup"
 
 # VIM
-alias vim="nvim"
+alias vim="${=EDITOR}"

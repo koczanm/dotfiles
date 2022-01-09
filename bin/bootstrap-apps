@@ -2,8 +2,7 @@
 
 echo "Starting bootstrapping"
 
-which -s brew
-if [[ $? != 0 ]]; then
+if [[ $(command -v brew) == "" ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     # Make sure the latest Homebrew is used
@@ -38,6 +37,7 @@ chflags hidden "${HOME}/bin"
 
 # Install basic tools
 BASIC_PACKAGES=(
+    bat
     btop
     fd
     fzf
@@ -45,7 +45,6 @@ BASIC_PACKAGES=(
     jq
     lsd
     nmap
-    most
     openssh
     reattach-to-user-namespace
     rsync
@@ -196,10 +195,6 @@ nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 echo "Installing iTerm2 profile..."
 mkdir -p "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/"
 cp "${HOME}/.dotfiles/.iterm/Profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json"
-
-
-# Install Tmux Plugin Manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 # Remove outdated version from the cellar
