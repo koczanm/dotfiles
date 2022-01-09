@@ -50,7 +50,6 @@ BASIC_PACKAGES=(
     rsync
     ssh-copy-id
     tldr
-    tree
     wget
 )
 echo "Installing basic packages..."

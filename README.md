@@ -7,5 +7,5 @@ things you don't want or need. Don't blindly use my settings unless you know wha
 
 To install these dotfiles run:
 ```
- /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/koczanm/dotfiles/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/koczanm/dotfiles/HEAD/install.sh)"
 ```
