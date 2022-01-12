@@ -35,6 +35,9 @@ export GPG_TTY=$(tty)
 # Set colors for `jq`
 export JQ_COLORS='0;31:0;39:0;39:0;39:0;32:1;39:1;39'
 
+# Generate LS_COLORS
+export LS_COLORS=$(vivid generate "${HOME}/.config/vivid/themes/dracula.yml")
+
 # Use `fd`` for a faster alternative to `find`
 export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git']
