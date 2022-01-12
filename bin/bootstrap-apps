@@ -49,7 +49,8 @@ BASIC_PACKAGES=(
     reattach-to-user-namespace
     rsync
     ssh-copy-id
-    tldr
+    tealdeer
+    vivid
     wget
 )
 echo "Installing basic packages..."
@@ -72,6 +73,8 @@ DEV_PACKAGES=(
     git
     ipython
     neovim
+    pyenv
+    pyenv-virtualenv
     starship
     tmux
     vim
@@ -139,24 +142,27 @@ echo "Installing other packages..."
 brew install "${OTHER_TOOLS[@]}"
 OTHER_CASKS=(
     alfred
+    amethyst
     bitwarden
-    rectangle
     spotify
 )
 echo "Installing other apps..."
 brew install --cask "${OTHER_CASKS[@]}"
 
 
-# Install Python packages
+# Configure Python
+echo "Configuring Python..."
+PYTHON3_LATEST_VERSION=$(pyenv install --list | grep --extended-regexp "^\s*3\.[0-9]+\.[0-9]+\s*$" | tail -1 | xargs)
+PYTHON2_LATEST_VERSION=$(pyenv install --list | grep --extended-regexp "^\s*2\.[0-9]+\.[0-9]+\s*$" | tail -1 | xargs)
+pyenv install --skip-existing "${PYTHON2_LATEST_VERSION}"
+pyenv install --skip-existing "${PYTHON3_LATEST_VERSION}"
+pyenv global "${PYTHON3_LATEST_VERSION}"
+
 PYTHON_PACKAGES=(
-    bandit
-    black
-    flake8
     pipenv
-    pynvim
 )
 echo "Installing Python packages..."
-python3 -m pip install "${PYTHON_PACKAGES[@]}"
+pip install "${PYTHON_PACKAGES[@]}"
 
 
 # Intall VSCode extensions
@@ -180,6 +186,20 @@ cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application Suppor
 
 
 # Configure neovim
+NEOVIM_PYTHON_PACKAGES=(
+    bandit
+    black
+    flake8
+    pynvim
+ )
+echo "Installing Python2 packages for neovim..."
+pyenv virtualenv --force "${PYTHON2_LATEST_VERSION}" neovim2
+$(pyenv root)/versions/neovim2/bin/python -m pip install pynvim
+
+echo "Installing Python3 packages for neovim..."
+pyenv virtualenv --force "${PYTHON3_LATEST_VERSION}" neovim3
+$(pyenv root)/versions/neovim3/bin/python -m pip install "${NEOVIM_PYTHON_PACKAGES[@]}"
+
 echo "Configuring neovim..."
 mkdir -p "${HOME}/.config/nvim/"
 cp "${HOME}/.dotfiles/.config/nvim/init.vim" "${HOME}/.config/nvim/init.vim"

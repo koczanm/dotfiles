@@ -39,9 +39,9 @@ export JQ_COLORS='0;31:0;39:0;39:0;39:0;32:1;39:1;39'
 export LS_COLORS=$(vivid generate "${HOME}/.config/vivid/themes/dracula.yml")
 
 # Use `fd`` for a faster alternative to `find`
-export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
-export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git']
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"]
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
 # Fix disappearing cursor in dracula/zsh-syntax-highlighting
@@ -49,6 +49,14 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 
 # Automatically start TMUX
 export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_DEFAULT_SESSION_NAME="main"
+
+# Disable Pyenv's prompt as it'll be removed from future release anyway
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Fix this issue https://github.com/pyenv/pyenv-virtualenv/issues/401
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Prevent Homebrew from reporting
 export HOMEBREW_NO_ANALYTICS=1
@@ -88,6 +96,7 @@ zcomet load zsh-users/zsh-history-substring-search
 
 # Load other plugins
 zcomet load MichaelAquilina/zsh-you-should-use
+zcomet load Aloxaf/fzf-tab
 
 # Load theme
 zcomet load dracula/zsh
@@ -95,6 +104,26 @@ zcomet load dracula/zsh-syntax-highlighting
 
 # Run compinit and compile its cache
 zcomet compinit
+
+#----------------------------------- Configs -----------------------------------
+
+# Enable Emacs keybindings
+bindkey -e
+
+# disable sort when completing `git checkout`
+zstyle ":completion:*:git-checkout:*" sort false
+
+# set descriptions format to enable group support
+zstyle ":completion:*:descriptions" format '[%d]'
+
+# set list-colors to enable filename colorizing
+zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
+
+# preview directory's content with exa when completing cd
+zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --color=always $realpath'
+
+# switch group using `,` and `.`
+zstyle ":fzf-tab:*" switch-group "," "."
 
 #---------------------------------- Functions ----------------------------------
 
@@ -127,8 +156,8 @@ alias cdt="cd ~/Desktop"
 alias cdr="cd ~/Repos"
 
 # LISTING
-alias ls='lsd'
-alias l="lsd -l"
+alias ls="lsd"
+alias ll="lsd -l"
 alias la="lsd -la"
 alias lt="lsd -lt"
 alias lat="lsd -lat"
@@ -179,6 +208,11 @@ alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 alias vim="${=EDITOR}"
 
 #----------------------------------- Prompt ------------------------------------
+
+# Configure shell's environment for Pyenv
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv init -)"
 
 # Set starship as shell prompt
 eval "$(starship init zsh)"
