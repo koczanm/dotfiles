@@ -1,11 +1,11 @@
 user: 159
 group: 159
 permission:
-  read: 183
+  read: 212
   write: 212
-  exec: 159
+  exec: 212
   exec-sticky: 222
-  no-access: 210 
+  no-access: 103
 date:
   hour-old: 159
   day-old: 103
