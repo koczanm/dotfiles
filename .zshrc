@@ -48,8 +48,8 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 
 # Automatically start TMUX
-export ZSH_TMUX_AUTOSTART=true
-export ZSH_TMUX_DEFAULT_SESSION_NAME="main"
+export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="tmux"
+export ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 
 # Disable Pyenv's prompt as it'll be removed from future release anyway
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
