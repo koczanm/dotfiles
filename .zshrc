@@ -25,8 +25,11 @@ export PYTHONIOENCODING="UTF-8"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+# Apply dracula color scheme for `bat`
+export BAT_THEME="Dracula"
+
 # Make bat the default reader.
-export PAGER="bat --theme Dracula"
+export PAGER="bat"
 
 # Avoid issues with `gpg` as installed via Homebrew
 # https://stackoverflow.com/a/42265848/96656
@@ -81,7 +84,6 @@ zcomet load ohmyzsh plugins/docker
 zcomet load ohmyzsh plugins/docker-compose
 zcomet load ohmyzsh plugins/fzf
 zcomet load ohmyzsh plugins/git
-zcomet load ohmyzsh plugins/pipenv
 zcomet load ohmyzsh plugins/python
 zcomet load ohmyzsh plugins/tmux
 
@@ -212,7 +214,7 @@ alias vim="${=EDITOR}"
 # Configure shell's environment for Pyenv
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
-# eval "$(pyenv init -)"
+eval "$(pyenv init -)"
 
 # Set starship as shell prompt
 eval "$(starship init zsh)"
