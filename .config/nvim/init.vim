@@ -2,41 +2,39 @@
 call plug#begin()
 
 " Aesthetics
-Plug 'dracula/vim', { 'as': 'dracula' }             " Adds Dracula theme
-Plug 'vim-airline/vim-airline'                      " Makes the statusline lean & mean
-Plug 'vim-airline/vim-airline-themes'               " Colorizes vim-airline with the current colorscheme
-Plug 'ryanoasis/vim-devicons'                       " Adds file type icons
-Plug 'bryanmylee/vim-colorscheme-icons'             " Colorizes vim-devicons with the current colorscheme
-Plug 'junegunn/rainbow_parentheses.vim'             " Provides rainbow colors for brackets/parentheses
-Plug 'mhinz/vim-startify'                           " Provides a fancy start screen
-Plug 'sheerun/vim-polyglot'                         " Adds a collection of language packs
+Plug 'dracula/vim', { 'as': 'dracula' } " Adds Dracula theme
+Plug 'vim-airline/vim-airline'          " Makes the statusline lean & mean
+Plug 'vim-airline/vim-airline-themes'   " Colorizes vim-airline with the current colorscheme
+Plug 'ms-jpq/chadtree',                 " Display CHADTree (a file explorer)
+  \ { 'branch': 'chad', 'do': 'python -m chadtree deps'}
+Plug 'preservim/tagbar'                 " Displays TagBar (classes, functions, vars list)
+Plug 'mhinz/vim-startify'               " Provides a fancy start screen
+Plug 'sheerun/vim-polyglot'             " Provides a collection of language packs
 
 " Functionalities
-Plug 'takac/vim-hardtime'                           " Helps to stop repeating the basic movement key
+Plug 'junegunn/fzf.vim'                             " Performs fuzzy search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive'                           " Executes git commands
 Plug 'tpope/vim-surround'                           " Changes/deletes surrondings in pairs
-Plug 'preservim/tagbar'                             " Displays TagBar (classes, functions, vars list)
-Plug 'preservim/nerdtree'                           " Displays NERDTree (a sidebar filetree viewer)
-Plug 'Xuyuanp/nerdtree-git-plugin'                  " Shows git status flags in NERDTree
 Plug 'preservim/nerdcommenter'                      " Comments/Uncomments selected lines
 Plug 'mhinz/vim-signify'                            " Indicates changed lines
 Plug 'jiangmiao/auto-pairs'                         " Inserts/deletes brackets/parentheses/quotes in pairs
 Plug 'junegunn/vim-easy-align'                      " Aligns lines
-Plug 'sheerun/vim-polyglot'                         " Provides a collection of language packs
 Plug 'Yggdroot/indentLine'                          " Displays the indentation levels with thin vertical lines
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Performs fuzzy search
-Plug 'junegunn/fzf.vim'
 Plug 'psliwka/vim-smoothie'                         " Makes scrolling nice and smooth
 Plug 'antoinemadec/FixCursorHold.nvim'              " Fixes CursorHold performance
-Plug 'heavenshell/vim-pydocstring', 
+Plug 'numirias/semshi',                             " Adds Python syntax highlighting
+  \ { 'do': ':UpdateRemotePlugins' }
+Plug 'heavenshell/vim-pydocstring',                 " Generates Python docstring
   \ { 'do': 'make install', 'for': 'python' }
 
 " CoC
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'neoclide/coc-git', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'fannheyward/coc-pyright', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'fannheyward/coc-pyright', { 'do': 'yarn install --frozen-lockfile' }
 
 " Entertainment
 Plug 'dansomething/vim-hackernews'
@@ -77,17 +75,32 @@ set fillchars+=vert:\
 
 
 "---------------------------------- Coloring -----------------------------------
-
 " Set Dracula as the main color scheme
 syntax on
-color dracula
+colorscheme dracula
+
+" Set Dracula theme for semshi plugin
+
+function SemshiDraculaHighlights()
+    let g:semshi#excluded_hl_groups = ['attribute', 'free', 'imported', 'global', 'local', 'parameterUnused']
+    hi DraculaYellowUnderline ctermfg=229 guifg=#f1fa8c cterm=underline gui=underline
+    hi! link semshiParameter DraculaOrangeItalic
+    hi! link semshiBuiltin DraculaCyan
+    hi! link semshiSelf DraculaPurpleItalic
+    hi! link semshiUnresolved DraculaYellowUnderline
+    hi! link semshiSelected DraculaSelection
+
+    hi! link semshiErrorSign DraculaRed
+    hi! link semshiErrorChar DraculaRedInverse
+    sign define semshiError text=✘ texthl=semshiErrorSign
+endfunction
+autocmd FileType python call SemshiDraculaHighlights()
 
 " Enable true color support
 set termguicolors
 
 
 "---------------------------- Plugin configurations ----------------------------
-
 " Remap the ESC key
 inoremap jk <ESC>
 
@@ -100,19 +113,20 @@ autocmd BufLeave term://* stopinsert
 " Startify
 let g:startify_fortune_use_unicode = 1
 
-" NERDTree
-let NERDTreeShowHidden=1
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * 
-  \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-  \ | quit
-  \ | endif
+" CHADTree
+function s:chadOpen()
+  CHADopen
+  if argc() > 0  || exists("s:std_in")
+    wincmd p
+  endif
+endfunction
+let g:chadtree_settings = { 'theme.icon_colour_set': 'none' }
 
-" Startify + NERDTree on start when no file is specified
+" Startify + CHADTree on start when no file is specified
 autocmd VimEnter *
   \   if !argc()
   \ |   Startify
-  \ |   NERDTree
+  \ |   call s:chadOpen()
   \ |   wincmd w
   \ | endif
 
@@ -124,6 +138,12 @@ let g:airline_section_warning = ''
 
 " TagBar
 let g:tagbar_width = 30
+
+" auto-pairs
+let g:AutoPairsShortcutToggle = '<C-p>'
+let g:AutoPairsShortcutFastWrap = '<C-e>'
+let g:AutoPairsShortcutJump = '<C-n>'
+let g:AutoPairsShortcutBackInsert = '<C-b>'
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
@@ -156,17 +176,19 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Apply base16 color scheme when viewing files in fzf
-let $BAT_THEME='base16'
+" Apply dracula color scheme when viewing files in fzf
+let $BAT_THEME='Dracula'
 
 " signify
 let g:signify_sign_add = '│'
 let g:signify_sign_delete = '│'
 let g:signify_sign_change = '│'
-hi DiffDelete guifg=#ff5555 guibg=none
 
 " FixCursorHold
 let g:cursorhold_updatetime = 100
+
+" python-syntax
+let g:python_highlight_all = 1
 
 " pydocstring
 let g:pydocstring_formatter = 'google'
@@ -205,14 +227,14 @@ endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <C-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+  inoremap <silent><expr> <C-@> coc#refresh()
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+" format on enter, <CR> could be remapped by other vim plugin
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
@@ -243,8 +265,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>cf <Plug>(coc-format-selected)
+nmap <leader>cf <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -258,8 +280,6 @@ augroup end
 
 
 "------------------------------ Custom functions -------------------------------
-
-
 " Trim Whitespaces
 function! TrimWhitespace()
     let l:save = winsaveview()
@@ -267,55 +287,58 @@ function! TrimWhitespace()
     call winrestview(l:save)
 endfunction
 
+" Trim all trailing whitespaces on save
+autocmd BufWritePre * if !&binary && &ft !=# 'mail'
+  \| call TrimWhitespace()
+  \| endif
 
 "------------------------------- Custom mappings -------------------------------
+let mapleader=" "
+nmap <SPACE> <Nop>
 
-let mapleader="'"
+" Quit all the windows
+cmap Q qall
 
 " Open a new term in horizontal split
-nmap <leader>$s <C-w>s<C-w>j:terminal<CR>:set nonumber<CR><S-a>
+nnoremap <leader>$s <C-w>s<C-w>j:terminal<CR>:set nonumber<CR>:set norelativenumber<CR><S-a>
 
 " Open a new term in vertical split
-nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR><S-a>
+nnoremap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR>:set norelativenumber<CR><S-a>
 
 " Go to the next buffer
-nmap <Tab> :bnext<CR>
+nnoremap <Tab> :bnext<CR>
 
 " Go to the previous buffer
-nmap <S-Tab> :bprevious<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 " Refresh neovim configs
-nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader>r :so ~/.config/nvim/init.vim<CR>
 
-" Toggle NERDTree
-nmap <leader>q :NERDTreeToggle<CR>
-nmap \\ <leader>q
+" Toggle CHADTree
+nnoremap <C-n> :CHADopen<CR>
 
 " Toggle Tagbar
-nmap <leader>w :TagbarToggle<CR>
-nmap \| <leader>w
-
-" Toggle Rainbow Parenthesess
-nmap <leader>h :RainbowParentheses!!<CR>
+nnoremap <C-t> :TagbarToggle<CR>
 
 " Auto align variables
 xmap <leader>a gaip*
 nmap <leader>a gaip*
 
-" Fuzzy find for a string in tbe current workdir
-nmap <leader>s :Rg<CR>
+" Fuzzy find for a file
+nnoremap <C-f> :Files<CR>
 
-" Fuzzy find a file
-nmap <leader>d :Files<CR>
+" Fuzzy find for a string in the current workdir
+nnoremap <leader>f :Rg<CR>
 
-" Fuzzy find for a string in the current file/buffer 
-nmap <leader>f :BLines<CR>
+" Fuzzy find for a string in the current buffer
+nnoremap <leader>/ :BLines<CR>
+
+" Fuzzy find for a tag in the current buffer
+nnoremap <leader>t :BTags<CR>
 
 " Generate Python docstring
-nmap <leader>p <Plug>(pydocstring)
-
-" Trim all trailing whitespaces
-nmap <leader>t :call TrimWhitespace()<CR>
+nnoremap <leader>doc <Plug>(pydocstring)
 
 " Open HackerNews
-nmap <leader>y <C-w>v<C-w>l:HackerNews best<CR>J
+nnoremap <leader>y <C-w>v<C-w>l:HackerNews best<CR>J
+
