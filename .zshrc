@@ -4,7 +4,7 @@
 BREW_PREFIX=$(brew --prefix)
 
 # Add local binaries to PATH
-export PATH="${HOME}/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # Overwrite built-in GNU utils
 export PATH="${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
