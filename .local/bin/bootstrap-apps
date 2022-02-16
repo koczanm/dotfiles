@@ -150,6 +150,16 @@ echo "Installing other apps..."
 brew install --cask "${OTHER_CASKS[@]}"
 
 
+# Install NPM packages
+NPM_PACKAGES=(
+    bash-language-server
+    tsserver
+    pyright
+)
+echo "Installing NPM packages..."
+npm install --global "${NPM_PACKAGES[@]}"
+
+
 # Configure Python
 echo "Configuring Python..."
 PYTHON3_LATEST_VERSION=$(pyenv install --list | grep --extended-regexp "^\s*3\.[0-9]+\.[0-9]+\s*$" | tail -1 | xargs)
@@ -187,8 +197,8 @@ cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application Suppor
 
 # Configure neovim
 NEOVIM_PYTHON_PACKAGES=(
-    bandit
     black
+    isort
     flake8
     pynvim
  )
@@ -200,14 +210,10 @@ echo "Installing Python3 packages for neovim..."
 pyenv virtualenv --force "${PYTHON3_LATEST_VERSION}" neovim3
 $(pyenv root)/versions/neovim3/bin/python -m pip install "${NEOVIM_PYTHON_PACKAGES[@]}"
 
-echo "Configuring neovim..."
+echo "Configuring Nvchad..."
 mkdir -p "${HOME}/.config/nvim/"
-cp "${HOME}/.dotfiles/.config/nvim/init.vim" "${HOME}/.config/nvim/init.vim"
-curl -fLo"${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-echo "Installing neovim plugins..."
-nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
 
 
 # Install iTerm2 profile
