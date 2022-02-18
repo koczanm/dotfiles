@@ -148,7 +148,7 @@ brew install --cask "${OTHER_CASKS[@]}"
 # Install NPM packages
 NPM_PACKAGES=(
     bash-language-server
-    tsserver
+    typescript-language-server
     pyright
 )
 echo "Installing NPM packages..."

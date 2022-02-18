@@ -23,7 +23,6 @@ BASIC_PACKAGES=(
     lsd
     nmap
     openssh
-    reattach-to-user-namespace
     rsync
     ssh-copy-id
     tealdeer
@@ -99,7 +98,7 @@ brew install "${OTHER_TOOLS[@]}"
 # Install NPM packages
 NPM_PACKAGES=(
     bash-language-server
-    tsserver
+    typescript-language-server
     pyright
 )
 echo "Installing NPM packages..."
