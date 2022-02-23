@@ -208,8 +208,8 @@ $(pyenv root)/versions/neovim3/bin/python -m pip install "${NEOVIM_PYTHON_PACKAG
 
 echo "Configuring Nvchad..."
 mkdir -p "${HOME}/.config/nvim/"
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+git clone https://github.com/koczanm/NvChad ~/.config/nvim --depth 1
+nvim +PackerSync +qall
 
 
 # Install iTerm2 profile
