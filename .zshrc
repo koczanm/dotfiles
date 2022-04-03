@@ -209,6 +209,12 @@ alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 # VIM
 alias vim="${=EDITOR}"
 
+#------------------------------------ Extra ------------------------------------
+
+if [[ -f ~/.zsh_extra ]]; then
+  source ~/.zsh_extra
+fi
+
 #----------------------------------- Prompt ------------------------------------
 
 # Configure shell's environment for Pyenv
