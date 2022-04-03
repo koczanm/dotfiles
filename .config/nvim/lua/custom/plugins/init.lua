@@ -18,7 +18,7 @@ return {
    {
       "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
       config = function()
-         require("toggle-lsp-diagnostics").init({
+         require("toggle_lsp_diagnostics").init({
             virtual_text = false,
             update_in_insert = false
          })
