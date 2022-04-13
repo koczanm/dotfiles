@@ -2,6 +2,7 @@ local M = {}
 
 M.setup_lsp = function(attach, capabilities)
    local lspconfig = require "lspconfig"
+   local utils = require "custom.plugins.utils"
 
    lspconfig.tsserver.setup {
       on_attach = function(client, bufnr)
@@ -10,11 +11,11 @@ M.setup_lsp = function(attach, capabilities)
       end,
    }
 
-   local utils = require "custom.plugins.utils"
-
-   require'lspconfig'.pyright.setup {
-      on_init = function(client, bufnr)
-         client.config.settings.python.pythonPath = utils.get_python_path(client.config.root_dir)
+   lspconfig.pyright.setup {
+      before_init = function(_, config)
+          config.setting.python.pythonPath = utils.get_python_path(config.root_dir)
+      end
+      on_attach = function(client, bufnr)
          client.resolved_capabilities.document_formatting = false
          vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", {})
       end

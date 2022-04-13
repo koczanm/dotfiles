@@ -67,9 +67,12 @@ DEV_PACKAGES=(
     automake
     gdb
     git
+    hadolint
     neovim
     pyenv
     pyenv-virtualenv
+    shellcheck
+    shfmt
     starship
     tmux
     vim
@@ -147,6 +150,10 @@ brew install --cask "${OTHER_CASKS[@]}"
 
 # Install NPM packages
 NPM_PACKAGES=(
+    # formatters and linters
+    @fsouza/prettierd
+    eslint
+    # language servers
     bash-language-server
     typescript-language-server
     pyright

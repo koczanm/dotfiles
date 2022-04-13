@@ -1,5 +1,6 @@
 local null_ls = require "null-ls"
 local b = null_ls.builtins
+local HOME = os.getenv("HOME")
 
 local sources = {
    -- JSON & YAML
@@ -12,9 +13,18 @@ local sources = {
    b.formatting.eslint_d.with { filetypes = { "javascript", "typescript" }},
 
    -- Python
-   b.diagnostics.flake8.with { extra_args = { "--max-line-length", "119" }},
-   b.formatting.black.with { extra_args = { "--line-length", "119" } },
-   b.formatting.isort.with { extra_args = { "--line-length", "119" }},
+   b.diagnostics.flake8.with {
+      command = HOME.."/.pyenv/versions/neovim3/bin/flake8",
+      extra_args = { "--max-line-length", "119" }
+   },
+   b.formatting.black.with { 
+      command = HOME.."/.pyenv/versions/neovim3/bin/black",
+      extra_args = { "--line-length", "119" }
+   },
+   b.formatting.isort.with {
+      command = HOME.."/.pyenv/versions/neovim3/bin/isort",
+      extra_args = { "--line-length", "119" }
+   },
 
    -- Shell
    b.formatting.shfmt,

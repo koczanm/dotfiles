@@ -17,12 +17,6 @@ return {
    -- Toggle LSP diagnostics
    {
       "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-      config = function()
-         require("toggle_lsp_diagnostics").init({
-            virtual_text = false,
-            update_in_insert = false
-         })
-      end
    },
    -- Smooth scrolling
    {
