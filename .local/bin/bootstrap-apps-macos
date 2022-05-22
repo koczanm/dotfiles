@@ -11,18 +11,40 @@ else
     brew upgrade
 fi
 
+# Save Homebrew's install location
+BREW_PREFIX="$(brew --prefix)"
+
+# Install GNU core utilities (those that come with macOS are outdated)
+# Don’t forget to add `$(brew --prefix coreutils)libexec/gnubin` to `$PATH`
+brew install coreutils
+ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+
+# Install some other useful utilities like `sponge`
+brew install moreutils
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+brew install findutils
+# Install and overwrite other GNU utilities
+brew install grep
+brew install gnu-indent
+brew install gnu-sed
+brew install gnu-tar
+brew install gnu-which
+
 
 # Install basic tools
 BASIC_PACKAGES=(
     bat
     btop
+    dog
     fd
     fzf
+    git-delta
     gmp
     jq
     lsd
     nmap
     openssh
+    reattach-to-user-namespace
     rsync
     ssh-copy-id
     tealdeer
@@ -47,15 +69,25 @@ DEV_PACKAGES=(
     automake
     gdb
     git
+    hadolint
     neovim
     pyenv
     pyenv-virtualenv
+    shellcheck
+    shfmt
     starship
     tmux
     vim
     yarn
 )
+echo "Installing dev packages..."
 brew install "${DEV_PACKAGES[@]}"
+DEV_CASKS=(
+    iterm2
+    visual-studio-code
+)
+echo "Installing dev apps..."
+brew install --cask "${DEV_CASKS[@]}"
 
 
 # Install devops tools
@@ -85,18 +117,45 @@ WEB_PACKAGES=(
 )
 echo "Installing web packages..."
 brew install "${WEB_PACKAGES[@]}"
+WEB_CASKS=(
+    google-chrome
+)
+echo "Installing web apps..."
+brew install --cask "${WEB_CASKS[@]}"
+
+
+# Install communication tools
+COMMS_CASKS=(
+    slack
+    zoom
+)
+echo "Installing communication apps..."
+brew install --cask "${COMMS_CASKS[@]}"
 
 
 # Install other tools
 OTHER_TOOLS=(
     macchina
+    spotify-tui
 )
 echo "Installing other packages..."
 brew install "${OTHER_TOOLS[@]}"
+OTHER_CASKS=(
+    alfred
+    amethyst
+    bitwarden
+    spotify
+)
+echo "Installing other apps..."
+brew install --cask "${OTHER_CASKS[@]}"
 
 
 # Install NPM packages
 NPM_PACKAGES=(
+    # formatters and linters
+    @fsouza/prettierd
+    eslint
+    # language servers
     bash-language-server
     typescript-language-server
     pyright
@@ -114,10 +173,31 @@ pyenv install --skip-existing "${PYTHON3_LATEST_VERSION}"
 pyenv global "${PYTHON3_LATEST_VERSION}"
 
 PYTHON_PACKAGES=(
+    ipython
     pipenv
 )
 echo "Installing Python packages..."
 pip install "${PYTHON_PACKAGES[@]}"
+
+
+# Intall VSCode extensions
+VSCODE_EXTS=(
+    coenraads.bracket-pair-colorizer
+    dracula-theme.theme-dracula
+    eamodio.gitlens
+    ms-azuretools.vscode-docker
+    ms-python.python
+    ms-python.vscode-pylance
+    redhat.vscode-yaml
+    vscode-icons-team.vscode-icons
+)
+echo "Installing VSCode extensions..."
+for EXT in "${VSCODE_EXTS[@]}"
+do
+    code --install-extension "${ext}"
+done
+mkdir -p "${HOME}/Library/Application Support/Code/User/settings.json"
+cp "${HOME}/.dotfiles/.vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
 
 
 # Configure neovim
@@ -138,7 +218,13 @@ $(pyenv root)/versions/neovim3/bin/python -m pip install "${NEOVIM_PYTHON_PACKAG
 echo "Configuring Nvchad..."
 mkdir -p "${HOME}/.config/nvim/"
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+nvim +PackerSync +qall
+
+
+# Install iTerm2 profile
+echo "Installing iTerm2 profile..."
+mkdir -p "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/"
+cp "${HOME}/.dotfiles/.iterm/Profiles.json" "${HOME}/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json"
 
 
 # Remove outdated version from the cellar
@@ -147,4 +233,3 @@ brew cleanup
 
 
 echo "Bootstrapping completed"
-
