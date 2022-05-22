@@ -9,8 +9,6 @@ M.treesitter = {
       'lua',
       'make',
       'python',
-      'ruby',
-      'rust',
       'toml',
       'typescript',
       'yaml',

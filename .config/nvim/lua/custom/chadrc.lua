@@ -1,12 +1,20 @@
+local override = require "custom.plugins.override"
+local HOME = os.getenv("HOME")
+
+-- set dedicated Python virtualenvs for NeoVim
+vim.g.python_host_prog = HOME..".pyenv/versions/neovim2/bin/python"
+vim.g.python3_host_prog = HOME..".pyenv/versions/neovim3/bin/python"
+
 local M = {}
 
-local plugin_confs = require "custom.plugins.configs"
-local user_plugins = require "custom.plugins"
+M.options = {
+
+   user = function()
+      require "custom.options"
+   end,
+}
 
 M.plugins = {
-   status = {
-      dashboard = true,
-   },
 
    options = {
       lspconfig = {
@@ -14,15 +22,11 @@ M.plugins = {
       },
    },
 
-   default_plugin_config_replace = {
-      nvim_treesitter = plugin_confs.treesitter,
+   override = {
+      ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
    },
 
-   default_plugin_remove = {
-      "norcalli/nvim-colorizer.lua",
-   },
-
-   install = user_plugins,
+   user = require "custom.plugins",
 }
 
 M.options = {
@@ -32,5 +36,7 @@ M.options = {
 M.ui = {
    theme = "chadracula",
 }
+
+M.mappings = require "custom.mappings"
 
 return M
