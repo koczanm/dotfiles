@@ -83,23 +83,52 @@ M.lspconfig = {
 
 M.nvterm = {
 
-   n = {
-      -- new
+   t = {
+      -- toggle in terminal mode
+      ["<leader>tf"] = {
+         function()
+            require("nvterm.terminal").toggle "float"
+         end,
+         "   toggle floating term",
+      },
       ["<leader>ts"] = {
          function()
-            require("nvterm.terminal").new "horizontal"
+            require("nvterm.terminal").toggle "horizontal"
          end,
-         "   new horizontal term",
+         "   toggle horizontal term",
       },
       ["<leader>tv"] = {
          function()
-            require("nvterm.terminal").new "vertical"
+            require("nvterm.terminal").toggle "vertical"
          end,
-         "   new vertical term",
+         "   toggle vertical term",
+      },
+   },
+
+   n = {
+      -- toggle in normal mode
+      ["<leader>tf"] = {
+         function()
+            require("nvterm.terminal").toggle "float"
+         end,
+         "   toggle floating term",
+      },
+      ["<leader>ts"] = {
+         function()
+            require("nvterm.terminal").toggle "horizontal"
+         end,
+         "   toggle horizontal term",
+      },
+      ["<leader>tv"] = {
+         function()
+            require("nvterm.terminal").toggle "vertical"
+         end,
+         "   toggle vertical term",
       },
 
+      -- disable
       ["<leader>h"] = "",
-      ["<leader>v"] = "",
+      ["<leader>v"] = ""
    },
 }
 
