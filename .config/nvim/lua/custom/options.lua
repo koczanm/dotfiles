@@ -7,4 +7,4 @@ opt.listchars = { tab = "→ ", eol = "↩", nbsp = "·", trail = "·", extends 
 opt.relativenumber = true
 
 -- ruler
-opt.colorcolumn = 120
+opt.colorcolumn = "120"

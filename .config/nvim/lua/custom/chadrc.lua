@@ -24,13 +24,10 @@ M.plugins = {
 
    override = {
       ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
+      ["nvim-telescope/telescope.nvim"] = override.telescope,
    },
 
    user = require "custom.plugins",
-}
-
-M.options = {
-   relativenumber = true,
 }
 
 M.ui = {
