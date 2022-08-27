@@ -201,7 +201,7 @@ cask "spotify"
 cask "transmission"
 
 # Better To-Do List
-mas "lunatask", id: 1583719331
+mas "Lunatask: A Better To-Do List", id: 1583719331
 
 # Keyboard Shortcuts extension for Safari
-mas "vimari", id: 1480933944
+mas "Vimari", id: 1480933944
