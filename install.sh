@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DOTFILES_DIR = "${HOME}/.dotfiles/"
+DOTFILES_DIR="${HOME}/.dotfiles"
 
 # Create dotfiles directory
 mkdir -p ${DOTFILES_DIR}
