@@ -14,15 +14,12 @@ local sources = {
 
    -- Python
    b.diagnostics.flake8.with {
-      command = HOME.."/.pyenv/versions/neovim3/bin/flake8",
       extra_args = { "--max-line-length", "119" }
    },
    b.formatting.black.with { 
-      command = HOME.."/.pyenv/versions/neovim3/bin/black",
       extra_args = { "--line-length", "119" }
    },
    b.formatting.isort.with {
-      command = HOME.."/.pyenv/versions/neovim3/bin/isort",
       extra_args = { "--line-length", "119" }
    },
 

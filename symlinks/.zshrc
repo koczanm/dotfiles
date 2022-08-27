@@ -54,13 +54,6 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="tmux"
 export ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 
-# Disable Pyenv's prompt as it'll be removed from future release anyway
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-# Fix this issue https://github.com/pyenv/pyenv-virtualenv/issues/401
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 # Prevent Homebrew from reporting
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
@@ -204,10 +197,9 @@ alias top="btop"
 alias afk="osascript -e 'tell app \"System Events\" to key code 12 using {control down, command down}'"
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup"
 
 # VIM
-alias vim="${=EDITOR}"
+alias vim="nvim"
 
 #------------------------------------ Extra ------------------------------------
 
@@ -216,11 +208,6 @@ if [[ -f ~/.zsh_extra ]]; then
 fi
 
 #----------------------------------- Prompt ------------------------------------
-
-# Configure shell's environment for Pyenv
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(pyenv init -)"
 
 # Set starship as shell prompt
 eval "$(starship init zsh)"
