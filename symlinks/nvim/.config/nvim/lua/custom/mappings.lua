@@ -1,23 +1,26 @@
 local M = {}
 
 M.disabled = {
-   -- lspconfig
-   ["<leader>wK"] = "",
-   ["<leader>wa"] = "",
-   ["<leader>wr"] = "",
 
-   -- nvterm
-   ["<leader>h"] = "",
-   ["<leader>v"] = "",
-   ["<A-i>"] = "",
-   ["<A-h>"] = "",
-   ["<A-v>"] = "",
+   n = {
+      -- lspconfig
+      ["<leader>wK"] = "",
+      ["<leader>wa"] = "",
+      ["<leader>wr"] = "",
 
-   -- telescope
-   ["<leader>cm"] = "",
-   ["<leader>gt"] = "",
-   ["<leader>pt"] = "",
-   ["<leader>tk"] = "",
+      -- nvterm
+      ["<leader>h"] = "",
+      ["<leader>v"] = "",
+      ["<A-i>"] = "",
+      ["<A-h>"] = "",
+      ["<A-v>"] = "",
+
+      -- telescope
+      ["<leader>cm"] = "",
+      ["<leader>gt"] = "",
+      ["<leader>pt"] = "",
+      ["<leader>tk"] = "",
+   }
 }
 
 M.general = {
