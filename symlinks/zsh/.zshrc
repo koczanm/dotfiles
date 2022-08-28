@@ -2,6 +2,7 @@
 
 # Add Homebrew packages to PATH
 export PATH="/opt/homebrew/bin:${PATH}"
+export PATH="/opt/homebrew/sbin:${PATH}"
 
 # Add local binaries to PATH
 export PATH="${HOME}/.local/bin:${PATH}"

@@ -84,10 +84,10 @@ brew "httpie"
 brew "jq"
 
 # Clone of ls with colorful output, file type icons, and more
-brew "lsd", link: false
+brew "lsd"
 
 # System information fetcher, with an emphasis on performance and minimalism
-brew "macchina", link: false
+brew "macchina"
 
 # Mac App Store command-line interface
 brew "mas"
