@@ -1,5 +1,25 @@
 local M = {}
 
+M.disabled = {
+   -- lspconfig
+   ["<leader>wK"] = "",
+   ["<leader>wa"] = "",
+   ["<leader>wr"] = "",
+
+   -- nvterm
+   ["<leader>h"] = "",
+   ["<leader>v"] = "",
+   ["<A-i>"] = "",
+   ["<A-h>"] = "",
+   ["<A-v>"] = "",
+
+   -- telescope
+   ["<leader>cm"] = "",
+   ["<leader>gt"] = "",
+   ["<leader>pt"] = "",
+   ["<leader>tk"] = "",
+}
+
 M.general = {
 
    n = {
@@ -73,11 +93,6 @@ M.lspconfig = {
          end,
          "  list workspace folders",
       },
-
-      -- disable
-      ["<leader>wK"] = "",
-      ["<leader>wa"] = "",
-      ["<leader>wr"] = "",
    },
 }
 
@@ -125,13 +140,6 @@ M.nvterm = {
          end,
          "   toggle vertical term",
       },
-
-      -- disable
-      ["<leader>h"] = "",
-      ["<leader>v"] = "",
-      ["<A-i>"] = "",
-      ["<A-h>"] = "",
-      ["<A-v>"] = ""
    },
 }
 
@@ -146,6 +154,12 @@ M.telescope = {
 
    n = {
       -- find
+      ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
+      ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
+      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "  live grep"},
+      ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
+      ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
+      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
       ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
       -- git
@@ -155,12 +169,6 @@ M.telescope = {
 
       -- pick a hidden term
       ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "  pick hidden term" },
-
-      -- disable
-      ["<leader>cm"] = "",
-      ["<leader>gt"] = "",
-      ["<leader>pt"] = "",
-      ["<leader>tk"] = "",
    },
 }
 
