@@ -7,6 +7,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "hpedrorodrigues/tools"
 
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
@@ -25,9 +26,6 @@ brew "coreutils"
 
 # Reimplementation of ctags(1)
 brew "ctags"
-
-# Tool for managing dock items
-brew "dockutil"
 
 # Command-line DNS client
 brew "dog"
@@ -175,6 +173,9 @@ cask "bitwarden"
 
 # App to build and share containerized applications and microservices
 cask "docker"
+
+# Command-line utility for managing macOS dock item
+cask "dockutil"
 
 # Monospaced font with programming ligatures
 cask "font-fira-code-nerd-font"
