@@ -6,10 +6,7 @@ NSGlobalDomain:
   # Enable full keyboard access for all controls
   AppleKeyboardUIMode: 3
 
-  # Set language and text formats
-  AppleLanguages:
-   - "en"
-   - "pl"
+  # Set text formats
   AppleLocale: "en_PL@currency=PLN"
   AppleMeasurementUnits: "Centimeters"
   AppleMetricUnits: true
@@ -111,13 +108,6 @@ com.apple.finder:
 
   # Disable the warning when changing a file extension
   FXEnableExtensionChangeWarning: false
-
-  # Expand the following File Info panes:
-  # “General”, “Open with”, and “Sharing & Permissions”
-  FXInfoPanesExpanded:
-    General: true
-    OpenWith: true
-    Privileges: true
 
   # Use icon view in all Finder windows by default
   # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
