@@ -7,7 +7,9 @@ NSGlobalDomain:
   AppleKeyboardUIMode: 3
 
   # Set language and text formats
-  AppleLanguages: ["en", "pl"]
+  AppleLanguages:
+   - "en"
+   - "pl"
   AppleLocale: "en_PL@currency=PLN"
   AppleMeasurementUnits: "Centimeters"
   AppleMetricUnits: true
