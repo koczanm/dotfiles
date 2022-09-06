@@ -1,45 +1,68 @@
 return {
-   -- Dashboard
-   ["goolord/alpha-nvim"] = {
-      disable = true,
-   },
-   -- Tree view for symbols
-   ["simrat39/symbols-outline.nvim"] = {
-      cmd = "SymbolsOutline",
-      config = function()
-         require("symbols-outline").setup()
-      end,
-   },
-   -- Formatting and linting
-   ["jose-elias-alvarez/null-ls.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         require("custom.plugins.null-ls").setup()
-      end,
-   },
-   -- Toggle LSP diagnostics
-   ["WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"] = {
-      cmd = "ToggleDiag",
-      config = function()
-         require("toggle_lsp_diagnostics").init()
-      end,
-   },
-   -- Smooth scrolling
-   ["karb94/neoscroll.nvim"] = {
-      config = function()
-         require("neoscroll").setup()
-      end,
-   },
-   -- Stabilize window open/close events
-   ["luukvbaal/stabilize.nvim"] = {
-      config = function()
-         require("stabilize").setup()
-      end,
-   },
-   -- Easy neovim-tmux navigation
-   ["alexghergh/nvim-tmux-navigation"] = {
-      config = function ()
-         require("nvim-tmux-navigation").setup({})
-      end,
-   }
+  -- Dashboard
+  ["goolord/alpha-nvim"] = {
+    cmd = "Alpha",
+    disable = false,
+  },
+
+  -- Smooth scrolling
+  ["karb94/neoscroll.nvim"] = {
+    config = function()
+      require("custom.plugins.smolconfigs").scroll()
+    end,
+  },
+
+  -- Dim inactive windows
+  ["andreadev-it/shade.nvim"] = {
+    module = "shade",
+    config = function()
+      require("custom.plugins.smolconfigs").shade()
+    end,
+  },
+
+  -- Stabilize window open/close events
+  ["luukvbaal/stabilize.nvim"] = {
+    config = function()
+      require("custom.plugins.smolconfigs").stabilize()
+    end,
+  },
+
+  -- Tree view for symbols
+  ["simrat39/symbols-outline.nvim"] = {
+    cmd = "SymbolsOutline",
+    config = function()
+      require("custom.plugins.smolconfigs").symbols()
+  },
+
+  -- Toggle LSP diagnostics
+  ["WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"] = {
+    after = "nvim-lspconfig",
+    cmd = "ToggleDiag",
+    config = function()
+      require("custom.plugins.smolconfigs").lsp_diag()
+    end,
+  },
+
+  -- Easy neovim-tmux navigation
+  ["alexghergh/nvim-tmux-navigation"] = {
+    config = function ()
+      require("custom.plugins.smolconfigs").tmux()
+    end,
+  },
+
+  -- Formatting and linting
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.null-ls"
+    end,
+  },
+
+  -- LSP
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end
+  }
 }

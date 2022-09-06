@@ -41,13 +41,13 @@ M.general = {
       },
       ["<C-j>"] = {
          function()
-            require("nvim-tmux-navigation").NvimTmuxNavigateUp()
+            require("nvim-tmux-navigation").NvimTmuxNavigateDown()
          end,
          " window down",
       },
       ["<C-k>"] = {
          function()
-            require("nvim-tmux-navigation").NvimTmuxNavigateDown()
+            require("nvim-tmux-navigation").NvimTmuxNavigateUp()
          end,
          " window up",
       },

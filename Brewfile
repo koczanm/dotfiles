@@ -72,9 +72,6 @@ brew "gnupg"
 # GNU grep, egrep and fgrep
 brew "grep"
 
-# Smarter Dockerfile linter to validate best practices
-brew "hadolint"
-
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 
@@ -108,8 +105,8 @@ brew "nvm"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 
-# Python package management tool
-brew "poetry"
+# Execute binaries from Python packages in isolated environments
+brew "pipx"
 
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
@@ -125,12 +122,6 @@ brew "rust"
 
 # Intuitive find & replace CLI
 brew "sd"
-
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-
-# Autoformat shell script source code
-brew "shfmt"
 
 # Terminal-based client for Spotify
 brew "spotify-tui"
@@ -194,6 +185,9 @@ cask "monitorcontrol"
 
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+
+# Tool to reverse the direction of scrolling
+cask "scroll-reverser"
 
 # Music streaming service
 cask "spotify"
