@@ -48,9 +48,6 @@ brew "findutils"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 
-# GNU debugger
-brew "gdb"
-
 # Distributed revision control system
 brew "git"
 
@@ -71,6 +68,9 @@ brew "gnu-which"
 
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 
 # GNU grep, egrep and fgrep
 brew "grep"

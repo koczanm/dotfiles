@@ -32,6 +32,7 @@ return {
     cmd = "SymbolsOutline",
     config = function()
       require("custom.plugins.smolconfigs").symbols()
+    end
   },
 
   -- Toggle LSP diagnostics
@@ -57,12 +58,12 @@ return {
       require "custom.plugins.null-ls"
     end,
   },
-
+  
   -- LSP
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.plugins.lspconfig"
     end
-  }
+  },
 }
