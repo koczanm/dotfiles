@@ -12,6 +12,9 @@ tap "hpedrorodrigues/tools"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 
