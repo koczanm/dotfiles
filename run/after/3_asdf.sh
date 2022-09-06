@@ -14,7 +14,7 @@ for plugin in "${ASDF_PLUGINS[@]}"; do
 	if [[ " ${installed_plugins[*]} " =~ ${plugin} ]]; then
 		asdf plugin update "${plugin}"
 	else
-		asdf plugin install "${plugin}"
+		asdf plugin add "${plugin}"
 	fi
 
 done
