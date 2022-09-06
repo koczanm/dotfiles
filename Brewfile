@@ -159,9 +159,6 @@ cask "amethyst"
 # Memory training application
 cask "anki"
 
-# Desktop password and login vault
-cask "bitwarden"
-
 # App to build and share containerized applications and microservices
 cask "docker"
 
@@ -194,6 +191,12 @@ cask "spotify"
 
 # Open-source BitTorrent client
 cask "transmission"
+
+# Password Manager
+mas "Bitwarden", id: 1352778147
+
+# For Netflix, HBO Max, Amazon Prime etc.
+mas "Friendly Streaming Browser", id: 553245401
 
 # Better To-Do List
 mas "Lunatask: A Better To-Do List", id: 1583719331
