@@ -15,28 +15,28 @@ local sources = {
   b.diagnostics.hadolint,
 
   -- JavaScript & TypeScript
-  b.formatting.eslint_d.with { filetypes = { "javascript", "typescript" }},
+  b.formatting.eslint_d.with { filetypes = { "javascript", "typescript" } },
 
   -- Lua
   b.formatting.stylua,
 
   -- Python
   b.diagnostics.flake8.with {
-    extra_args = { "--max-line-length", "119" }
+    extra_args = { "--max-line-length", "119" },
   },
-  b.formatting.black.with { 
-    extra_args = { "--line-length", "119" }
+  b.formatting.black.with {
+    extra_args = { "--line-length", "119" },
   },
   b.formatting.isort.with {
-    extra_args = { "--line-length", "119" }
+    extra_args = { "--line-length", "119" },
   },
 
   -- Others
   b.diagnostics.actionlint,
-  b.formatting.prettierd.with { filetypes = { "json", "markdown", "yaml" }},
+  b.formatting.prettierd.with { filetypes = { "json", "markdown", "yaml" } },
 }
 
-null_ls.setup({
+null_ls.setup {
   debug = true,
   sources = sources,
-})
+}

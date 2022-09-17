@@ -65,8 +65,8 @@ export HOMEBREW_NO_ENV_HINTS=1
 #----------------------------------- Zcomet ------------------------------------
 
 # Clone zcomet if necessary
-if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
-  command git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
+if [[ ! -f "${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh" ]]; then
+  command git clone https://github.com/agkozak/zcomet.git "${ZDOTDIR:-${HOME}}/.zcomet/bin"
 fi
 
 source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
@@ -77,6 +77,7 @@ zcomet load ohmyzsh lib completion.zsh
 zcomet load ohmyzsh lib correction.zsh
 zcomet load ohmyzsh lib git.zsh
 zcomet load ohmyzsh lib history.zsh
+zcomet load ohmyzsh plugins/asdf
 zcomet load ohmyzsh plugins/docker
 zcomet load ohmyzsh plugins/docker-compose
 zcomet load ohmyzsh plugins/fzf
@@ -207,14 +208,16 @@ alias vim="nvim"
 
 #------------------------------------ Extra ------------------------------------
 
-if [[ -f ~/.zsh_extra ]]; then
-  source ~/.zsh_extra
-fi
+# if [[ -f ~/.zsh_extra ]]; then
+#   source ~/.zsh_extra
+# fi
 
 #----------------------------------- Prompt ------------------------------------
 
 # Set starship as shell prompt
 eval "$(starship init zsh)"
 
-# Show system info at the startup
-macchina
+if [[ -z "${POETRY_ACTIVE}" ]]; then
+  # Show system info at the startup
+  macchina
+fi

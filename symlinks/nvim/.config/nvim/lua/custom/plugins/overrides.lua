@@ -1,5 +1,65 @@
+-- overriding default plugin configs!
+
 local M = {}
 
+local function button(sc, txt, keybind)
+  local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
+
+  local opts = {
+    position = "center",
+    text = txt,
+    shortcut = sc,
+    cursor = 5,
+    width = 36,
+    align_shortcut = "right",
+    hl = "AlphaButtons",
+  }
+
+  if keybind then
+    opts.keymap = { "n", sc_, keybind, { noremap = true, silent = true } }
+  end
+
+  return {
+    type = "button",
+    val = txt,
+    on_press = function()
+      local key = vim.api.nvim_replace_termcodes(sc_, true, false, true) or ""
+      vim.api.nvim_feedkeys(key, "normal", false)
+    end,
+    opts = opts,
+  }
+end
+
+M.treesitter = {
+  ensure_installed = {
+    "bash",
+    "dockerfile",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "python",
+    "rust",
+    "typescript",
+    "toml",
+    "yaml",
+  },
+}
+
+M.blankline = {
+  filetype_exclude = {
+    "TelescopePrompt",
+    "TelescopeResult",
+    "alpha",
+    "help",
+    "lspinfo",
+    "mason",
+    "nvchad_cheatsheet",
+    "packer",
+    "terminal",
+  },
+}
 
 M.alpha = {
   header = {
@@ -19,19 +79,15 @@ M.alpha = {
       "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣶⣶⡗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
     },
   },
-}
-
-M.blankline = {
-  filetype_exclude = {
-    "TelescopePrompt",
-    "TelescopeResult",
-    "alpha",
-    "help",
-    "lspinfo",
-    "mason",
-    "nvchad_cheatsheet",
-    "packer",
-    "terminal",
+  buttons = {
+    val = {
+      button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
+      button("SPC f o", "  Recent File  ", ":Telescope oldfiles<CR>"),
+      button("SPC f w", "  Find Word  ", ":Telescope live_grep<CR>"),
+      button("SPC b m", "  Bookmarks  ", ":Telescope marks<CR>"),
+      button("SPC t h", "  Themes  ", ":Telescope themes<CR>"),
+      button("SPC e s", "  Settings", ":e $MYVIMRC | :cd %:p:h <CR>"), 
+    },
   },
 }
 
@@ -48,7 +104,7 @@ M.mason = {
 
     -- json
     "json-lsp",
-    
+
     -- lua
     "lua-language-server",
     "stylua",
@@ -68,7 +124,7 @@ M.mason = {
     -- yaml
     "actionlint",
     "yaml-language-server",
-    
+
     -- web
     "eslint_d",
     "prettierd",
@@ -79,23 +135,6 @@ M.mason = {
 M.telescope = {
   defaults = {
     prompt_prefix = "   ",
-  }
-}
-
-M.treesitter = {
-  ensure_installed = {
-    "bash",
-    "dockerfile",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "python",
-    "rust",
-    "typescript",
-    "toml",
-    "yaml",
   },
 }
 
