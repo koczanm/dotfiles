@@ -32,9 +32,6 @@ export LC_ALL="en_US.UTF-8"
 # Apply dracula color scheme for `bat`
 export BAT_THEME="Dracula"
 
-# Make bat the default reader.
-export PAGER="bat"
-
 # Avoid issues with `gpg` as installed via Homebrew
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty)
@@ -183,6 +180,7 @@ alias grep="grep --color"
 alias sgrep="grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} "
 
 # FILES
+alias cat="bat"
 alias cf="echo $(ls -1 | wc -l)"
 alias mkf1="mkfile 1m ./1MB.dat"
 alias mkf5="mkfile 5m ./5MB.dat"
