@@ -1,7 +1,7 @@
 local present, stabilize = pcall(require, "stabilize")
 
 if not present then
-  return
+	return
 end
 
 stabilize.setup()

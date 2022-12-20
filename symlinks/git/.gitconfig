@@ -40,8 +40,6 @@
 
   side-by-side = true
 
-  diff-so-fancy = true
-
 [diff]
 
 	# Detect copies as well as renames.

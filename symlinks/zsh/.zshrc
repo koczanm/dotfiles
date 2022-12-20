@@ -59,6 +59,12 @@ export ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 
+# Fix unreadable pre-commit messages
+export PRE_COMMIT_COLOR="never"
+
+# Change the default config directory
+export XDG_CONFIG_HOME="$HOME/.config"
+
 #----------------------------------- Zcomet ------------------------------------
 
 # Clone zcomet if necessary
@@ -88,8 +94,6 @@ zcomet trigger extract x ohmyzsh plugins/extract
 # Load zsh-users plugins
 zcomet load zsh-users/zsh-completions
 zcomet load zsh-users/zsh-autosuggestions
-zcomet load zsh-users/zsh-syntax-highlighting
-zcomet load zsh-users/zsh-history-substring-search
 
 # Load other plugins
 zcomet load MichaelAquilina/zsh-you-should-use
@@ -98,6 +102,8 @@ zcomet load Aloxaf/fzf-tab
 # Load theme
 zcomet load dracula/zsh
 zcomet load dracula/zsh-syntax-highlighting
+zcomet load zsh-users/zsh-syntax-highlighting
+zcomet load zsh-users/zsh-history-substring-search
 
 # Run compinit and compile its cache
 zcomet compinit
@@ -202,6 +208,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # VIM
+alias lg="lazygit"
 alias vim="nvim"
 
 #------------------------------------ Extra ------------------------------------

@@ -1,7 +1,7 @@
 local present, symbols = pcall(require, "symbols-outline")
 
 if not present then
-  return
+	return
 end
 
 symbols.setup()

@@ -1,7 +1,7 @@
 local present, tmux = pcall(require, "nvim-tmux-navigation")
 
 if not present then
-  return
+	return
 end
 
-tmux.setup {}
+tmux.setup({})
