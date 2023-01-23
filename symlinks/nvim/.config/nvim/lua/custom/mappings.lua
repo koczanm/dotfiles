@@ -32,7 +32,7 @@ M.general = {
 		["<leader>uu"] = { "<cmd> :NvChadUpdate <CR>", "ﮮ  update nvchad" },
 
 		-- new buffer
-		["<leader>b"] = { "<cmd> enew <CR>", "﬘  new buffer" },
+		["<leader>n"] = { "<cmd> enew <CR>", "﬘  new buffer" },
 
 		-- switch between windows
 		["<C-h>"] = {
@@ -110,6 +110,77 @@ M.comment = {
 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 			"  toggle comment",
 		},
+	},
+}
+
+M.dap = {
+	n = {
+		["<leader>dc"] = {
+			function()
+				require("dap").continue()
+			end,
+			"  Continue",
+		},
+		["<leader>dq"] = {
+			function()
+				require("dap").disconnect()
+			end,
+			"  Diconnect",
+		},
+		["<leader>dl"] = {
+			function()
+				require("dap").step_into()
+			end,
+			"  Step into",
+		},
+		["<leader>dk"] = {
+			function()
+				require("dap").step_out()
+			end,
+			"  Step out",
+		},
+		["<leader>dj"] = {
+			function()
+				require("dap").step_over()
+			end,
+			"  Step over",
+		},
+		["<leader>db"] = {
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			"  Toggle breakpoint",
+		},
+		["<leader>dB"] = {
+			function()
+				require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+			end,
+			"  Set conditional breakpoint",
+		},
+		["<leader>de"] = {
+			function()
+				require("dapui").eval()
+			end,
+			"  Evaluate",
+		},
+		["<leader>ds"] = {
+			function()
+				require("dapui").float_element("scopes", { enter = true })
+			end,
+			"  Show scopes",
+		},
+		["<leader>dw"] = {
+			function()
+				require("dapui").float_element("watches", { enter = true })
+			end,
+      "  Show watches",
+		},
+    ["<leader>dr"] = {
+      function()
+        require("osv").launch({port = 8086})
+      end,
+      "  Run nvim debug server"
+    },
 	},
 }
 

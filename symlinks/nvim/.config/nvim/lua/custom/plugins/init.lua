@@ -90,4 +90,13 @@ return {
 			require("custom.plugins.tmux")
 		end,
 	},
+
+	-- Debugging
+	["mfussenegger/nvim-dap"] = {
+		after = { "nvim-lspconfig", "nvim-treesitter" },
+		requires = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text", "jbyuki/one-small-step-for-vimkind" },
+		config = function()
+			require("custom.plugins.dap")
+		end,
+	},
 }

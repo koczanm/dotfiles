@@ -117,6 +117,7 @@ M.mason = {
 		"flake8",
 		"isort",
 		"pyright",
+		"debugpy",
 
 		-- rust
 		"rust-analyzer",
