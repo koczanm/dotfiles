@@ -18,9 +18,6 @@ brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 
-# Linux/OSX/FreeBSD resource monitor
-brew "bpytop"
-
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 
@@ -48,6 +45,12 @@ brew "findutils"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 
+# GitHub command-line tool
+brew "gh"
+
+# Access GitHub's .gitignore boilerplates
+brew "gibo"
+
 # Distributed revision control system
 brew "git"
 
@@ -72,6 +75,9 @@ brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 
+# Ping, but with a graph
+brew "gping"
+
 # GNU grep, egrep and fgrep
 brew "grep"
 
@@ -80,6 +86,9 @@ brew "httpie"
 
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+
+# Portable library for network traffic capture
+brew "libpcap"
 
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
@@ -111,6 +120,9 @@ brew "openssh"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 
+# Cross-platform library for audio I/O
+brew "portaudio"
+
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 
@@ -129,6 +141,9 @@ brew "sd"
 # Terminal-based client for Spotify
 brew "spotify-tui"
 
+# Spotify daemon
+brew "spotifyd", restart_service: true
+
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
 
@@ -146,6 +161,9 @@ brew "tmux"
 
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
+
+# Tools for the WireGuard secure network tunnel
+brew "wireguard-tools"
 
 # JavaScript package manager
 brew "yarn"
@@ -174,11 +192,14 @@ cask "font-fira-code-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 
-# Provides access to camera controls
-cask "logitech-camera-settings"
+# Keyboard customizer
+cask "karabiner-elements"
 
 # Software for Logitech devices
 cask "logi-options-plus"
+
+# Provides access to camera controls
+cask "logitech-camera-settings"
 
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
@@ -194,6 +215,9 @@ cask "spotify"
 
 # Open-source BitTorrent client
 cask "transmission"
+
+# Privacy extension for browser
+mas "AdBlock Pro", id: 1018301773
 
 # Password Manager
 mas "Bitwarden", id: 1352778147
