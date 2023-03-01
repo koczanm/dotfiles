@@ -16,3 +16,6 @@ Thumbs.db
 # Credentials, secrets, tokens and other sensitive data
 **/spotify-tui/.spotify_token_cache.json
 **/spotify-tui/client.yml
+
+# Logs
+**/btop/btop.log

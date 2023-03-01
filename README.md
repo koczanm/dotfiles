@@ -9,3 +9,7 @@ To install these dotfiles run:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/koczanm/dotfiles/HEAD/install.sh)"
 ```
+
+## Showcase
+
+![showcase](./assets/showcase.png)
