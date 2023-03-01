@@ -153,10 +153,10 @@ alias .4="cd ../../../../"
 alias .5="cd ../../../../../"
 
 # SHORTCUTS
-alias cdc="cd ~/Documents"
+alias cdev="cd ~/Developer"
+alias cdoc="cd ~/Documents"
 alias cdl="cd ~/Downloads"
 alias cdt="cd ~/Desktop"
-alias cdr="cd ~/Repos"
 
 # LISTING
 alias ls="lsd"

@@ -14,8 +14,8 @@ lspconfig.pyright.setup({
 	end,
 })
 
--- Sumneko Lua
-lspconfig.sumneko_lua.setup({
+-- Lua
+lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -28,6 +28,7 @@ lspconfig.sumneko_lua.setup({
 			},
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
 			},
 			telemetry = {
 				enable = false,
@@ -53,3 +54,5 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+vim.notify = require("noice").notify

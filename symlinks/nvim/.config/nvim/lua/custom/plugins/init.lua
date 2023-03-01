@@ -91,12 +91,49 @@ return {
 		end,
 	},
 
-	-- Debugging
+	-- debugging
 	["mfussenegger/nvim-dap"] = {
 		after = { "nvim-lspconfig", "nvim-treesitter" },
 		requires = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text", "jbyuki/one-small-step-for-vimkind" },
 		config = function()
 			require("custom.plugins.dap")
+		end,
+	},
+
+	-- jump to fuzzy match word
+	["ggandor/leap.nvim"] = {
+		config = function()
+			require("custom.plugins.leap")
+		end,
+	},
+
+	-- highlight args' definitions
+	["m-demare/hlargs.nvim"] = {
+		config = function()
+			require("custom.plugins.hlargs")
+		end,
+	},
+
+	-- surround selections
+	["kylechui/nvim-surround"] = {
+		config = function()
+			require("custom.plugins.surround")
+		end,
+	},
+
+	-- prettier UI
+	["folke/noice.nvim"] = {
+		after = { "nvim-treesitter" },
+		requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+		config = function()
+			require("custom.plugins.noice")
+		end,
+	},
+
+	-- do just nuff
+	["~/Developer/nuff.nvim"] = {
+		config = function()
+			require("custom.plugins.nuff")
 		end,
 	},
 }

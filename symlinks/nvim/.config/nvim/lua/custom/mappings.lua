@@ -35,25 +35,25 @@ M.general = {
 		["<leader>n"] = { "<cmd> enew <CR>", "﬘  new buffer" },
 
 		-- switch between windows
-		["<C-h>"] = {
+		["<M-Left>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
 			end,
 			"  window left",
 		},
-		["<C-l>"] = {
+		["<M-Right>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateRight()
 			end,
 			"  window right",
 		},
-		["<C-j>"] = {
+		["<M-Down>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateDown()
 			end,
 			"  window down",
 		},
-		["<C-k>"] = {
+		["<M-Up>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateUp()
 			end,

@@ -49,14 +49,15 @@ M.treesitter = {
 
 M.blankline = {
 	filetype_exclude = {
-		"TelescopePrompt",
-		"TelescopeResult",
 		"alpha",
 		"help",
 		"lspinfo",
 		"mason",
+		"noice",
 		"nvchad_cheatsheet",
 		"packer",
+		"TelescopePrompt",
+		"TelescopeResult",
 		"terminal",
 	},
 }

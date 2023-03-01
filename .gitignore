@@ -12,3 +12,7 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+
+# Credentials, secrets, tokens and other sensitive data
+**/spotify-tui/.spotify_token_cache.json
+**/spotify-tui/client.yml
