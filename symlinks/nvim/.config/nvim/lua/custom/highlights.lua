@@ -6,9 +6,9 @@ local M = {}
 
 ---@type HLTable
 M.override = {
-  Comment = {
-    italic = true,
-  },
+	Comment = {
+		italic = true,
+	},
 }
 
 ---@type HLTable
