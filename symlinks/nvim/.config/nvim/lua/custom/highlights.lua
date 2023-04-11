@@ -9,6 +9,24 @@ M.override = {
 	Comment = {
 		italic = true,
 	},
+	DapBreakpoint = {
+		fg = "red",
+	},
+	DapStopped = {
+		fg = "orange",
+	},
+	DapStoppedLine = {
+		bg = "one_bg2",
+	},
+	DapUIVariable = {
+		fg = "baby_pink",
+	},
+	DapUIValue = {
+		fg = "grey_fg",
+	},
+	DapUIModifiedValue = {
+		fg = "yellow",
+	},
 }
 
 ---@type HLTable

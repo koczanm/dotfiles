@@ -232,7 +232,7 @@ M.lspconfig = {
 
 		["<leader>fm"] = {
 			function()
-				vim.lsp.buf.formatting({})
+				vim.lsp.buf.format({ async = true })
 			end,
 			"  lsp formatting",
 		},
@@ -316,6 +316,16 @@ M.telescope = {
 M.tld = {
 	n = {
 		["<leader>td"] = { "<cmd> ToggleDiag <CR>", "𥳐 diagnostics" },
+	},
+}
+
+local function pc(func)
+	return "<cmd>lua require('pommodoro-clock')." .. func .. "<CR>"
+end
+
+M.pomodoro = {
+	n = {
+		["<leader>pw"] = { pc('start("work")') },
 	},
 }
 

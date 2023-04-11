@@ -7,7 +7,6 @@ local plugins = {
 	-- LSP config
 	{
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
 		dependencies = {
 			-- formatting & linting
 			{
@@ -16,20 +15,6 @@ local plugins = {
 					require("custom.configs.null-ls")
 				end,
 			},
-			"jay-babu/mason-null-ls.nvim",
-			-- LSP servers
-			{
-				"williamboman/mason.nvim",
-				config = function(_, opts)
-					dofile(vim.g.base46_cache .. "mason")
-					require("mason").setup(opts)
-					vim.api.nvim_create_user_command("MasonInstallAll", function()
-						vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-					end, {})
-					require("custom.configs.lspconfig")
-				end,
-			},
-			"williamboman/mason-lspconfig.nvim",
 			-- debugging
 			{
 				"mfussenegger/nvim-dap",
@@ -39,8 +24,18 @@ local plugins = {
 			},
 			"theHamsta/nvim-dap-virtual-text",
 			"rcarriga/nvim-dap-ui",
-			"jay-babu/mason-nvim-dap.nvim",
+			"jbyuki/one-small-step-for-vimkind",
 		},
+		config = function()
+			require("plugins.configs.lspconfig")
+			require("custom.configs.lspconfig")
+		end,
+	},
+
+	-- mason
+	{
+		"williamboman/mason.nvim",
+		opts = overrides.mason,
 	},
 
 	-- treesitter
@@ -55,12 +50,6 @@ local plugins = {
 		opts = overrides.telescope,
 	},
 
-	-- which-key
-	{
-		"folke/which-key.nvim",
-		enabled = true,
-	},
-
 	-- nvim-colorizer
 	{
 		"NvChad/nvim-colorizer.lua",
@@ -68,17 +57,6 @@ local plugins = {
 	},
 
 	-- CUSTOM PLUGINS
-
-	-- toggle LSP diagnostics
-	{
-		"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
-		cmd = "ToggleDiag",
-		config = function()
-			require("toggle_lsp_diagnostics").init({
-				start_on = false,
-			})
-		end,
-	},
 
 	-- smooth scrolling
 	{
@@ -150,5 +128,21 @@ local plugins = {
 			require("custom.configs.noice")
 		end,
 	},
+
+	-- just nuff
+	{
+		"koczanm/nuff.nvim",
+		cmd = "Nuff",
+		config = function()
+			require("nuff").setup({
+				menu = {
+					win_options = {
+						winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:PmenuSel",
+					},
+				},
+			})
+		end,
+	},
 }
+
 return plugins

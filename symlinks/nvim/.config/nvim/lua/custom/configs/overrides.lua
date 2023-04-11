@@ -24,6 +24,49 @@ M.treesitter = {
 	},
 }
 
+M.mason = {
+	ensure_installed = {
+		-- bash
+		"bash-language-server",
+		"shellcheck",
+		"shfmt",
+
+		-- docker
+		"dockerfile-language-server",
+		"hadolint",
+
+		-- json
+		"json-lsp",
+
+		-- lua
+		"lua-language-server",
+		"stylua",
+
+		-- markdown
+		"marksman",
+
+		-- python
+		"black",
+		"debugpy",
+		"isort",
+		"pyright",
+		"ruff",
+
+		-- rust
+		"rust-analyzer",
+    "rustfmt",
+
+		-- yaml
+		"actionlint",
+		"yaml-language-server",
+
+		-- web
+		"eslint_d",
+		"prettierd",
+		"typescript-language-server",
+	},
+}
+
 M.telescope = {
 	defaults = {
 		prompt_prefix = "   ",

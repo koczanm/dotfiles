@@ -29,43 +29,34 @@ vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", li
 vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStoppedLine", numhl = "" })
 
--- List of adapters to install
-local adapters = {
-	"bash",
-	"python",
+-- python
+dap.adapters.python = {
+	type = "executable",
+	command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
+	args = { "-m", "debugpy.adapter" },
 }
 
-require("mason-nvim-dap").setup({
-	ensure_installed = adapters,
-	automatic_setup = true,
-})
+dap.configurations.python = {
+	{
+		type = "python",
+		request = "launch",
+		name = "Launch file",
+		program = "${file}",
+		pythonPath = function()
+			return lspconfig.pyright.document_config.default_config.settings.python.pythonPath
+		end,
+	},
+}
 
-require("mason-nvim-dap").setup_handlers({
-	-- default setup for all adapters, unless a custom one is defined below
-	function(source_name)
-		require("mason-nvim-dap.automatic_setup")(source_name)
-	end,
+-- lua
+dap.adapters.nlua = function(callback, _)
+	callback({ type = "server", host = "127.0.0.1", port = 8086 })
+end
 
-	-- custom setups
-	python = function()
-		dap.adapters.python = {
-			type = "executable",
-			command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
-			args = {
-				"-m",
-				"debugpy.adapter",
-			},
-		}
-		dap.configurations.python = {
-			{
-				type = "python",
-				request = "launch",
-				name = "Launch file",
-				program = "${file}",
-				pythonPath = function()
-					return lspconfig.pyright.document_config.default_config.settings.python.pythonPath
-				end,
-			},
-		}
-	end,
-})
+dap.configurations.lua = {
+	{
+		type = "nlua",
+		request = "attach",
+		name = "Attach to running Neovim instance",
+	},
+}
