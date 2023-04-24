@@ -42,11 +42,12 @@ export JQ_COLORS='0;31:0;39:0;39:0;39:0;32:1;39:1;39'
 # Generate LS_COLORS
 export LS_COLORS=$(vivid generate dracula)
 
-# Use `fd`` for a faster alternative to `find`
+# Use `fd` for a faster alternative to `find`
 export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"]
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
+
 
 # Fix disappearing cursor in dracula/zsh-syntax-highlighting
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
@@ -64,6 +65,9 @@ export PRE_COMMIT_COLOR="never"
 
 # Change the default config directory
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# Change the default cache directory for ZSH
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
 #----------------------------------- Zcomet ------------------------------------
 
@@ -86,6 +90,7 @@ zcomet load ohmyzsh plugins/docker-compose
 zcomet load ohmyzsh plugins/fzf
 zcomet load ohmyzsh plugins/git
 zcomet load ohmyzsh plugins/python
+zcomet load ohmyzsh plugins/rust
 zcomet load ohmyzsh plugins/tmux
 
 # Lazy load some oh-my-zsh plugins

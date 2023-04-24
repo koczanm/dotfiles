@@ -61,6 +61,7 @@ local plugins = {
 	-- smooth scrolling
 	{
 		"karb94/neoscroll.nvim",
+    event = "VeryLazy",
 		config = function()
 			require("neoscroll").setup()
 		end,
@@ -71,14 +72,6 @@ local plugins = {
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
 			require("nvim-tmux-navigation").setup({})
-		end,
-	},
-
-	-- stabilize window open/close events
-	{
-		"luukvbaal/stabilize.nvim",
-		config = function()
-			require("stabilize").setup()
 		end,
 	},
 
@@ -103,6 +96,7 @@ local plugins = {
 	-- highlight args' definitions
 	{
 		"m-demare/hlargs.nvim",
+		ft = { "lua", "python", "rust" },
 		config = function()
 			require("custom.configs.hlargs")
 		end,
@@ -111,8 +105,9 @@ local plugins = {
 	-- surround selections
 	{
 		"kylechui/nvim-surround",
+		event = "VeryLazy",
 		config = function()
-			require("nvim-surround").setup()
+			require("nvim-surround").setup({})
 		end,
 	},
 
