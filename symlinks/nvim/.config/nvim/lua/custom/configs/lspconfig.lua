@@ -8,6 +8,14 @@ local utils = require("custom.utils")
 lspconfig.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	settings = {
+		python = {
+			analysis = {
+				autoImportCompletions = true,
+				diagnosticMode = "openFilesOnly",
+			},
+		},
+	},
 	on_init = function(client)
 		local python_path = utils.get_python_path(client.config.root_dir)
 		client.config.settings.python.pythonPath = python_path

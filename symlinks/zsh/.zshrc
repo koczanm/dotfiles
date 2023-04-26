@@ -7,6 +7,9 @@ export PATH="/opt/homebrew/sbin:${PATH}"
 # Add local binaries to PATH
 export PATH="${HOME}/.local/bin:${PATH}"
 
+# Add cargo binaries to PATH
+export PATH="${HOME}/.cargo/bin:${PATH}"
+
 # Save Homebrew's install location
 BREW_PREFIX=$(brew --prefix)
 
@@ -64,7 +67,7 @@ export HOMEBREW_NO_ENV_HINTS=1
 export PRE_COMMIT_COLOR="never"
 
 # Change the default config directory
-export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Change the default cache directory for ZSH
 export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
@@ -110,8 +113,12 @@ zcomet load dracula/zsh-syntax-highlighting
 zcomet load zsh-users/zsh-syntax-highlighting
 zcomet load zsh-users/zsh-history-substring-search
 
+# Include custom zsh-completions
+fpath+=("${ZSH_CACHE_DIR}/completions")
+
 # Run compinit and compile its cache
 zcomet compinit
+
 
 #----------------------------------- Configs -----------------------------------
 
@@ -227,7 +234,6 @@ alias vim="nvim"
 # Set starship as shell prompt
 eval "$(starship init zsh)"
 
-if [[ -z "${POETRY_ACTIVE}" ]]; then
-  # Show system info at the startup
-  macchina
-fi
+# Show system info at the startup
+macchina
+

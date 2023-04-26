@@ -21,16 +21,16 @@ local sources = {
 		extra_args = { "--line-length", "119" },
 	}),
 	b.formatting.isort.with({
-		extra_args = { "--line-length", "119" },
+		extra_args = { "--line-length", "119", "--profile", "black" },
 	}),
 	b.diagnostics.ruff.with({
 		extra_args = { "--line-length", "119" },
 	}),
 
-	-- rust
+	-- Rust
 	b.formatting.rustfmt,
 
-	-- others
+	-- Others
 	b.diagnostics.actionlint,
 	b.formatting.prettier.with({ filetypes = { "json", "markdown", "toml", "yaml" } }),
 }

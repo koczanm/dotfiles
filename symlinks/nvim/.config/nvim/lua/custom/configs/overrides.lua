@@ -48,13 +48,12 @@ M.mason = {
 		-- python
 		"black",
 		"debugpy",
-		"isort",
 		"pyright",
 		"ruff",
 
 		-- rust
 		"rust-analyzer",
-    "rustfmt",
+		"rustfmt",
 
 		-- yaml
 		"actionlint",
