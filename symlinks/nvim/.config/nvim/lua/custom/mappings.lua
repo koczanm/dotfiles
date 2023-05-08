@@ -30,54 +30,54 @@ M.disabled = {
 M.general = {
 	n = {
 		-- update nvchad
-		["<leader>uu"] = { "<cmd> :NvChadUpdate <CR>", "ﮮ  update nvchad" },
+		["<leader>uu"] = { "<cmd> :NvChadUpdate <CR>", "󰚰  update nvchad" },
 
 		-- new buffer
-		["<leader>n"] = { "<cmd> enew <CR>", "﬘  new buffer" },
+		["<leader>n"] = { "<cmd> enew <CR>", "󰏌  new buffer" },
 
 		-- switch between windows
 		["<S-Left>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
 			end,
-			"  window left",
+			"󰁍  window left",
 		},
 		["<S-Right>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateRight()
 			end,
-			"  window right",
+			"󰁔  window right",
 		},
 		["<S-Down>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateDown()
 			end,
-			"  window down",
+			"󰁅  window down",
 		},
 		["<S-Up>"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateUp()
 			end,
-			"  window up",
+			"󰁝  window up",
 		},
 
 		-- resize windows
-		["<leader>w="] = { "<C-w>=", "  realign" },
-		["<leader>wh"] = { "<C-w><", "ﲕ  expand left" },
-		["<leader>wl"] = { "<C-w>>", "ﲖ  expand right" },
-		["<leader>wk"] = { "<C-w>+", "ﲗ  expand up" },
-		["<leader>wj"] = { "<C-w>-", "ﲔ  expand down" },
+		["<leader>w="] = { "<C-w>=", "󰁌  realign" },
+		["<leader>wh"] = { "<C-w><", "󰞗  expand left" },
+		["<leader>wl"] = { "<C-w>>", "󰞘  expand right" },
+		["<leader>wk"] = { "<C-w>+", "󰞙  expand up" },
+		["<leader>wj"] = { "<C-w>-", "󰞖  expand down" },
 
 		-- split windows
-		["<leader>ws"] = { "<C-w>s", "ﰮ  new horizontal window" },
-		["<leader>wv"] = { "<C-w>v", "ﰴ  new vertical window" },
+		["<leader>ws"] = { "<C-w>s", "󰛀  new horizontal window" },
+		["<leader>wv"] = { "<C-w>v", "󰛂  new vertical window" },
 
 		-- close windows
-		["<leader>wx"] = { "<cmd> quit <CR>", "  close window" },
+		["<leader>wx"] = { "<cmd> quit <CR>", "󰅗  close window" },
 
 		-- quit nvim
-		["<leader>qq"] = { "<cmd> qa! <CR>", "  quit" },
-		["<leader>wq"] = { "<cmd> wqa <CR>", "  save and quit" },
+		["<leader>qq"] = { "<cmd> qa! <CR>", "󰱝  quit" },
+		["<leader>wq"] = { "<cmd> wqa <CR>", "󰱝  save and quit" },
 	},
 }
 
@@ -88,7 +88,7 @@ M.tabufline = {
 			function()
 				require("nvchad_ui.tabufline").close_buffer()
 			end,
-			"  close buffer",
+			"󰅖  close buffer",
 		},
 	},
 }
@@ -102,14 +102,14 @@ M.comment = {
 			function()
 				require("Comment.api").toggle.linewise.current()
 			end,
-			"  toggle comment",
+			"󰆈  toggle comment",
 		},
 	},
 
 	v = {
 		["<leader>/"] = {
 			"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-			"  toggle comment",
+			"󰆈  toggle comment",
 		},
 	},
 }
@@ -197,7 +197,7 @@ M.lspconfig = {
 			function()
 				require("nvchad_ui.renamer").open()
 			end,
-			"凜 lsp rename",
+			"󰑕  lsp rename",
 		},
 		["<leader>ca"] = {
 			function()
@@ -234,25 +234,25 @@ M.lspconfig = {
 			function()
 				vim.lsp.buf.format({ async = true })
 			end,
-			"  lsp formatting",
+			"󰉢  lsp formatting",
 		},
 		["<leader>wsa"] = {
 			function()
 				vim.lsp.buf.add_workspace_folder()
 			end,
-			"  add workspace folder",
+			"󰮝  add workspace folder",
 		},
 		["<leader>wsr"] = {
 			function()
 				vim.lsp.buf.remove_workspace_folder()
 			end,
-			"  remove workspace folder",
+			"󰮞  remove workspace folder",
 		},
 		["<leader>wsl"] = {
 			function()
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end,
-			"  list workspace folders",
+			"󰥩  list workspace folders",
 		},
 	},
 }
@@ -282,25 +282,25 @@ M.nvterm = {
 M.nvimtree = {
 	n = {
 		-- focus
-		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "  focus nvimtree" },
+		["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "󰙅  focus nvimtree" },
 	},
 }
 
 M.outline = {
 	n = {
-		["<leader>ls"] = { "<cmd> SymbolsOutline <CR>", "  outline view" },
+		["<leader>ls"] = { "<cmd> SymbolsOutline <CR>", "  outline view" },
 	},
 }
 
 M.telescope = {
 	n = {
 		-- find
+		["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
 		["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
 		["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "  live grep" },
-		["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
-		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
+		["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "  find word" },
 		["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "  find oldfiles" },
+		["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "󰘥  help page" },
 		["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "  show keys" },
 
 		-- git
@@ -310,22 +310,6 @@ M.telescope = {
 
 		-- pick a hidden term
 		["<leader>ft"] = { "<cmd> Telescope terms <CR>", "  pick hidden term" },
-	},
-}
-
-M.tld = {
-	n = {
-		["<leader>td"] = { "<cmd> ToggleDiag <CR>", "𥳐 diagnostics" },
-	},
-}
-
-local function pc(func)
-	return "<cmd>lua require('pommodoro-clock')." .. func .. "<CR>"
-end
-
-M.pomodoro = {
-	n = {
-		["<leader>pw"] = { pc('start("work")') },
 	},
 }
 

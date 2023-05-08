@@ -132,9 +132,6 @@ brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 
-# Safe, concurrent, practical language
-brew "rust"
-
 # Intuitive find & replace CLI
 brew "sd"
 
@@ -170,9 +167,6 @@ brew "yarn"
 
 # Outputs current CPU core and package temperatures on macOS
 brew "hacker1024/hacker1024/coretemp"
-
-# Application launcher and productivity software
-cask "alfred"
 
 # Automatic tiling window manager similar to xmonad
 cask "amethyst"

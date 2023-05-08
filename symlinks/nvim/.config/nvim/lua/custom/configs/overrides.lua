@@ -61,7 +61,7 @@ M.mason = {
 
 		-- web
 		"eslint_d",
-		"prettierd",
+		"prettier",
 		"typescript-language-server",
 	},
 }

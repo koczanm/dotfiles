@@ -2,5 +2,4 @@
 
 echo "Setting up NvChad..."
 
-git clone https://github.com/NvChad/NvChad "${HOME}/.config/nvim" --depth 1
-nvim +PackerSync +MasonInstallAll +qall
+git clone https://github.com/NvChad/NvChad "${HOME}/.config/nvim" --depth 1 && nvim
