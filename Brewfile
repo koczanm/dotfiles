@@ -8,6 +8,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "hpedrorodrigues/tools"
+tap "spicetify/tap"
 
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
@@ -129,6 +130,9 @@ brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 
+# Rust toolchain installer
+brew "rustup-init"
+
 # Utility that provides fast incremental file transfer
 brew "rsync"
 
@@ -168,6 +172,9 @@ brew "yarn"
 # Outputs current CPU core and package temperatures on macOS
 brew "hacker1024/hacker1024/coretemp"
 
+# Command-line tool to customize Spotify client
+brew "spicetify/tap/spicetify-cli"
+
 # Automatic tiling window manager similar to xmonad
 cask "amethyst"
 
@@ -179,6 +186,9 @@ cask "docker"
 
 # Command-line utility for managing macOS dock item
 cask "dockutil"
+
+# Dark theme for the native Color Picker
+cask "dracula-macos-color-picker"
 
 # Monospaced font with programming ligatures
 cask "font-fira-code-nerd-font"
@@ -201,6 +211,9 @@ cask "monitorcontrol"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 
+# Control your tools with a few keystrokes
+cask "raycast"
+
 # Tool to reverse the direction of scrolling
 cask "scroll-reverser"
 
@@ -216,11 +229,17 @@ mas "AdBlock Pro", id: 1018301773
 # Password Manager
 mas "Bitwarden", id: 1352778147
 
+# Remix the Web
+mas "Cascadea", id: 1432182561
+
 # For Netflix, HBO Max, Amazon Prime etc.
 mas "Friendly Streaming Browser", id: 553245401
 
 # Better To-Do List
 mas "Lunatask: A Better To-Do List", id: 1583719331
+
+# Dark Mode for Safari
+mas "Noir", id: 1592917505
 
 # Keyboard Shortcuts extension for Safari
 mas "Vimari", id: 1480933944
