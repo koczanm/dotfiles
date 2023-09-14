@@ -10,18 +10,18 @@ vim.g.dap_virtual_text = true
 
 -- setup DAP UI
 dapui.setup({
-	icons = { expanded = "", collapsed = "", current_frame = "" },
+   icons = { expanded = "", collapsed = "", current_frame = "" },
 })
 
 -- automatically open UI
 dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
+   dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
+   dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
+   dapui.close()
 end
 
 -- beautify icons
@@ -31,32 +31,32 @@ vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl =
 
 -- python
 dap.adapters.python = {
-	type = "executable",
-	command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
-	args = { "-m", "debugpy.adapter" },
+   type = "executable",
+   command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
+   args = { "-m", "debugpy.adapter" },
 }
 
 dap.configurations.python = {
-	{
-		type = "python",
-		request = "launch",
-		name = "Launch file",
-		program = "${file}",
-		pythonPath = function()
-			return lspconfig.pyright.manager.config.settings.python.pythonPath
-		end,
-	},
+   {
+      type = "python",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      pythonPath = function()
+         return lspconfig.pyright.manager.config.settings.python.pythonPath
+      end,
+   },
 }
 
 -- lua
 dap.adapters.nlua = function(callback, _)
-	callback({ type = "server", host = "127.0.0.1", port = 8086 })
+   callback({ type = "server", host = "127.0.0.1", port = 8086 })
 end
 
 dap.configurations.lua = {
-	{
-		type = "nlua",
-		request = "attach",
-		name = "Attach to running Neovim instance",
-	},
+   {
+      type = "nlua",
+      request = "attach",
+      name = "Attach to running Neovim instance",
+   },
 }
