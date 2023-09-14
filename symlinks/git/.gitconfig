@@ -81,6 +81,6 @@
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 
-[includeIf "gitdir:~/Repos/**"]
+[includeIf "gitdir:~/Developer/**"]
 
   path = ~/.gitconfig.private
