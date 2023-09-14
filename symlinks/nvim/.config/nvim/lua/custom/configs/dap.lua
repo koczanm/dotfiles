@@ -43,7 +43,7 @@ dap.configurations.python = {
 		name = "Launch file",
 		program = "${file}",
 		pythonPath = function()
-			return lspconfig.pyright.document_config.default_config.settings.python.pythonPath
+			return lspconfig.pyright.manager.config.settings.python.pythonPath
 		end,
 	},
 }

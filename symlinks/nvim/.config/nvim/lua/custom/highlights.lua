@@ -4,7 +4,6 @@
 
 local M = {}
 
----@type HLTable
 M.override = {
 	Comment = {
 		italic = true,
@@ -29,7 +28,6 @@ M.override = {
 	},
 }
 
----@type HLTable
 M.add = {}
 
 return M

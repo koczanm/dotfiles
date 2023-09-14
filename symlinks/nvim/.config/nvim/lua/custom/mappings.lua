@@ -1,9 +1,9 @@
----@type MappingsTable
 local M = {}
 
 M.disabled = {
 	n = {
 		-- general
+		["<leader>b"] = "",
 		["<leader>n"] = "",
 		["<leader>tt"] = "",
 
@@ -36,25 +36,25 @@ M.general = {
 		["<leader>n"] = { "<cmd> enew <CR>", "󰏌  new buffer" },
 
 		-- switch between windows
-		["<S-Left>"] = {
+		["<C-w>h"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateLeft()
 			end,
 			"󰁍  window left",
 		},
-		["<S-Right>"] = {
+		["<C-w>l"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateRight()
 			end,
 			"󰁔  window right",
 		},
-		["<S-Down>"] = {
+		["<C-w>j"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateDown()
 			end,
 			"󰁅  window down",
 		},
-		["<S-Up>"] = {
+		["<C-w>k"] = {
 			function()
 				require("nvim-tmux-navigation").NvimTmuxNavigateUp()
 			end,
@@ -68,13 +68,6 @@ M.general = {
 		["<leader>wk"] = { "<C-w>+", "󰞙  expand up" },
 		["<leader>wj"] = { "<C-w>-", "󰞖  expand down" },
 
-		-- split windows
-		["<leader>ws"] = { "<C-w>s", "󰛀  new horizontal window" },
-		["<leader>wv"] = { "<C-w>v", "󰛂  new vertical window" },
-
-		-- close windows
-		["<leader>wx"] = { "<cmd> quit <CR>", "󰅗  close window" },
-
 		-- quit nvim
 		["<leader>qq"] = { "<cmd> qa! <CR>", "󰱝  quit" },
 		["<leader>wq"] = { "<cmd> wqa <CR>", "󰱝  save and quit" },
@@ -86,7 +79,7 @@ M.tabufline = {
 		-- close buffer + hide terminal buffer
 		["<leader>x"] = {
 			function()
-				require("nvchad_ui.tabufline").close_buffer()
+				require("nvchad.tabufline").close_buffer()
 			end,
 			"󰅖  close buffer",
 		},
@@ -191,11 +184,11 @@ M.lspconfig = {
 			function()
 				vim.lsp.buf.type_definition()
 			end,
-			"  lsp definition type",
+			"󰅭  lsp definition type",
 		},
 		["<leader>rn"] = {
 			function()
-				require("nvchad_ui.renamer").open()
+				require("nvchad.renamer").open()
 			end,
 			"󰑕  lsp rename",
 		},
@@ -221,7 +214,7 @@ M.lspconfig = {
 			function()
 				vim.diagnostic.open_float()
 			end,
-			"  floating diagnostic",
+			"󰉧  floating diagnostic",
 		},
 		["<leader>q"] = {
 			function()

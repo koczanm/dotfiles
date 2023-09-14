@@ -1,6 +1,5 @@
 local overrides = require("custom.configs.overrides")
 
----@type NvPluginSpec[]
 local plugins = {
 	-- DEFAULT PLUGINS
 
@@ -61,7 +60,7 @@ local plugins = {
 	-- smooth scrolling
 	{
 		"karb94/neoscroll.nvim",
-    event = "VeryLazy",
+		keys = { "<C-d>", "<C-u>" },
 		config = function()
 			require("neoscroll").setup()
 		end,
@@ -70,6 +69,7 @@ local plugins = {
 	-- easy neovim-tmux navigation
 	{
 		"alexghergh/nvim-tmux-navigation",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-tmux-navigation").setup({})
 		end,
@@ -114,7 +114,7 @@ local plugins = {
 	-- prettier UI
 	{
 		"folke/noice.nvim",
-		event = "VimEnter",
+		event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -123,21 +123,5 @@ local plugins = {
 			require("custom.configs.noice")
 		end,
 	},
-
-	-- just nuff
-	{
-		"koczanm/nuff.nvim",
-		cmd = "Nuff",
-		config = function()
-			require("nuff").setup({
-				menu = {
-					win_options = {
-						winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:PmenuSel",
-					},
-				},
-			})
-		end,
-	},
 }
-
 return plugins
