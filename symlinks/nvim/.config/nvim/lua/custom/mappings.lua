@@ -68,6 +68,10 @@ M.general = {
       ["<leader>wk"] = { "<C-w>+", "󰞙  expand up" },
       ["<leader>wj"] = { "<C-w>-", "󰞖  expand down" },
 
+      -- split windows
+      ["<C-w>x"] = { "<C-w>s", "󰛀  new horizontal window" },
+      ["<C-w>v"] = { "<C-w>v", "󰛂  new vertical window" },
+
       -- quit nvim
       ["<leader>qq"] = { "<cmd> qa! <CR>", "󰱝  quit" },
       ["<leader>wq"] = { "<cmd> wqa <CR>", "󰱝  save and quit" },
