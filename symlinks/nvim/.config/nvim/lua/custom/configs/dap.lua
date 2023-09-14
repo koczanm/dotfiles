@@ -1,6 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
-local lspconfig = require("lspconfig")
+local utils = require("custom.utils")
 
 -- setup DAP virtual text
 require("nvim-dap-virtual-text").setup()
@@ -43,7 +43,7 @@ dap.configurations.python = {
       name = "Launch file",
       program = "${file}",
       pythonPath = function()
-         return lspconfig.pyright.manager.config.settings.python.pythonPath
+         return utils.get_python_path(vim.fn.getcwd())
       end,
    },
 }

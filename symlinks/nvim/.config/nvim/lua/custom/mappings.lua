@@ -310,4 +310,27 @@ M.telescope = {
    },
 }
 
+M.trouble = {
+   n = {
+      ["<leader>xx"] = {
+         function()
+            require("trouble").toggle()
+         end,
+         "󱠪  diagnostics",
+      },
+      ["<leader>xq"] = {
+         function()
+            require("trouble").toggle("quickfix")
+         end,
+         "󰁨  quickfix list",
+      },
+      ["gR"] = {
+         function()
+            require("trouble").toggle("lsp_references")
+         end,
+         "  lsp references",
+      },
+   },
+}
+
 return M

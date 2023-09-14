@@ -52,8 +52,8 @@ M.mason = {
       "ruff",
 
       -- rust
+      "codelldb",
       "rust-analyzer",
-      "rustfmt",
 
       -- yaml
       "actionlint",

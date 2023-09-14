@@ -14,16 +14,7 @@ local plugins = {
                require("custom.configs.null-ls")
             end,
          },
-         -- debugging
-         {
-            "mfussenegger/nvim-dap",
-            config = function()
-               require("custom.configs.dap")
-            end,
-         },
-         "theHamsta/nvim-dap-virtual-text",
-         "rcarriga/nvim-dap-ui",
-         "jbyuki/one-small-step-for-vimkind",
+         "simrat39/rust-tools.nvim",
       },
       config = function()
          require("plugins.configs.lspconfig")
@@ -56,6 +47,19 @@ local plugins = {
    },
 
    -- CUSTOM PLUGINS
+
+   -- debugging
+   {
+      "rcarriga/nvim-dap-ui",
+      dependencies = {
+         "mfussenegger/nvim-dap",
+         "theHamsta/nvim-dap-virtual-text",
+         "jbyuki/one-small-step-for-vimkind",
+      },
+      config = function()
+         require("custom.configs.dap")
+      end,
+   },
 
    -- smooth scrolling
    {
@@ -96,7 +100,7 @@ local plugins = {
    -- highlight args' definitions
    {
       "m-demare/hlargs.nvim",
-      ft = { "lua", "python", "rust" },
+      event = "BufWinEnter",
       config = function()
          require("custom.configs.hlargs")
       end,
@@ -122,6 +126,13 @@ local plugins = {
       config = function()
          require("custom.configs.noice")
       end,
+   },
+
+   -- prettier diagnostics
+   {
+      "folke/trouble.nvim",
+      cmd = { "Trouble", "TroubleToggle" },
+      dependencies = { "nvim-tree/nvim-web-devicons" },
    },
 }
 return plugins
