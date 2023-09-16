@@ -106,6 +106,27 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Emacs-like key bindings",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": ["left_option"],
+                    "optional": ["any"]
+                  },
+                  "to": [
+                    {
+                      "key_code": "left_arrow",
+                      "modifiers": ["option"]
+                    }
+                  ],
+                  "type": "basic"
+                }
+              }
+            ]
           }
         ]
       },

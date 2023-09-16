@@ -1,6 +1,14 @@
 local M = {}
 
 M.disabled = {
+   i = {
+      -- move
+      ["<C-h>"] = "",
+      ["<C-l>"] = "",
+      ["<C-j>"] = "",
+      ["<C-k>"] = "",
+   },
+
    n = {
       -- general
       ["<leader>b"] = "",
