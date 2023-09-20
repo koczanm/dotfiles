@@ -55,7 +55,6 @@ local servers = {
    "dockerls",
    "jsonls",
    "marksman",
-   "rust_analyzer",
    "tsserver",
    "yamlls",
 }

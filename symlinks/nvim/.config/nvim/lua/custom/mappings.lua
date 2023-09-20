@@ -341,4 +341,29 @@ M.trouble = {
    },
 }
 
+M.rust = {
+   n = {
+      ["<leader>rh"] = {
+         function()
+            require("rust-tools").hover_actions.hover_actions()
+         end,
+      },
+      ["<leader>ra"] = {
+         function()
+            require("rust-tools").code_action_group.code_action_group()
+         end,
+      },
+      ["<leader>rr"] = {
+         function()
+            require("rust-tools").runnables.runnables()
+         end,
+      },
+      ["<leader>rd"] = {
+         function()
+            require("rust-tools").debuggables.debuggables()
+         end,
+      },
+   },
+}
+
 return M

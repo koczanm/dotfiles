@@ -1,6 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
-local utils = require("custom.utils")
+local lspconfig = require("lspconfig")
 
 -- setup DAP virtual text
 require("nvim-dap-virtual-text").setup()
@@ -32,7 +32,7 @@ vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl =
 -- python
 dap.adapters.python = {
    type = "executable",
-   command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
+   command = require("mason-registry").get_package("debugpy"):get_install_path() .. "/venv/bin/python",
    args = { "-m", "debugpy.adapter" },
 }
 
@@ -43,7 +43,7 @@ dap.configurations.python = {
       name = "Launch file",
       program = "${file}",
       pythonPath = function()
-         return utils.get_python_path(vim.fn.getcwd())
+         return lspconfig.pyright.manager.config.settings.python.pythonPath
       end,
    },
 }

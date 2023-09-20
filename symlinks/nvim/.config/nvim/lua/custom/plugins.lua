@@ -14,7 +14,6 @@ local plugins = {
                require("custom.configs.null-ls")
             end,
          },
-         "simrat39/rust-tools.nvim",
       },
       config = function()
          require("plugins.configs.lspconfig")
@@ -50,14 +49,29 @@ local plugins = {
 
    -- debugging
    {
-      "rcarriga/nvim-dap-ui",
+      "mfussenegger/nvim-dap",
       dependencies = {
-         "mfussenegger/nvim-dap",
+         "neovim/nvim-lspconfig",
+         "rcarriga/nvim-dap-ui",
          "theHamsta/nvim-dap-virtual-text",
          "jbyuki/one-small-step-for-vimkind",
       },
       config = function()
          require("custom.configs.dap")
+      end,
+   },
+
+   -- rust tooling
+   {
+      "simrat39/rust-tools.nvim",
+      ft = { "rust" },
+      dependencies = {
+         "neovim/nvim-lspconfig",
+         "nvim-lua/plenary.nvim",
+         "stevearc/dressing.nvim",
+      },
+      config = function()
+         require("custom.configs.rust-tools")
       end,
    },
 
