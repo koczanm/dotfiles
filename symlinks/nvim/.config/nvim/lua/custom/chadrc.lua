@@ -17,7 +17,10 @@ M.ui = {
       },
       load_on_startup = true,
    },
-   theme = "chadracula",
+   theme = "catppuccin_frappe",
+   statusline = {
+      theme = "vscode_colored",
+   },
 }
 
 M.plugins = "custom.plugins"

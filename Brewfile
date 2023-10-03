@@ -187,9 +187,6 @@ cask "docker"
 # Command-line utility for managing macOS dock item
 cask "dockutil"
 
-# Dark theme for the native Color Picker
-cask "dracula-macos-color-picker"
-
 # Monospaced font with programming ligatures
 cask "font-fira-code-nerd-font"
 

@@ -1,0 +1,31 @@
+# Catppuccin Frappe
+
+spacing         = 1
+padding         = 0
+hide_ascii      = false
+separator       = " "
+key_color       = "#81c8be"
+
+[palette]
+type = "Dark"
+glyph = " ● "
+visible = true
+
+[bar]
+visible         = false
+
+[box]
+visible         = false
+
+[randomize]
+key_color       = false
+separator_color = false
+
+[keys]
+os              = "OS"
+kernel          = "Kernel"
+packages        = "Packages"
+uptime          = "Uptime"
+cpu_load        = "CPU Load"
+memory          = "Memory"
+battery         = "Battery"

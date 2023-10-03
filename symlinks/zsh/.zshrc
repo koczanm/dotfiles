@@ -1,5 +1,12 @@
 #---------------------------------- Env vars -----------------------------------
 
+# Use light or dark theme
+if defaults read -g AppleInterfaceStyle &> /dev/null; then
+  export DARK_THEME=true
+else
+  export DARK_THEME=false
+fi
+
 # Add Homebrew packages to PATH
 export PATH="/opt/homebrew/bin:${PATH}"
 export PATH="/opt/homebrew/sbin:${PATH}"
@@ -32,8 +39,12 @@ export PYTHONIOENCODING="UTF-8"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# Apply dracula color scheme for `bat`
-export BAT_THEME="Dracula"
+# Apply catppuccin color scheme for `bat`
+if [ "$DARK_THEME" = true ]; then
+  export BAT_THEME="Catppuccin-frappe"
+else
+  export BAT_THEME="Catppuccin-latte"
+fi
 
 # Avoid issues with `gpg` as installed via Homebrew
 # https://stackoverflow.com/a/42265848/96656
@@ -43,19 +54,30 @@ export GPG_TTY=$(tty)
 export JQ_COLORS='0;31:0;39:0;39:0;39:0;32:1;39:1;39'
 
 # Generate LS_COLORS
-export LS_COLORS=$(vivid generate dracula)
+if [ "$DARK_THEME" = true ]; then
+  export LS_COLORS=$(vivid generate catppuccin-frappe)
+else
+  export LS_COLORS=$(vivid generate catppuccin-latte)
+fi
 
 # Use `fd` for a faster alternative to `find`
-export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+if [ "$DARK_THEME" = true ]; then
+  export FZF_DEFAULT_OPTS=" \
+    --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+    --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+    --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
+else
+  export FZF_DEFAULT_OPTS=" \
+    --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+    --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+    --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+fi
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"]
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
-
-# Fix disappearing cursor in dracula/zsh-syntax-highlighting
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-
 # Automatically start TMUX
+export ZSH_TMUX_AUTOSTART_ONCE=1
 export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="tmux"
 export ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 
@@ -108,10 +130,8 @@ zcomet load MichaelAquilina/zsh-you-should-use
 zcomet load Aloxaf/fzf-tab
 
 # Load theme
-zcomet load dracula/zsh
-zcomet load dracula/zsh-syntax-highlighting
-zcomet load zsh-users/zsh-syntax-highlighting
 zcomet load zsh-users/zsh-history-substring-search
+zcomet load zdharma-continuum/fast-syntax-highlighting
 
 # Include custom zsh-completions
 fpath+=("${ZSH_CACHE_DIR}/completions")
@@ -139,6 +159,13 @@ zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --color=always $realpath'
 
 # switch group using `,` and `.`
 zstyle ":fzf-tab:*" switch-group "," "."
+
+# Set colors for fast-syntax-highlighting
+if [ "$DARK_THEME" = true ]; then
+  fast-theme -q XDG:catppuccin-frappe
+else
+  fast-theme XDG:catppuccin-latte
+fi
 
 #---------------------------------- Functions ----------------------------------
 
@@ -220,8 +247,24 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # VIM
-alias lg="lazygit"
+if [ "$DARK_THEME" = true ]; then
+  alias lg="lazygit --use-config-file=\"${XDG_CONFIG_HOME}/lazygit/config.yml,${XDG_CONFIG_HOME}/lazygit/catppuccin-frappe.yml\""
+else
+  alias lg="lazygit --use-config-file=\"${XDG_CONFIG_HOME}/lazygit/config.yml,${XDG_CONFIG_HOME}/lazygit/catppuccin-latte.yml\""
+fi
 alias vim="nvim"
+
+#---------------------------------- Symlinks -----------------------------------
+
+if [ "$DARK_THEME" = true ]; then
+ ln -sf ${XDG_CONFIG_HOME}/btop/themes/catppuccin_frappe.theme ${XDG_CONFIG_HOME}/btop/themes/catppuccin.theme
+ ln -sf ${XDG_CONFIG_HOME}/lsd/catppuccin_frappe.yaml ${XDG_CONFIG_HOME}/lsd/colors.yaml
+ ln -sf ${XDG_CONFIG_HOME}/macchina/themes/catppuccin_frappe.toml ${XDG_CONFIG_HOME}/macchina/themes/catppuccin.toml
+else
+ ln -sf ${XDG_CONFIG_HOME}/btop/themes/catppuccin_latte.theme ${XDG_CONFIG_HOME}/btop/themes/catppuccin.theme
+ ln -sf ${XDG_CONFIG_HOME}/lsd/catppuccin_latte.yaml ${XDG_CONFIG_HOME}/lsd/colors.yaml
+ ln -sf ${XDG_CONFIG_HOME}/macchina/themes/catppuccin_latte.toml ${XDG_CONFIG_HOME}/macchina/themes/catppuccin.toml
+fi
 
 #------------------------------------ Extra ------------------------------------
 
