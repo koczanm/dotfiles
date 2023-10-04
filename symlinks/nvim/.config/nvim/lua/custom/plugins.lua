@@ -57,6 +57,7 @@ local plugins = {
          "jbyuki/one-small-step-for-vimkind",
       },
       config = function()
+         dofile(vim.g.base46_cache .. "dap")
          require("custom.configs.dap")
       end,
    },
@@ -138,6 +139,7 @@ local plugins = {
          "rcarriga/nvim-notify",
       },
       config = function()
+         dofile(vim.g.base46_cache .. "notify")
          require("custom.configs.noice")
       end,
    },
@@ -147,6 +149,10 @@ local plugins = {
       "folke/trouble.nvim",
       cmd = { "Trouble", "TroubleToggle" },
       dependencies = { "nvim-tree/nvim-web-devicons" },
+      config = function()
+         dofile(vim.g.base46_cache .. "trouble")
+         require("trouble").setup()
+      end,
    },
 }
 return plugins

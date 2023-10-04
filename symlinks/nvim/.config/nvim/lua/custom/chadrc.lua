@@ -21,6 +21,7 @@ M.ui = {
    statusline = {
       theme = "vscode_colored",
    },
+   extended_integrations = { "dap", "notify", "trouble" },
 }
 
 M.plugins = "custom.plugins"

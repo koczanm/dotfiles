@@ -19,3 +19,6 @@ Thumbs.db
 
 # Logs
 **/btop/btop.log
+symlinks/lsd/.config/lsd/colors.yaml
+symlinks/btop/.config/btop/themes/catppuccin.theme
+symlinks/macchina/.config/macchina/themes/catppuccin.toml
