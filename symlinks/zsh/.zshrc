@@ -182,6 +182,15 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+# Overwrite asdf update subcommand
+asdf() {
+  if [[ "$1" == "update" ]]; then
+    command asdf-update-all
+  else
+    command asdf "$@"
+  fi
+}
+
 #----------------------------------- Aliases -----------------------------------
 
 # NAVIGATION
