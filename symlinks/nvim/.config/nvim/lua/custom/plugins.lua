@@ -154,5 +154,52 @@ local plugins = {
          require("trouble").setup()
       end,
    },
+
+   -- LeetCode
+   {
+      "Dhanus3133/LeetBuddy.nvim",
+      cmd = { "LBQuestions", "LBQuestion", "LBReset", "LBTest", "LBSumbit" },
+      dependencies = {
+         "nvim-lua/plenary.nvim",
+         "nvim-telescope/telescope.nvim",
+      },
+      config = function()
+         require("leetbuddy").setup({})
+      end,
+   },
+
+   -- MD previewer
+   {
+      "ellisonleao/glow.nvim",
+      cmd = "Glow",
+      opts = {},
+   },
+
+   -- hardtime
+   {
+      "m4xshen/hardtime.nvim",
+      event = "BufRead",
+      dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+      config = function()
+         require("hardtime").setup({
+            disabled_keys = {
+               ["<Up>"] = {},
+               ["<Down>"] = {},
+               ["<Left>"] = {},
+               ["<Right>"] = {},
+            },
+         })
+      end,
+   },
+
+   -- line decorations
+   {
+      "mvllow/modes.nvim",
+      event = "BufRead",
+      tag = "v0.2.0",
+      config = function()
+         require("modes").setup()
+      end,
+   },
 }
 return plugins

@@ -10,6 +10,11 @@ M.override = {
    },
 }
 
-M.add = {}
+M.add = {
+   ModesCopy = { bg = "yellow" },
+   ModesDelete = { bg = "red" },
+   ModesInsert = { bg = "dark_purple" },
+   ModesVisual = { bg = "cyan" },
+}
 
 return M
