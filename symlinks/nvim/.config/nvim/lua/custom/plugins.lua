@@ -201,5 +201,32 @@ local plugins = {
          require("modes").setup()
       end,
    },
+
+   -- automatically switch to dark mode
+   {
+      "f-person/auto-dark-mode.nvim",
+      event = "VeryLazy",
+      config = function()
+         vim.g.toggle_theme_icon = ""
+         local config = require("core.utils").load_config()
+         require("auto-dark-mode").setup({
+            set_light_mode = function()
+               local theme = config.ui.theme_toggle[1]
+               if config.ui.theme ~= theme then
+                  vim.g.nvchad_theme = theme
+                  require("base46").load_all_highlights()
+               end
+            end,
+            set_dark_mode = function()
+               local theme = config.ui.theme_toggle[2]
+               if config.ui.theme ~= theme then
+                  vim.g.nvchad_theme = theme
+                  require("base46").load_all_highlights()
+               end
+            end,
+         })
+      end,
+   },
 }
+
 return plugins

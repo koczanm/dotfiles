@@ -17,7 +17,8 @@ M.ui = {
       },
       load_on_startup = true,
    },
-   theme = "catppuccin_frappe",
+   theme_toggle = { "catppuccin_latte", "catppuccin_frappe" },
+
    statusline = {
       theme = "vscode_colored",
    },

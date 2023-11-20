@@ -1,134 +1,137 @@
-palette = "catppuccin_frappe"
-
 [aws]
-disabled = true
+symbol = "  "
 
-[battery]
-full_symbol = "🔋"
-charging_symbol = "🔌"
-discharging_symbol = "⚡"
+[buf]
+symbol = " "
 
-[[battery.display]]
-threshold = 30
-style = "bold red"
+[c]
+symbol = " "
 
-[character]
-error_symbol = "[✖](bold red)"
+[conda]
+symbol = " "
 
-[cmd_duration]
-min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
-format = "took [$duration]($style) "
+[dart]
+symbol = " "
 
 [directory]
-truncation_length = 5
-format = "[$path]($style)[$lock_symbol]($lock_style) "
+read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
 
 [git_branch]
-format = "[$symbol $branch]($style) "
-symbol = "🍣"
-style = "bold yellow"
+symbol = " "
 
-[git_commit]
-commit_hash_length = 8
-style = "bold white"
+[golang]
+symbol = " "
 
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
+[guix_shell]
+symbol = " "
 
-[git_status]
-conflicted = "⚔️  "
-ahead = "🏎️💨×${count} "
-behind = "🐢×${count} "
-diverged = "🔱 🏎️💨×${ahead_count} 🐢×${behind_count} "
-untracked = "🛤️ ×${count} "
-stashed = "📦 "
-modified = "📝×${count} "
-staged = "🗃️ ×${count} "
-renamed = "📛×${count} "
-deleted = "🗑️ ×${count} "
-style = "bright-white"
-format = "$all_status$ahead_behind"
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
 
 [hostname]
-ssh_only = false
-format = "<[$hostname]($style)> "
-trim_at = "-"
-style = "bold dimmed white"
-disabled = true
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
 
 [package]
-disabled = true
+symbol = "󰏗 "
+
+[pijul_channel]
+symbol = " "
 
 [python]
-format = "[$symbol$version]($style) "
-style = "bold green"
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
 
 [rust]
-format = "[$symbol$version]($style) "
-style = "bold green"
+symbol = " "
 
-[time]
-time_format = "%T"
-format = "🕙 $time($style) "
-style = "bright-white"
-disabled = false
+[scala]
+symbol = " "
 
-[username]
-style_user = "bold dimmed blue"
-show_always = false
-
-[palettes.catppuccin_frappe]
-rosewater = "#f2d5cf"
-flamingo = "#eebebe"
-pink = "#f4b8e4"
-mauve = "#ca9ee6"
-red = "#e78284"
-maroon = "#ea999c"
-peach = "#ef9f76"
-yellow = "#e5c890"
-green = "#a6d189"
-teal = "#81c8be"
-sky = "#99d1db"
-sapphire = "#85c1dc"
-blue = "#8caaee"
-lavender = "#babbf1"
-text = "#c6d0f5"
-subtext1 = "#b5bfe2"
-subtext0 = "#a5adce"
-overlay2 = "#949cbb"
-overlay1 = "#838ba7"
-overlay0 = "#737994"
-surface2 = "#626880"
-surface1 = "#51576d"
-surface0 = "#414559"
-base = "#303446"
-mantle = "#292c3c"
-crust = "#232634"
-
-[palettes.catppuccin_latte]
-rosewater = "#dc8a78"
-flamingo = "#dd7878"
-pink = "#ea76cb"
-mauve = "#8839ef"
-red = "#d20f39"
-maroon = "#e64553"
-peach = "#fe640b"
-yellow = "#df8e1d"
-green = "#40a02b"
-teal = "#179299"
-sky = "#04a5e5"
-sapphire = "#209fb5"
-blue = "#1e66f5"
-lavender = "#7287fd"
-text = "#4c4f69"
-subtext1 = "#5c5f77"
-subtext0 = "#6c6f85"
-overlay2 = "#7c7f93"
-overlay1 = "#8c8fa1"
-overlay0 = "#9ca0b0"
-surface2 = "#acb0be"
-surface1 = "#bcc0cc"
-surface0 = "#ccd0da"
-base = "#eff1f5"
-mantle = "#e6e9ef"
-crust = "#dce0e8"
