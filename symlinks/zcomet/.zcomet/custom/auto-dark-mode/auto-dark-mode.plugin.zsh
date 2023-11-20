@@ -7,7 +7,7 @@ function get_system_mode() {
 }
 
 function set_dark_mode() {
-  export BAT_THEME="Catppuccin-frape"
+  export BAT_THEME="Catppuccin-frappe"
   export LS_COLORS=$(vivid generate catppuccin-frappe)
   export FZF_DEFAULT_OPTS=" \
     --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
