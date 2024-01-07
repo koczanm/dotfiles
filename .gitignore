@@ -20,7 +20,13 @@ Thumbs.db
 # Logs
 **/btop/btop.log
 
+# State files
+symlinks/lazygit/.config/lazygit/state.yml
+
 # Symlinks
 symlinks/lsd/.config/lsd/colors.yaml
 symlinks/btop/.config/btop/themes/catppuccin.theme
 symlinks/macchina/.config/macchina/themes/catppuccin.toml
+
+# Zsh Word Code files
+*.zwc
