@@ -39,6 +39,12 @@ local plugins = {
       opts = overrides.telescope,
    },
 
+   -- indent guides
+   {
+      "lukas-reineke/indent-blankline.nvim",
+      opts = overrides.blankline,
+   },
+
    -- nvim-colorizer
    {
       "NvChad/nvim-colorizer.lua",
@@ -157,15 +163,16 @@ local plugins = {
 
    -- LeetCode
    {
-      "Dhanus3133/LeetBuddy.nvim",
-      cmd = { "LBQuestions", "LBQuestion", "LBReset", "LBTest", "LBSumbit" },
-      dependencies = {
-         "nvim-lua/plenary.nvim",
-         "nvim-telescope/telescope.nvim",
-      },
-      config = function()
-         require("leetbuddy").setup({})
+      "kawre/leetcode.nvim",
+      init = function(_, opts)
+         -- Require only when needed
+         if vim.tbl_contains(vim.fn.argv(), "leetcode.nvim") then
+            require("leetcode").setup(opts)
+         end
       end,
+      opts = {
+         lang = "python",
+      },
    },
 
    -- MD previewer
@@ -173,23 +180,6 @@ local plugins = {
       "ellisonleao/glow.nvim",
       cmd = "Glow",
       opts = {},
-   },
-
-   -- hardtime
-   {
-      "m4xshen/hardtime.nvim",
-      event = "BufRead",
-      dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-      config = function()
-         require("hardtime").setup({
-            disabled_keys = {
-               ["<Up>"] = {},
-               ["<Down>"] = {},
-               ["<Left>"] = {},
-               ["<Right>"] = {},
-            },
-         })
-      end,
    },
 
    -- line decorations

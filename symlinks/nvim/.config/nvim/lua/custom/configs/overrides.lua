@@ -72,4 +72,20 @@ M.telescope = {
    },
 }
 
+M.blankline = {
+   filetype_exclude = {
+      "",
+      "help",
+      "lazy",
+      "leetcode.nvim",
+      "lspinfo",
+      "mason",
+      "nvcheatsheet",
+      "nvdash",
+      "terminal",
+      "TelescopePrompt",
+      "TelescopeResults",
+   },
+}
+
 return M
