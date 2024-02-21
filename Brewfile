@@ -10,9 +10,6 @@ tap "homebrew/services"
 tap "hpedrorodrigues/tools"
 tap "spicetify/tap"
 
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
-
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 
@@ -210,9 +207,6 @@ cask "obsidian"
 
 # Control your tools with a few keystrokes
 cask "raycast"
-
-# Tool to reverse the direction of scrolling
-cask "scroll-reverser"
 
 # Music streaming service
 cask "spotify"
