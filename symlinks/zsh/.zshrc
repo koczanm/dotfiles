@@ -42,7 +42,7 @@ export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
 # Automatically start TMUX
-export ZSH_TMUX_AUTOSTART_ONCE=1
+export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="tmux"
 export ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
 
@@ -74,13 +74,17 @@ zcomet load ohmyzsh lib completion.zsh
 zcomet load ohmyzsh lib correction.zsh
 zcomet load ohmyzsh lib git.zsh
 zcomet load ohmyzsh lib history.zsh
-zcomet load ohmyzsh plugins/asdf
+zcomet load ohmyzsh plugins/brew
 zcomet load ohmyzsh plugins/docker
 zcomet load ohmyzsh plugins/docker-compose
+zcomet load ohmyzsh plugins/fd
 zcomet load ohmyzsh plugins/fzf
 zcomet load ohmyzsh plugins/git
-zcomet load ohmyzsh plugins/python
+zcomet load ohmyzsh plugins/httpie
+zcomet load ohmyzsh plugins/mise
+zcomet load ohmyzsh plugins/ripgrep
 zcomet load ohmyzsh plugins/rust
+zcomet load ohmyzsh plugins/starship
 zcomet load ohmyzsh plugins/tmux
 
 # Lazy load some oh-my-zsh plugins
@@ -91,6 +95,7 @@ zcomet load zsh-users/zsh-completions
 zcomet load zsh-users/zsh-autosuggestions
 
 # Load other plugins
+zcomet load MichaelAquilina/zsh-autoswitch-virtualenv
 zcomet load MichaelAquilina/zsh-you-should-use
 zcomet load Aloxaf/fzf-tab
 
@@ -106,7 +111,6 @@ fpath+=("${ZSH_CACHE_DIR}/completions")
 
 # Run compinit and compile its cache
 zcomet compinit
-
 
 #----------------------------------- Configs -----------------------------------
 
@@ -141,15 +145,6 @@ _fzf_compgen_path() {
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-# Overwrite asdf update subcommand
-asdf() {
-  if [[ "$1" == "update" ]]; then
-    command asdf-update-all
-  else
-    command asdf "$@"
-  fi
 }
 
 #----------------------------------- Aliases -----------------------------------
@@ -222,14 +217,11 @@ alias vim="nvim"
 
 #------------------------------------ Extra ------------------------------------
 
-# if [[ -f ~/.zsh_extra ]]; then
-#   source ~/.zsh_extra
-# fi
+if [[ -f ~/.zsh_extra ]]; then
+  source ~/.zsh_extra
+fi
 
 #----------------------------------- Prompt ------------------------------------
-
-# Set starship as shell prompt
-eval "$(starship init zsh)"
 
 # Show system info at the startup
 macchina
