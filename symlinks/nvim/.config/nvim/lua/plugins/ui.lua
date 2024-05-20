@@ -23,7 +23,7 @@ return {
   -- automatically switch between light/dark mode
   {
     "f-person/auto-dark-mode.nvim",
-    config = {
+    opts = {
       update_interval = 500,
       set_dark_mode = function()
         vim.api.nvim_set_option("background", "dark")
@@ -34,40 +34,21 @@ return {
     },
   },
 
-  -- scroll smoothly
+  --
   {
-    "karb94/neoscroll.nvim",
-    event = "VeryLazy",
-    keys = { "<C-d>", "<C-u>" },
-    config = function()
-      require("neoscroll").setup({})
-    end,
+    "folke/flash.nvim",
+    opts = { vscode = false },
   },
 
-  -- don't set indent scope for leetcode.nvim
+  --
   {
-    "echasnovski/mini.indentscope",
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "help",
-          "alpha",
-          "dashboard",
-          "neo-tree",
-          "Trouble",
-          "trouble",
-          "lazy",
-          "leetcode.nvim",
-          "mason",
-          "notify",
-          "toggleterm",
-          "lazyterm",
-        },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
+    "lukas-reineke/headlines.nvim",
+    opts = {
+      markdown = {
+        fat_headline_lower_string = "▔",
+        fat_headline_upper_string = "▔",
+      },
+    },
   },
 
   -- switch nvim windows with awareness of tmux panes
@@ -108,7 +89,6 @@ return {
         enable_default_keybindings = false,
       },
       resize = {
-
         enable_default_keybindings = false,
       },
     },
