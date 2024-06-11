@@ -1,8 +1,3 @@
-[alias]
-
-  # Use light/dark theme based on system settings
-  delta = !delta $(defaults read -g AppleInterfaceStyle &>/dev/null || echo --light)
-
 [apply]
 
   # Detect whitespace errors when applying a patch.
@@ -25,24 +20,27 @@
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
   # Make `git rebase` safer on macOS.
-  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx>
   trustctime = false
 
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
-  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  # More info: <http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html>
   precomposeunicode = false
 
   # Speed up commands involving untracked files such as `git status`.
-  # https://git-scm.com/docs/git-update-index#_untracked_cache
+  # More info: <https://git-scm.com/docs/git-update-index#_untracked_cache>
   untrackedCache = true
 
-  pager = git delta
+  # Use delta as the default pager.
+  # More info: <https://github.com/dandavison/delta>
+  pager = delta
 
 [delta]
 
   # Use n and N to move between diff sections
   navigate = true
 
+  # Show changes side-by-side.
   side-by-side = true
 
 [diff]
@@ -50,6 +48,7 @@
   # Detect copies as well as renames.
   renames = copies
 
+  # Color moved lines differently.
   colorMoved = default
 
 [diff "bin"]
@@ -69,13 +68,16 @@
 
 [interactive]
 
-  diffFilter = git delta --color-only
+  # Use delta for diff filtering.
+  # More info: <https://github.com/dandavison/delta>
+  diffFilter = delta --color-only
 
 [merge]
 
   # Include summaries of merged commits in newly created merge commit messages
   log = true
 
+  # Use diff3 for visualizing conflicts.
   conflictstyle = diff3
 
 [push]

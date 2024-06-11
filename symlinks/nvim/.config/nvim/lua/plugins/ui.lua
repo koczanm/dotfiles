@@ -26,21 +26,15 @@ return {
     opts = {
       update_interval = 500,
       set_dark_mode = function()
-        vim.api.nvim_set_option("background", "dark")
+        vim.api.nvim_set_option_value("background", "dark", {})
       end,
       set_light_mode = function()
-        vim.api.nvim_set_option("background", "light")
+        vim.api.nvim_set_option_value("background", "light", {})
       end,
     },
   },
 
-  --
-  {
-    "folke/flash.nvim",
-    opts = { vscode = false },
-  },
-
-  --
+  -- fix markdown headers
   {
     "lukas-reineke/headlines.nvim",
     opts = {
