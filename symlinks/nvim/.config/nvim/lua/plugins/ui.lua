@@ -34,17 +34,6 @@ return {
     },
   },
 
-  -- fix markdown headers
-  {
-    "lukas-reineke/headlines.nvim",
-    opts = {
-      markdown = {
-        fat_headline_lower_string = "▔",
-        fat_headline_upper_string = "▔",
-      },
-    },
-  },
-
   -- switch nvim windows with awareness of tmux panes
   {
     "aserowy/tmux.nvim",

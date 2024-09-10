@@ -75,17 +75,17 @@ zcomet load ohmyzsh lib correction.zsh
 zcomet load ohmyzsh lib git.zsh
 zcomet load ohmyzsh lib history.zsh
 zcomet load ohmyzsh plugins/brew
+zcomet load ohmyzsh plugins/colored-man-pages
 zcomet load ohmyzsh plugins/docker
 zcomet load ohmyzsh plugins/docker-compose
-zcomet load ohmyzsh plugins/fd
 zcomet load ohmyzsh plugins/fzf
 zcomet load ohmyzsh plugins/git
 zcomet load ohmyzsh plugins/httpie
 zcomet load ohmyzsh plugins/mise
-zcomet load ohmyzsh plugins/ripgrep
-zcomet load ohmyzsh plugins/rust
 zcomet load ohmyzsh plugins/starship
+zcomet load ohmyzsh plugins/swiftpm
 zcomet load ohmyzsh plugins/tmux
+zcomet load ohmyzsh plugins/xcode
 
 # Lazy load some oh-my-zsh plugins
 zcomet trigger extract x ohmyzsh plugins/extract

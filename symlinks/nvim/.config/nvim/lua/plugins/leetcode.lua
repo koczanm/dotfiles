@@ -7,7 +7,7 @@ return {
     opts = {
       arg = leet_arg,
       lang = "python3",
-      injector = { ---@type table<lc.lang, lc.inject>
+      injector = {
         ["python3"] = {
           before = "from typing import List",
         },
