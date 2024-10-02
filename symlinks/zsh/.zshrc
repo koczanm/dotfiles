@@ -117,20 +117,27 @@ zcomet compinit
 # Enable Emacs keybindings
 bindkey -e
 
-# disable sort when completing `git checkout`
+# Disable sort when completing `git checkout`
 zstyle ":completion:*:git-checkout:*" sort false
 
-# set descriptions format to enable group support
-zstyle ":completion:*:descriptions" format '[%d]'
+# Set descriptions format to enable group support
+zstyle ":completion:*:descriptions" format "[%d]"
 
-# set list-colors to enable filename colorizing
+# Set list-colors to enable filename colorizing
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 
-# preview directory's content with exa when completing cd
-zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --color=always $realpath'
+# Force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ":completion:*" menu no
 
-# switch group using `,` and `.`
-zstyle ":fzf-tab:*" switch-group "," "."
+# Preview directory"s content with lsd when completing cd
+zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd -1 --color=always $realpath"
+
+# Custom fzf flags
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS
+zstyle ":fzf-tab:*" fzf-flags ${(z)FZF_DEFAULT_OPTS}
+
+# Switch group using `<` and `>`
+zstyle ":fzf-tab:*" switch-group "<" ">"
 
 #---------------------------------- Functions ----------------------------------
 
@@ -212,7 +219,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 # VIM
-alias lg="lazygit"
+alias gg="lazygit"
 alias vim="nvim"
 
 #------------------------------------ Extra ------------------------------------

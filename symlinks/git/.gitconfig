@@ -37,7 +37,7 @@
 
 [delta]
 
-  # Use n and N to move between diff sections
+  # Use n and N to move between diff sections.
   navigate = true
 
   # Show changes side-by-side.
@@ -74,7 +74,7 @@
 
 [merge]
 
-  # Include summaries of merged commits in newly created merge commit messages
+  # Include summaries of merged commits in newly created merge commit messages.
   log = true
 
   # Use diff3 for visualizing conflicts.
