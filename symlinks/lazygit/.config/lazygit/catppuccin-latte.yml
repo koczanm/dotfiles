@@ -1,7 +1,7 @@
 git:
   paging:
     colorArg: always
-    pager: delta --light --paging=never
+    pager: delta --light --features=catppuccin-latte --paging=never
 gui:
   theme:
     activeBorderColor:

@@ -33,7 +33,7 @@
 
   # Use delta as the default pager.
   # More info: <https://github.com/dandavison/delta>
-  pager = delta
+  pager = delta --features "$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo catppuccin-frappe || echo catppuccin-latte)"
 
 [delta]
 
@@ -42,8 +42,6 @@
 
   # Show changes side-by-side.
   side-by-side = true
-
-  features = catppuccin-latte
 
 [diff]
 
