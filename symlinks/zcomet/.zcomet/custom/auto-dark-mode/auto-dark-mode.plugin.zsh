@@ -7,7 +7,8 @@ function get_system_mode() {
 }
 
 function set_dark_mode() {
-  export BAT_THEME="Catppuccin-frappe"
+  # Update env variables
+  export BAT_THEME="Catppuccin Frappe"
   export LS_COLORS=$(vivid generate catppuccin-frappe)
   export FZF_DEFAULT_OPTS=" \
     --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
@@ -17,13 +18,23 @@ function set_dark_mode() {
     --multi"
   export LG_CONFIG_FILE="${XDG_CONFIG_HOME}/lazygit/config.yml,${XDG_CONFIG_HOME}/lazygit/catppuccin-frappe.yml"
   fast-theme -q XDG:catppuccin-frappe
+
+  # Update the symlinks to point to configurations with the dark theme
   ln -sf ${XDG_CONFIG_HOME}/btop/themes/catppuccin_frappe.theme ${XDG_CONFIG_HOME}/btop/themes/catppuccin.theme
   ln -sf ${XDG_CONFIG_HOME}/lsd/catppuccin_frappe.yaml ${XDG_CONFIG_HOME}/lsd/colors.yaml
   ln -sf ${XDG_CONFIG_HOME}/macchina/themes/catppuccin_frappe.toml ${XDG_CONFIG_HOME}/macchina/themes/catppuccin.toml
+
+  # Set list-colors to enable filename colorizing
+  zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
+
+  # Update ZSH modules that depend on env variables
+  zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
+  zstyle ":fzf-tab:*" fzf-flags ${(z)FZF_DEFAULT_OPTS}
 }
 
 function set_light_mode() {
-  export BAT_THEME="Catppuccin-latte"
+  # Update env variables
+  export BAT_THEME="Catppuccin Latte"
   export LS_COLORS=$(vivid generate catppuccin-latte)
   export FZF_DEFAULT_OPTS=" \
     --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
@@ -33,9 +44,15 @@ function set_light_mode() {
     --multi"
   export LG_CONFIG_FILE="${XDG_CONFIG_HOME}/lazygit/config.yml,${XDG_CONFIG_HOME}/lazygit/catppuccin-latte.yml"
   fast-theme -q XDG:catppuccin-latte
+
+  # Update the symlinks to point to configurations with the light theme
   ln -sf ${XDG_CONFIG_HOME}/btop/themes/catppuccin_latte.theme ${XDG_CONFIG_HOME}/btop/themes/catppuccin.theme
   ln -sf ${XDG_CONFIG_HOME}/lsd/catppuccin_latte.yaml ${XDG_CONFIG_HOME}/lsd/colors.yaml
   ln -sf ${XDG_CONFIG_HOME}/macchina/themes/catppuccin_latte.toml ${XDG_CONFIG_HOME}/macchina/themes/catppuccin.toml
+
+  # Update ZSH modules that depend on env variables
+  zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
+  zstyle ":fzf-tab:*" fzf-flags ${(z)FZF_DEFAULT_OPTS}
 }
 
 function toggle_mode_precmd() {

@@ -43,6 +43,8 @@
   # Show changes side-by-side.
   side-by-side = true
 
+  features = catppuccin-latte
+
 [diff]
 
   # Detect copies as well as renames.
@@ -87,6 +89,10 @@
 
   # Make `git push` push relevant annotated tags when pushing branches out.
   followTags = true
+
+[include]
+
+  path = ~/.config/delta/catppuccin.gitconfig
 
 [includeIf "gitdir:~/Developer/**"]
 
