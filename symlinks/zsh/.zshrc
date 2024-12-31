@@ -95,9 +95,10 @@ zcomet load zsh-users/zsh-completions
 zcomet load zsh-users/zsh-autosuggestions
 
 # Load other plugins
+zcomet load Aloxaf/fzf-tab
 zcomet load MichaelAquilina/zsh-autoswitch-virtualenv
 zcomet load MichaelAquilina/zsh-you-should-use
-zcomet load Aloxaf/fzf-tab
+zcomet load orbstack/orbstack
 
 # Load theme
 zcomet load zsh-users/zsh-history-substring-search
@@ -152,6 +153,11 @@ _fzf_compgen_path() {
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# Tool to combine multiple PDFs
+cpdf () { 
+  gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$1" "${@:2}"
 }
 
 #----------------------------------- Aliases -----------------------------------
