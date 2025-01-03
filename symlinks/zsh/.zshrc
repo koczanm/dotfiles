@@ -43,8 +43,8 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
 # Automatically start TMUX
 export ZSH_TMUX_AUTOSTART=true
-export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="tmux"
-export ZSH_TMUX_FIXTERM_WITH_256COLOR="tmux-256color"
+export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="xterm"
+export ZSH_TMUX_FIXTERM_WITH_256COLOR="xterm-ghostty"
 
 # Prevent Homebrew from reporting
 export HOMEBREW_NO_ANALYTICS=1

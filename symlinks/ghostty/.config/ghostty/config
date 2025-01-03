@@ -1,3 +1,6 @@
+# Application
+confirm-close-surface = false
+
 # Clipboard
 clipboard-read = allow
 clipboard-write = allow
