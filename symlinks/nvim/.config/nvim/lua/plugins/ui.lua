@@ -4,7 +4,6 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      flavour = "latte",
       background = {
         light = "latte",
         dark = "frappe",
@@ -16,22 +15,25 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = function()
+        local mode = vim.fn.system("dark-notify --exit")
+        local flavor = string.find(mode, "light") and "latte" or "frappe"
+        vim.cmd.colorscheme("catppuccin-" .. flavor)
+      end,
     },
   },
 
   -- automatically switch between light/dark mode
   {
-    "f-person/auto-dark-mode.nvim",
-    opts = {
-      update_interval = 500,
-      set_dark_mode = function()
-        vim.api.nvim_set_option_value("background", "dark", {})
-      end,
-      set_light_mode = function()
-        vim.api.nvim_set_option_value("background", "light", {})
-      end,
-    },
+    "cormacrelf/dark-notify",
+    config = function()
+      require("dark_notify").run({
+        schemes = {
+          light = "catppuccin-latte",
+          dark = "catppuccin-frappe",
+        },
+      })
+    end,
   },
 
   -- switch nvim windows with awareness of tmux panes
