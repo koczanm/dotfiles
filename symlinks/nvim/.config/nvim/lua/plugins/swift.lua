@@ -1,15 +1,13 @@
 return {
-  recommended = function()
-    return LazyVim.extras.wants({
-      ft = "swift",
-      root = {
-        "*.xcodeproj",
-        "*.xcworkspace",
-        "buildServer.json",
-        "Package.swift",
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = {
+        enabled = true,
+        exclude = { "swift", "objc", "objcpp", "c", "cpp" },
       },
-    })
-  end,
+    },
+  },
 
   -- add syntax highlighting
   {
@@ -52,5 +50,16 @@ return {
         swift = { "swiftformat" },
       },
     },
+  },
+
+  --
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+    dependencies = {
+      "folke/snacks.nvim",
+      "nvim-telescope/telescope.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {},
   },
 }

@@ -4,3 +4,6 @@
 
 -- LSP Server to use for Python
 vim.g.lazyvim_python_lsp = "basedpyright"
+
+-- Prefer inline suggestions
+vim.g.ai_cmp = false
