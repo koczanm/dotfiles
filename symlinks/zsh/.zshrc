@@ -80,6 +80,7 @@ zcomet load ohmyzsh plugins/docker
 zcomet load ohmyzsh plugins/docker-compose
 zcomet load ohmyzsh plugins/fzf
 zcomet load ohmyzsh plugins/git
+zcomet load ohmyzsh plugins/grc
 zcomet load ohmyzsh plugins/httpie
 zcomet load ohmyzsh plugins/mise
 zcomet load ohmyzsh plugins/starship
@@ -131,11 +132,10 @@ zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*" menu no
 
 # Preview directory"s content with lsd when completing cd
-zstyle ":fzf-tab:complete:cd:*" fzf-preview "lsd -1 --color=always $realpath"
+zstyle ":fzf-tab:complete:cd:*" fzf-preview 'lsd -1 --color=always $realpath'
 
-# Custom fzf flags
-# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS
-zstyle ":fzf-tab:*" fzf-flags ${(z)FZF_DEFAULT_OPTS}
+# Make fzf-tab follow FZF_DEFAULT_OPTS.
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Switch group using `<` and `>`
 zstyle ":fzf-tab:*" switch-group "<" ">"
