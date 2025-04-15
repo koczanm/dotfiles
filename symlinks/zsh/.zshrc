@@ -42,7 +42,7 @@ export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
 # Automatically start TMUX
-export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOSTART=false
 export ZSH_TMUX_FIXTERM_WITHOUT_256COLOR="xterm"
 export ZSH_TMUX_FIXTERM_WITH_256COLOR="xterm-ghostty"
 
