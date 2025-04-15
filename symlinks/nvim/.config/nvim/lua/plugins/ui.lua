@@ -41,28 +41,28 @@ return {
     "aserowy/tmux.nvim",
     keys = {
       {
-        "<M-h>",
+        "<C-h>",
         function()
           require("tmux").move_left()
         end,
         desc = "Move to left window",
       },
       {
-        "<M-j>",
+        "<C-j>",
         function()
           require("tmux").move_bottom()
         end,
         desc = "Move to lower window",
       },
       {
-        "<M-k>",
+        "<C-k>",
         function()
           require("tmux").move_top()
         end,
         desc = "Move to upper window",
       },
       {
-        "<M-l>",
+        "<C-l>",
         function()
           require("tmux").move_right()
         end,

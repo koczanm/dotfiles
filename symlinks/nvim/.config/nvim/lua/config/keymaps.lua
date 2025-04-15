@@ -3,11 +3,5 @@
 -- Add any additional keymaps here
 
 -- Move left/right in insert mode
-vim.keymap.set("i", "<C-f>", "<Right>")
-vim.keymap.set("i", "<C-b>", "<Left>")
-
--- Move to window using the <option> hjkl keys
-vim.keymap.del("n", "<C-h>")
-vim.keymap.del("n", "<C-j>")
-vim.keymap.del("n", "<C-k>")
-vim.keymap.del("n", "<C-l>")
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-l>", "<Right>")
