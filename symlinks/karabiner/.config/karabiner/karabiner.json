@@ -114,7 +114,7 @@
                   "key_code": "n",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -183,7 +183,7 @@
                   "key_code": "p",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -252,7 +252,7 @@
                   "key_code": "d",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -321,7 +321,8 @@
                   "key_code": "d",
                   "modifiers": {
                     "mandatory": [
-                      "option"
+                      "left_control",
+                      "left_option"
                     ]
                   }
                 },
@@ -465,7 +466,7 @@
                   "key_code": "u",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -547,7 +548,7 @@
                   "key_code": "h",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -616,7 +617,7 @@
                   "key_code": "j",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -685,7 +686,7 @@
                   "key_code": "k",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -754,7 +755,7 @@
                   "key_code": "l",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
@@ -823,7 +824,8 @@
                   "key_code": "h",
                   "modifiers": {
                     "mandatory": [
-                      "option"
+                      "left_control",
+                      "left_option"
                     ]
                   }
                 },
@@ -895,7 +897,8 @@
                   "key_code": "h",
                   "modifiers": {
                     "mandatory": [
-                      "option"
+                      "left_control",
+                      "left_option"
                     ]
                   }
                 },
@@ -967,7 +970,8 @@
                   "key_code": "l",
                   "modifiers": {
                     "mandatory": [
-                      "option"
+                      "left_control",
+                      "left_option"
                     ]
                   }
                 },
