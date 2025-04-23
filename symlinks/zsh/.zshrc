@@ -156,8 +156,13 @@ _fzf_compgen_dir() {
 }
 
 # Tool to combine multiple PDFs
-cpdf () { 
+pdfc () {
   gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$1" "${@:2}"
+}
+
+# Tool to extract pages from a PDF
+pdfx () {
+  gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dFirstPage="$1" -dLastPage="$2" -sOutputFile="${3%.pdf}_p${1}-p${2}.pdf" "$3"
 }
 
 #----------------------------------- Aliases -----------------------------------
