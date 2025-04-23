@@ -13,14 +13,23 @@ font-family = FiraCode Nerd Font
 font-style = Retina
 font-size = 12
 
-# Key bindings
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+l=goto_split:right
+# # Key bindings
+# keybind = ctrl+h=goto_split:left
+# keybind = ctrl+j=goto_split:bottom
+# keybind = ctrl+k=goto_split:top
+# keybind = ctrl+l=goto_split:right
 
-keybind = ctrl+space>shift+\=new_split:right
-keybind = ctrl+space>shift+-=new_split:down
+# keybind = ctrl+space>shift+\=new_split:right
+# keybind = ctrl+space>shift+-=new_split:down
+
+# keybind = ctrl+space>1=goto_tab:1
+# keybind = ctrl+space>2=goto_tab:2
+# keybind = ctrl+space>3=goto_tab:3
+# keybind = ctrl+space>4=goto_tab:4
+# keybind = ctrl+space>5=goto_tab:5
+
+# keybind = ctrl+space>n=next_tab
+# keybind = ctrl+space>p=previous_tab
 
 # MacOS
 macos-option-as-alt = left
