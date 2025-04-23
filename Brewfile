@@ -1,14 +1,18 @@
 # Third-party repositories
+tap "cormacrelf/tap"
+tap "felixkratz/formulae"
 tap "hacker1024/hacker1024"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "hpedrorodrigues/tools"
+tap "koekeishiya/formulae"
 tap "spicetify/tap"
+tap "zero-sh/tap"
+
+# AI pair programming in your terminal
+brew "aider"
 
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
@@ -46,6 +50,9 @@ brew "fzf"
 # GitHub command-line tool
 brew "gh"
 
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+
 # Access GitHub's .gitignore boilerplates
 brew "gibo"
 
@@ -76,6 +83,9 @@ brew "go"
 # Ping, but with a graph
 brew "gping"
 
+# Colorize logfiles and command output
+brew "grc"
+
 # GNU grep, egrep and fgrep
 brew "grep"
 
@@ -85,8 +95,17 @@ brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 
+# Simple terminal UI for git commands
+brew "lazygit"
+
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2@1.7"
+
 # Portable library for network traffic capture
 brew "libpcap"
+
+# Next-gen compiler infrastructure
+brew "llvm"
 
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
@@ -97,8 +116,14 @@ brew "macchina"
 # Mac App Store command-line interface
 brew "mas"
 
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
+
+# Text-based UI library
+brew "ncurses"
 
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
@@ -127,14 +152,17 @@ brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 
-# Rust toolchain installer
-brew "rustup-init"
-
 # Utility that provides fast incremental file transfer
 brew "rsync"
 
+# Rust toolchain installer
+brew "rustup"
+
 # Intuitive find & replace CLI
 brew "sd"
+
+# Command-line tool to customize Spotify client
+brew "spicetify-cli", link: false
 
 # Terminal-based client for Spotify
 brew "spotify-tui"
@@ -148,6 +176,9 @@ brew "ssh-copy-id"
 # Cross-shell prompt for astronauts
 brew "starship"
 
+# Formatting tool for reformatting Swift code
+brew "swiftformat"
+
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 
@@ -160,8 +191,17 @@ brew "tmux"
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
 
-# Tools for the WireGuard secure network tunnel
-brew "wireguard-tools"
+# Internet file retriever
+brew "wget"
+
+# Little beautifier tool for xcodebuild
+brew "xcbeautify"
+
+# Build server protocol implementation for integrating Xcode with sourcekit-lsp
+brew "xcode-build-server"
+
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 
 # JavaScript package manager
 brew "yarn"
@@ -178,32 +218,44 @@ cask "amethyst"
 # Memory training application
 cask "anki"
 
-# App to build and share containerized applications and microservices
-cask "docker"
+# E-books management software
+cask "calibre"
 
-# Command-line utility for managing macOS dock item
-cask "dockutil"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
 
 # Monospaced font with programming ligatures
 cask "font-fira-code-nerd-font"
 
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
+# Update maps and software, sync with Garmin Connect and register your device
+cask "garmin-express"
 
-# Keyboard customizer
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+
+# Free and open-source media player
+cask "iina"
+
+# Keyboard customiser
 cask "karabiner-elements"
 
 # Software for Logitech devices
-cask "logi-options-plus"
+cask "logi-options+"
 
 # Provides access to camera controls
 cask "logitech-camera-settings"
+
+# Encrypted to-do list, habit tracker, journaling, life-tracking and notes app
+cask "lunatask"
 
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+
+# Replacement for Docker Desktop
+cask "orbstack"
 
 # Control your tools with a few keystrokes
 cask "raycast"
@@ -213,6 +265,12 @@ cask "spotify"
 
 # Open-source BitTorrent client
 cask "transmission"
+
+# Email client
+cask "tuta-mail"
+
+# Multiplayer code editor
+cask "zed"
 
 # Privacy extension for browser
 mas "AdBlock Pro", id: 1018301773
