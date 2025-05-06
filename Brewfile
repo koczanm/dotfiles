@@ -2,13 +2,8 @@
 tap "cormacrelf/tap"
 tap "felixkratz/formulae"
 tap "hacker1024/hacker1024"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "homebrew/services"
 tap "hpedrorodrigues/tools"
 tap "koekeishiya/formulae"
-tap "spicetify/tap"
 tap "zero-sh/tap"
 
 # AI pair programming in your terminal
@@ -28,9 +23,6 @@ brew "coreutils"
 
 # Reimplementation of ctags(1)
 brew "ctags"
-
-# Command-line DNS client
-brew "dog"
 
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
@@ -162,13 +154,7 @@ brew "rustup"
 brew "sd"
 
 # Command-line tool to customize Spotify client
-brew "spicetify-cli", link: false
-
-# Terminal-based client for Spotify
-brew "spotify-tui"
-
-# Spotify daemon
-brew "spotifyd", restart_service: true
+brew "spicetify-cli"
 
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
@@ -260,9 +246,6 @@ cask "orbstack"
 # Control your tools with a few keystrokes
 cask "raycast"
 
-# Music streaming service
-cask "spotify"
-
 # Open-source BitTorrent client
 cask "transmission"
 
@@ -272,23 +255,29 @@ cask "tuta-mail"
 # Multiplayer code editor
 cask "zed"
 
-# Privacy extension for browser
-mas "AdBlock Pro", id: 1018301773
-
-# Password Manager
-mas "Bitwarden", id: 1352778147
-
 # Remix the Web
 mas "Cascadea", id: 1432182561
 
-# For Netflix, HBO Max, Amazon Prime etc.
-mas "Friendly Streaming Browser", id: 553245401
+# Photo & video
+mas "DaVinci Resolve", id: 571213070
 
-# Better To-Do List
-mas "Lunatask: A Better To-Do List", id: 1583719331
+# Movie maker & time lapse clips
+mas "GoPro Quik", id: 561350520
 
-# Dark Mode for Safari
-mas "Noir", id: 1592917505
+# Block cookies and tracking nags
+mas "Hush", id: 1544743900
+
+# Personal accounting software
+mas "MoneyWiz", id: 1511185140
+
+# News reader
+mas "Reeder", id: 1529448980
+
+# Block ads, trackers, and more
+mas "Wipr", id: 1662217862
+
+# VPN client
+mas "WireGuard", id: 1451685025
 
 # Keyboard Shortcuts extension for Safari
 mas "Vimari", id: 1480933944
