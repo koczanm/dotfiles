@@ -1,0 +1,189 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // Disable default keymaps
+  {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-enter": null
+    }
+  },
+  // Editor in normal and visual mode
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // Toggle inlay hints
+      "space u h": "editor::ToggleInlayHints",
+      // Toggle soft wrap
+      "space u w": "editor::ToggleSoftWrap",
+      // Toggle Zen mode
+      "space u z": "workspace::ToggleCenteredLayout",
+      // Inline assistant
+      "space a i": "assistant::InlineAssist",
+      // Go to file with `gf`
+      "g f": "editor::OpenExcerpts"
+    }
+  },
+  // Editor in normal mode
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // Move between panes
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      // LSP
+      "space c a": "editor::ToggleCodeActions",
+      "space c f": "editor::Format",
+      "space c o": "editor::OrganizeImports",
+      "space c r": "editor::Rename",
+      "shift-k": "editor::Hover",
+      "g d": "editor::GoToDefinition",
+      "g I": "editor::GoToImplementation",
+      "g t": "editor::GoToTypeDefinition",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      // Symbol search
+      "s s": "outline::Toggle",
+      "s S": "project_symbols::Toggle",
+      // Diagnostic
+      "space x x": "diagnostics::Deploy",
+      // Git prev/next hunk
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      // Switch between buffers
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      // Close active panel
+      "space b d": "pane::CloseActiveItem",
+      // Close other items
+      "space b o": "pane::CloseInactiveItems",
+      // Save file
+      "ctrl-s": "workspace::Save",
+      // Open file finder
+      "space space": "file_finder::Toggle",
+      // Project search
+      "space /": "pane::DeploySearch",
+      // Show project panel with current file
+      "space e": "pane::RevealInProjectPanel"
+    }
+  },
+  // Empty pane
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Open file finder
+      "space space": "file_finder::Toggle",
+      // Open recent project
+      "space f p": "projects::OpenRecent",
+      // Project search
+      "space /": "pane::DeploySearch"
+    }
+  },
+  // Comment code
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      "g c": "editor::ToggleComments"
+    }
+  },
+  // Move cursor in insert mode
+  {
+    "context": "Editor && vim_mode == insert && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-h": [
+        "workspace::SendKeystrokes",
+        "left"
+      ],
+      "ctrl-l": [
+        "workspace::SendKeystrokes",
+        "right"
+      ]
+    }
+  },
+  // Move lines up/down
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  // Sneak motion
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": [
+        "vim::PushSneak",
+        {}
+      ],
+      "S": [
+        "vim::PushSneakBackward",
+        {}
+      ]
+    }
+  },
+  // Workspace
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Toggle terminal
+      "ctrl-/": "terminal_panel::ToggleFocus",
+      // Toggle AI assistant
+      "space a a": "assistant::ToggleFocus"
+    }
+  },
+  // Terminal
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-/": "workspace::ToggleBottomDock"
+    }
+  },
+  // File panel
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      // Close file panel
+      "q": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleLeftDock",
+      // Navigate between panes
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  // Close AI assistant
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      "space a a": "workspace::ToggleRightDock"
+    }
+  },
+  // Send message to AI assistant
+  {
+    "context": "ContextEditor > Editor",
+    "bindings": {
+      "ctrl-enter": "assistant::Assist"
+    }
+  },
+]
