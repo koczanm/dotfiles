@@ -20,6 +20,7 @@ function set_dark_mode() {
   fast-theme -q XDG:catppuccin-frappe
 
   # Update the symlinks to point to configurations with the dark theme
+  ln -sf ${HOME}/.aider.conf.dark.yml ${HOME}/.aider.conf.yml
   ln -sf ${XDG_CONFIG_HOME}/btop/themes/catppuccin_frappe.theme ${XDG_CONFIG_HOME}/btop/themes/catppuccin.theme
   ln -sf ${XDG_CONFIG_HOME}/lsd/catppuccin_frappe.yaml ${XDG_CONFIG_HOME}/lsd/colors.yaml
   ln -sf ${XDG_CONFIG_HOME}/macchina/themes/catppuccin_frappe.toml ${XDG_CONFIG_HOME}/macchina/themes/catppuccin.toml
@@ -46,6 +47,7 @@ function set_light_mode() {
   fast-theme -q XDG:catppuccin-latte
 
   # Update the symlinks to point to configurations with the light theme
+  ln -sf ${HOME}/.aider.conf.light.yml ${HOME}/.aider.conf.yml
   ln -sf ${XDG_CONFIG_HOME}/btop/themes/catppuccin_latte.theme ${XDG_CONFIG_HOME}/btop/themes/catppuccin.theme
   ln -sf ${XDG_CONFIG_HOME}/lsd/catppuccin_latte.yaml ${XDG_CONFIG_HOME}/lsd/colors.yaml
   ln -sf ${XDG_CONFIG_HOME}/macchina/themes/catppuccin_latte.toml ${XDG_CONFIG_HOME}/macchina/themes/catppuccin.toml

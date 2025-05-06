@@ -1,0 +1,129 @@
+#############
+# Main model:
+
+# Specify the model to use for the main chat
+model: openrouter/google/gemini-2.5-pro-preview-03-25
+
+#################
+# Model settings:
+
+# Verify the SSL cert when connecting to models
+verify-ssl: true
+
+# # Specify what edit format the LLM should use (default depends on model)
+# edit-format: diff-fenced
+
+# Use architect edit format for the main chat
+architect: false
+
+# Only work with models that have meta-data available
+show-model-warnings: true
+
+# Check if model accepts settings like reasoning_effort/thinking_tokens
+check-model-accepts-settings: true
+
+##################
+# Output settings:
+
+# Enable/disable pretty, colorized output
+pretty: true
+
+# Enable/disable streaming responses
+stream: true
+
+# Set the color for user input
+user-input-color: "#40a02b"
+
+# Set the color for tool output
+tool-output-color: "#4c4f69"
+
+# Set the color for tool error messages
+tool-error-color: "#d20f39"
+
+# Set the color for tool warning messages
+tool-warning-color: "#df8e1d"
+
+# Set the color for assistant output
+assistant-output-color: "#8839ef"
+
+# Set the markdown code theme
+code-theme: catppuccin-latte
+
+# Show diffs when committing changes
+show-diffs: false
+
+###############
+# Git settings:
+
+# Enable/disable looking for a git repo
+git: true
+
+# Enable/disable adding .aider* to .gitignore
+gitignore: true
+
+# Specify the aider ignore file
+aiderignore: .aiderignore
+
+# Enable/disable auto commit of LLM changes
+auto-commits: true
+
+# Enable/disable commits when repo is found dirty
+dirty-commits: true
+
+# Attribute aider code changes in the git author name
+attribute-author: true
+
+# Attribute aider commits in the git committer name
+attribute-committer: true
+
+# Prefix commit messages with 'aider: ' if aider authored the changes
+attribute-commit-message-author: false
+
+# Prefix all commit messages with 'aider: '
+attribute-commit-message-committer: false
+
+# Commit all pending changes with a suitable commit message, then exit
+commit: false
+
+# Skip the sanity check for the git repository
+skip-sanity-check-repo: false
+
+# Enable/disable watching files for ai coding comments
+watch-files: true
+
+############
+# Analytics:
+
+# Permanently disable analytics
+analytics-disable: true
+
+############
+# Upgrading:
+
+# Check for new aider versions on launch
+check-update: true
+
+# Show release notes on first run of new version
+show-release-notes: false
+
+#################
+# Other settings:
+
+# Specify read-only files
+read:
+  - CONVENTIONS.md
+
+# Specify the .env file to load
+env-file: .env
+
+# Enable/disable suggesting shell commands
+suggest-shell-commands: true
+
+# Enable/disable fancy input with history and completion
+fancy-input: true
+
+# Enable/disable detection and offering to add URLs to chat
+detect-urls: true
+
+# Specify which editor to use for the /editor command
+editor: nvim
