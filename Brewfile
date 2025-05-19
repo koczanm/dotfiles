@@ -24,6 +24,9 @@ brew "coreutils"
 # Reimplementation of ctags(1)
 brew "ctags"
 
+# Tool for managing dock items
+brew "dockutil"
+
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 
