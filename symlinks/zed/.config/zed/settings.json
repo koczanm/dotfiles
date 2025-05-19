@@ -7,27 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  // Set fonts
-  "edit_predictions": {
-    "mode": "subtle",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null
-    },
-    "enabled_in_assistant": false
-  },
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
-    },
-    "version": "2"
-  },
+  // Set FiraCode as default font
   "buffer_font_family": "FiraCode Nerd Font",
   "buffer_font_size": 12,
   "ui_font_family": "SF Pro",
   "ui_font_size": 14,
-  // Use Catppuccin theme
+  // Set Catppuccin as default theme
   "theme": {
     "mode": "system",
     "dark": "Catppuccin Frappé",
@@ -47,6 +32,10 @@
   "inlay_hints": {
     "enabled": true
   },
+  // Only show error on tab
+  "tabs": {
+    "show_diagnostics": "errors"
+  },
   // Use relative line numbers
   "relative_line_numbers": true,
   // Disable cursor blink
@@ -65,12 +54,121 @@
     "toggle_relative_line_numbers": true
   },
   // Use Zed AI with Claude 3.7 Sonnet
-  "assistant": {
+  "agent": {
+    "button": false,
+    "default_profile": "ask",
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"
     },
+    "editor_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
     "version": "2"
+  },
+  // Use subtle mode for AI predictions
+  "show_edit_predictions": false,
+  "edit_predictions": {
+    "disabled_globs": [
+      "**/.git",
+      "**/.svn",
+      "**/.hg",
+      "**/CVS",
+      "**/.DS_Store",
+      "**/Thumbs.db",
+      "**/.classpath",
+      "**/.settings",
+      "**/.vscode",
+      "**/.idea",
+      "**/node_modules",
+      "**/.serverless",
+      "**/build",
+      "**/dist",
+      "**/coverage",
+      "**/.venv",
+      "**/__pycache__",
+      "**/.ropeproject",
+      "**/.pytest_cache",
+      "**/.ruff_cache"
+    ]
+  },
+  // Use Zed commit editor
+  "terminal": {
+    "button": false,
+    "font_family": "FiraCode Nerd Font",
+    "font_size": 12,
+    "env": {
+      "EDITOR": "zed --wait"
+    }
+  },
+  // Exclude some files from the file panel and search
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/.vscode",
+    "**/.idea",
+    "**/node_modules",
+    "**/.serverless",
+    "**/build",
+    "**/dist",
+    "**/coverage",
+    "**/.venv",
+    "**/__pycache__",
+    "**/.ropeproject",
+    "**/.pytest_cache",
+    "**/.ruff_cache"
+  ],
+  // Move most panels to the right
+  "chat_panel": {
+    "button": "never",
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "button": false,
+    "dock": "right"
+  },
+  "notification_panel": {
+    "button": false,
+    "dock": "right"
+  },
+  "outline_panel": {
+    "button": false,
+    "dock": "right"
+  },
+  // And others to the left
+  "project_panel": {
+    "button": false,
+    "dock": "left"
+  },
+  "git_panel": {
+    "button": false,
+    "dock": "left"
+  },
+  // LSP
+  "languages": {
+    "Python": {
+      "language_servers": ["ruff", "basedpyright", "!pyright"],
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    }
   },
   // Turn off telemetry
   "telemetry": {

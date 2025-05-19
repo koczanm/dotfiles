@@ -6,27 +6,14 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-  // Disable default keymaps
-  {
-    "context": "Editor && mode == full",
-    "bindings": {
-      "ctrl-enter": null
-    }
-  },
   // Editor in normal and visual mode
   {
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
-      // Toggle inlay hints
-      "space u h": "editor::ToggleInlayHints",
-      // Toggle soft wrap
-      "space u w": "editor::ToggleSoftWrap",
-      // Toggle Zen mode
-      "space u z": "workspace::ToggleCenteredLayout",
+      // Toggle AI assistant
+      "space a a": "agent::ToggleFocus",
       // Inline assistant
-      "space a i": "assistant::InlineAssist",
-      // Go to file with `gf`
-      "g f": "editor::OpenExcerpts"
+      "space a i": "assistant::InlineAssist"
     }
   },
   // Editor in normal mode
@@ -38,6 +25,14 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
+      // Toggle inlay hints
+      "space u h": "editor::ToggleInlayHints",
+      // Toggle soft wrap
+      "space u w": "editor::ToggleSoftWrap",
+      // Toggle Zen mode
+      "space u z": "workspace::ToggleCenteredLayout",
+      // Go to file with `gf`
+      "g f": "editor::OpenExcerpts",
       // LSP
       "space c a": "editor::ToggleCodeActions",
       "space c f": "editor::Format",
@@ -69,10 +64,22 @@
       "ctrl-s": "workspace::Save",
       // Open file finder
       "space space": "file_finder::Toggle",
+      // Open new file
+      "space f n": "workspace::NewFile",
       // Project search
       "space /": "pane::DeploySearch",
       // Show project panel with current file
-      "space e": "pane::RevealInProjectPanel"
+      "space e": "pane::RevealInProjectPanel",
+      // Spawn lazygit
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "lazygit",
+          "reveal_target": "center"
+        }
+      ],
+      // Quit zed
+      "space q q": "zed::Quit"
     }
   },
   // Empty pane
@@ -83,8 +90,12 @@
       "space space": "file_finder::Toggle",
       // Open recent project
       "space f p": "projects::OpenRecent",
+      // Open new file
+      "space f n": "workspace::NewFile",
       // Project search
-      "space /": "pane::DeploySearch"
+      "space /": "pane::DeploySearch",
+      // Quit zed
+      "space q q": "zed::Quit"
     }
   },
   // Comment code
@@ -92,20 +103,6 @@
     "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
     "bindings": {
       "g c": "editor::ToggleComments"
-    }
-  },
-  // Move cursor in insert mode
-  {
-    "context": "Editor && vim_mode == insert && !VimWaiting && !menu",
-    "bindings": {
-      "ctrl-h": [
-        "workspace::SendKeystrokes",
-        "left"
-      ],
-      "ctrl-l": [
-        "workspace::SendKeystrokes",
-        "right"
-      ]
     }
   },
   // Move lines up/down
@@ -120,14 +117,20 @@
   {
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
-      "s": [
-        "vim::PushSneak",
-        {}
-      ],
-      "S": [
-        "vim::PushSneakBackward",
-        {}
-      ]
+      "s": ["vim::PushSneak", {}],
+      "S": ["vim::PushSneakBackward", {}]
+    }
+  },
+  // Center the cursor on the screen when scrolling and find all references
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+      "n": ["workspace::SendKeystrokes", "n z z z v"],
+      "shift-n": ["workspace::SendKeystrokes", "shift-n z z z v"],
+      "shift-g": ["workspace::SendKeystrokes", "shift-g z z"],
+      "g r": "editor::FindAllReferences"
     }
   },
   // Workspace
@@ -135,9 +138,7 @@
     "context": "Workspace",
     "bindings": {
       // Toggle terminal
-      "ctrl-/": "terminal_panel::ToggleFocus",
-      // Toggle AI assistant
-      "space a a": "assistant::ToggleFocus"
+      "ctrl-/": "terminal_panel::ToggleFocus"
     }
   },
   // Terminal
@@ -172,18 +173,11 @@
       "ctrl-j": "workspace::ActivatePaneDown"
     }
   },
-  // Close AI assistant
+  // Agent panel
   {
-    "context": "AssistantPanel",
+    "context": "AgentPanel",
     "bindings": {
       "space a a": "workspace::ToggleRightDock"
     }
-  },
-  // Send message to AI assistant
-  {
-    "context": "ContextEditor > Editor",
-    "bindings": {
-      "ctrl-enter": "assistant::Assist"
-    }
-  },
+  }
 ]

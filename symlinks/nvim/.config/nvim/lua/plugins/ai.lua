@@ -1,120 +1,71 @@
 return {
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false,
+    "olimorris/codecompanion.nvim",
     dependencies = {
-      "stevearc/dressing.nvim",
-      "ibhagwan/fzf-lua",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      provider = "openrouter",
-      vendors = {
-        openrouter = {
-          __inherited_from = "openai",
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = "OPENROUTER_API_KEY",
-          model = "google/gemini-2.5-pro-preview-03-25",
+      strategies = {
+        chat = {
+          adapter = "copilot",
+          slash_commands = {
+            ["buffer"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+            ["file"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+            ["help"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+            ["symbols"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+          },
+          keymaps = {
+            send = {
+              modes = { n = { "<C-s>", "<CR>" }, i = "<C-s>" },
+            },
+            close = {
+              modes = { n = "q", i = "<C-c>" },
+            },
+          },
         },
-      },
-      file_selector = {
-        provider = "fzf",
-        provider_opts = {},
-      },
-      highlights = {
-        diff = {
-          current = "DiffText",
-          incoming = "DiffAdd",
+        inline = {
+          adapter = "copilot",
+          keymaps = {
+            accept_change = {
+              modes = { n = "<space>gha" },
+              description = "Accept Hunk (CodeCompanion)",
+            },
+            reject_change = {
+              modes = { n = "<space>ghr" },
+              description = "Reject Hunk (CodeCompanion)",
+            },
+          },
         },
-      },
-    },
-    build = "make",
-  },
-  {
-    "ibhagwan/fzf-lua",
-    opts = {
-      actions = {
-        files = {
-          true,
-          ["ctrl-g"] = {
-            function(_, opts)
-              local o = vim.tbl_deep_extend("keep", { resume = true }, opts.__call_opts)
-              opts.__call_fn(o)
-            end,
+        display = {
+          diff = {
+            provider = "mini_diff",
           },
         },
       },
     },
-  },
-  {
-    "saghen/blink.cmp",
-    lazy = true,
-    dependencies = {
-      {
-        "saghen/blink.compat",
-        lazy = true,
-        opts = {},
-        config = function()
-          require("cmp").ConfirmBehavior = {
-            Insert = "insert",
-            Replace = "replace",
-          }
-        end,
-      },
-    },
-    opts = {
-      completion = {
-        accept = {
-          dot_repeat = false,
-        },
-      },
-      sources = {
-        default = { "avante_commands", "avante_mentions", "avante_files" },
-        compat = {
-          "avante_commands",
-          "avante_mentions",
-          "avante_files",
-        },
-        providers = {
-          avante_commands = {
-            name = "avante_commands",
-            module = "blink.compat.source",
-            score_offset = 90,
-            opts = {},
-          },
-          avante_files = {
-            name = "avante_files",
-            module = "blink.compat.source",
-            score_offset = 100,
-            opts = {},
-          },
-          avante_mentions = {
-            name = "avante_mentions",
-            module = "blink.compat.source",
-            score_offset = 1000,
-            opts = {},
-          },
-        },
-      },
-    },
-  },
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    optional = true,
-    ft = function(_, ft)
-      vim.list_extend(ft, { "Avante" })
-    end,
-    opts = function(_, opts)
-      opts.file_types = vim.list_extend(opts.file_types or {}, { "Avante" })
-    end,
-  },
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      spec = {
-        { "<leader>a", group = "ai" },
-      },
+    keys = {
+      { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+      { "<leader>ap", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "Prompt Actions (CodeCompanion)" },
+      { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle (CodeCompanion)" },
+      { "<leader>ac", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add Code (CodeCompanion)" },
+      { "<leader>ai", ":CodeCompanion ", mode = { "n", "v" }, desc = "Inline (CodeCompanion)" },
     },
   },
 }

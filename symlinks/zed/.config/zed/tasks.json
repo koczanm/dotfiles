@@ -1,0 +1,19 @@
+// Static tasks configuration.
+[
+  {
+    "label": "Lazygit",
+    "command": "lazygit",
+    "use_new_terminal": true,
+    "reveal_target": "center",
+    "allow_concurrent_runs": false,
+    "hide": "on_success"
+  },
+  {
+    "label": "Xcode Build and Run",
+    "command": "xcodebuild -configuration debug && open ./build/Debug/Nuff.app",
+    "use_new_terminal": true,
+    "reveal_target": "center",
+    "allow_concurrent_runs": false,
+    "hide": "on_success"
+  }
+]
